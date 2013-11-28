@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+	<head>		
+		#parse('/layout/head.vm')
+    </head>
+    
+    <body>
+    	<div id="wrap">
+    		#parse('/layout/navbar.vm')
+	
+			<div class="container">
+		    	$!content            	
+			</div>
+    	</div>
+		
+		#parse('/layout/footer.vm')
+		
+        #parse('/layout/foot.vm')
+    </body>
+</html>
