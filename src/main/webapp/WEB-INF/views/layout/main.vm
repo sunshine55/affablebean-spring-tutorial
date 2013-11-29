@@ -5,13 +5,17 @@
     </head>
     
     <body>
-    	<div id="wrap">
-    		#parse('/layout/navbar.vm')
-	
-			<div class="container">
-		    	$!content            	
-			</div>
-    	</div>
+	    <div id="wrap">
+	    	#parse('/layout/navbar.vm')
+	    	
+	    	<div class="container">
+				<div class="row clearfix">
+					<div class="col-md-12 column">
+			    		$!content
+			    	</div>
+			    </div>
+	    	</div>
+	    </div>
 		
 		#parse('/layout/footer.vm')
 		
