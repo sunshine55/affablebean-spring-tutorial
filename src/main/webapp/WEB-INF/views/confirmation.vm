@@ -1,0 +1,49 @@
+#define($content)
+
+<div class="row clearfix">
+	<div class="col-md-12 column">		
+		<div class="jumbotron">
+		  	<h1>Affable Spring Bean!</h1>
+		  	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>		  
+		</div>
+	</div>
+</div>
+
+<div class="row clearfix">
+	<div class="col-md-6 column">
+		<div class="row clearfix">
+			<div class="col-md-12 column">		
+				<div class="jumbotron">		  
+				  <p>Order reference number, subtotal, tax, total, date processed</p>
+				</div>
+			</div>
+		</div>
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				<div class="jumbotron">  
+				  <p>Customer details</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6 column">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th class="text-center">Name</th>
+					<th class="text-center">Price</th>
+					<th class="text-center">Quantity</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="text-center">Name</td>
+					<td class="text-center">... &#36;</td>
+					<td class="text-center">Quantity</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+#end
