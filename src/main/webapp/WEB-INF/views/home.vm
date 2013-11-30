@@ -1,34 +1,43 @@
 #define($content)
 
 <div class="row clearfix">
-	<div class="col-md-4 column">		
-		<p>[logo image]</p>
-	</div>
-	<div class="col-md-8 column">
-		<h1>Affable Spring Bean!</h1>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum velit augue, pellentesque tincidunt nunc convallis sed. Aliquam sit amet tempus quam.</p>
+	<div class="col-md-12 column">		
+		<div class="jumbotron">
+		  	<h1>Affable Spring Bean!</h1>
+		  	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>		  
+		</div>
 	</div>
 </div>
 
 <div class="row clearfix">
 	<div class="col-md-4 column">
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum velit augue, pellentesque tincidunt nunc convallis sed. Aliquam sit amet tempus quam. Vivamus sodales leo dui. Nam lectus nibh, adipiscing ut mauris in, ultricies porta justo. Praesent mauris velit, fermentum ultrices ipsum in, dignissim porttitor ipsum.</p>
+		<div class="jumbotron">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum velit augue, pellentesque tincidunt nunc convallis sed. Aliquam sit amet tempus quam. Vivamus sodales leo dui.</p>
+		</div>
 	</div>
 	<div class="col-md-8 column">
 		<div class="row clearfix">
 			<div class="col-md-6 column">		
-				<p>[category 1]</p>
+				<div class="thumbnail">
+					<img data-src="holder.js/100%x180" alt="...">
+				</div>
 			</div>
 			<div class="col-md-6 column">
-				<p>[category 2]</p>
+				<div class="thumbnail">
+					<img data-src="holder.js/100%x180" alt="...">
+				</div>
 			</div>
 		</div>
 		<div class="row clearfix">
 			<div class="col-md-6 column">
-				<p>[category 3]</p>
+				<div class="thumbnail">
+					<img data-src="holder.js/100%x180" alt="...">
+				</div>
 			</div>
 			<div class="col-md-6 column">
-				<p>[category 4]</p>
+				<div class="thumbnail">
+					<img data-src="holder.js/100%x180" alt="...">
+				</div>
 			</div>
 		</div>
 	</div>

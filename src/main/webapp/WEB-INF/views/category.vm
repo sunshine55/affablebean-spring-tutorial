@@ -1,0 +1,53 @@
+#define($content)
+
+<div class="row clearfix">
+	<div class="col-md-12 column">		
+		<div class="jumbotron">
+		  	<h1>Affable Spring Bean!</h1>
+		  	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>		  
+		</div>
+	</div>
+</div>
+
+<div class="row clearfix">
+	<div class="col-md-2 column">
+		<ul class="nav nav-pills nav-stacked">
+			<li class="active"><a href="#">Category 1</a></li>
+			<li><a href="#">Category 2</a></li>
+			<li><a href="#">Category 3</a></li>
+			<li><a href="#">Category 4</a></li>
+		</ul>
+	</div>
+	<div class="col-md-10 column">
+		<table class="table table-striped">
+			<tbody>
+				<tr>
+					<td><img data-src="holder.js/140x90" alt="..."></td>
+					<td>description</td>
+					<td>price</td>
+					<td><button type="button" class="btn btn-primary">Add to cart</button></td>
+				</tr>
+				<tr>
+					<td><img data-src="holder.js/140x90" alt="..."></td>
+					<td>description</td>
+					<td>price</td>
+					<td><button type="button" class="btn btn-primary">Add to cart</button></td>
+				</tr>
+				<tr>
+					<td><img data-src="holder.js/140x90" alt="..."></td>
+					<td>description</td>
+					<td>price</td>
+					<td><button type="button" class="btn btn-primary">Add to cart</button></td>
+				</tr>
+				<tr>
+					<td><img data-src="holder.js/140x90" alt="..."></td>
+					<td>description</td>
+					<td>price</td>
+					<td><button type="button" class="btn btn-primary">Add to cart</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+#end
