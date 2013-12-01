@@ -23,27 +23,10 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/category", method = RequestMethod.GET)
-	public String category() {
-		logger.info("Redirect to category view");				
-		return "category";
-	}
-	
-	@RequestMapping(value = "/cart", method = RequestMethod.GET)
-	public String cart() {
-		logger.info("Redirect to cart view");				
-		return "cart";
-	}
-	
-	@RequestMapping(value = "/checkout", method = RequestMethod.GET)
-	public String checkout() {
-		logger.info("Redirect to checkout view");				
-		return "checkout";
-	}
-	
 	@RequestMapping(value = "/confirmation", method = RequestMethod.GET)
 	public String confirmation() {
 		logger.info("Redirect to confirmation view");				
 		return "confirmation";
 	}
+
 }
