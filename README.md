@@ -15,4 +15,9 @@ Rewrite [Netbeans e-commerce tutorial](https://netbeans.org/kb/docs/javaee/ecomm
 3. Preparing views and controllers
 4. Designing data model:
    * Identify the entities and their relationships
-   * Follow top down development using Hibernate ORM
+   * Follow top down development using [Spring Data JPA](http://spring.io/docs)
+5. Developing business logic: transaction, session
+6. Securing the application
+7. Others:   
+   * Adding language support
+   * Testing
