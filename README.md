@@ -12,12 +12,13 @@ Rewrite [Netbeans e-commerce tutorial](https://netbeans.org/kb/docs/javaee/ecomm
    * IDE: [Spring Tool Suite](https://spring.io/tools/sts/all)
    * DBMS: MySQL
    * Create a new Spring MVC template project
-3. Preparing views and controllers.
+3. Preparing views and controllers (front-end).
 4. Designing data model:
    * Identify the entities and their relationships
    * Follow bottom up or top down approach using Hibernate
-5. Developing business logic and specific web UIs.
-6. Others:
+5. Developing business logic.
+6. Integrating with front-end.
+7. Others:
    * Securing the application
    * Adding language support
    * Testing
