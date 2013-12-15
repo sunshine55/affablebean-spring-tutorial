@@ -21,4 +21,4 @@ Rewrite [Netbeans e-commerce tutorial](https://netbeans.org/kb/docs/javaee/ecomm
 7. Others:   
    * Adding language support
    * Testing
-   * Deploying on [OpenShift](https://www.openshift.com/)
+   * Deploying on [OpenShift](https://www.openshift.com/) -> visit [demo app](http://affablebean-tonyvo.rhcloud.com/)
