@@ -6,18 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hvn.velocity.entities.Category;
-import com.hvn.velocity.repositories.CategoryDao;
+import com.hvn.velocity.entities.Product;
+import com.hvn.velocity.repositories.ProductDao;
 
 @Service
 @Transactional
-public class CategoryService {
+public class ProductService {
 
 	@Autowired
-	private CategoryDao categoryDao;
+	private ProductDao productDao;
 	
-	public List<Category> listAll() {
-		return categoryDao.findAll();
+	public List<Product> listByCategoryId(Byte id) {
+		return productDao.findByCategoryId(id);
 	}
 	
 }

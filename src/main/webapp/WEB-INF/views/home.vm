@@ -19,7 +19,7 @@
 		<div class="row clearfix">
 			<div class="col-md-6 column">		
 				<div class="thumbnail">
-					<img src="#springUrl("/resources/img/products/${categoryList.get(0).name}.jpg")">
+					<a href="#springUrl("/category?id=${categoryList.get(0).id}")"><img src="#springUrl("/resources/img/products/${categoryList.get(0).name}.jpg")"></a>
 					<div class="caption">
 				        <h4>$categoryList.get(0).name.toUpperCase()</h4>
 				        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>				        
@@ -28,7 +28,7 @@
 			</div>
 			<div class="col-md-6 column">
 				<div class="thumbnail">
-					<img src="#springUrl("/resources/img/products/${categoryList.get(1).name}.jpg")">
+					<a href="#springUrl("/category?id=${categoryList.get(1).id}")"><img src="#springUrl("/resources/img/products/${categoryList.get(1).name}.jpg")"></a>
 					<div class="caption">
 				        <h4>$categoryList.get(1).name.toUpperCase()</h4>
 				        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>				        
@@ -39,7 +39,7 @@
 		<div class="row clearfix">
 			<div class="col-md-6 column">
 				<div class="thumbnail">					
-					<img src="#springUrl("/resources/img/products/${categoryList.get(2).name}.jpg")">
+					<a href="#springUrl("/category?id=${categoryList.get(2).id}")"><img src="#springUrl("/resources/img/products/${categoryList.get(2).name}.jpg")"></a>
 					<div class="caption">
 				        <h4>$categoryList.get(2).name.toUpperCase()</h4>
 				        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>				        
@@ -48,7 +48,7 @@
 			</div>
 			<div class="col-md-6 column">
 				<div class="thumbnail">					
-					<img src="#springUrl("/resources/img/products/${categoryList.get(3).name}.jpg")">
+					<a href="#springUrl("/category?id=${categoryList.get(3).id}")"><img src="#springUrl("/resources/img/products/${categoryList.get(3).name}.jpg")"></a>
 					<div class="caption">
 				        <h4>$categoryList.get(3).name.toUpperCase()</h4>
 				        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>				        

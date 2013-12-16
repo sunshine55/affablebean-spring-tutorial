@@ -12,21 +12,22 @@
 <div class="row clearfix">
 	<div class="col-md-2 column">
 		<ul class="nav nav-pills nav-stacked">
-			<li class="active"><a href="#">Category 1</a></li>
-			<li><a href="#">Category 2</a></li>
-			<li><a href="#">Category 3</a></li>
-			<li><a href="#">Category 4</a></li>
+		#foreach($category in $categoryList)
+			<li #if($id == ${category.id}) class="active" #end><a href="#springUrl("/category?id=${category.id}")">$category.name.toUpperCase()</a></li>
+		#end			
 		</ul>
 	</div>
 	<div class="col-md-10 column">
 		<table class="table table-striped">
 			<tbody>
+			#foreach($prod in $productList)
 				<tr>
-					<td><img data-src="holder.js/142x80" alt="..." class="img-responsive"></td>
-					<td style="vertical-align: middle">description</td>
-					<td style="vertical-align: middle" class="text-center">price</td>
+					<td><img src="#springUrl("/resources/img/products/${prod.name}.png")" class="img-responsive"></td>
+					<td style="vertical-align: middle">$prod.name</td>
+					<td style="vertical-align: middle" class="text-center">$prod.price USD</td>
 					<td style="vertical-align: middle" class="text-right"><button type="button" class="btn btn-primary">Add to cart</button></td>
 				</tr>
+			#end
 			</tbody>
 		</table>
 	</div>
