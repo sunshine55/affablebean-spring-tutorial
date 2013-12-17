@@ -11,6 +11,12 @@
 
 <div class="row clearfix">	
 	<div class="col-md-12 column">
+	#if ($itemMap.size() == 0)
+		<div class="jumbotron">
+  			<h4>There's no item in your shopping cart!</h4>
+  			<p><a href="#springUrl('/')" class="btn btn-primary btn-lg">Keep shopping</a></p>
+		</div>
+	#else
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -21,32 +27,35 @@
 				</tr>
 			</thead>
 			<tbody>
+			#foreach($item in $itemMap.entrySet())
 				<tr>
-					<td><img data-src="holder.js/140x90" alt="..."></td>
-					<td style="vertical-align: middle;">Name of product</td>
-					<td style="vertical-align: middle;" class="text-center">Price &#36;</td>
+					<td><img src="#springUrl("/resources/img/products/${item.key.getName()}.png")"></td>
+					<td style="vertical-align: middle;">${item.key.getName()}</td>
+					<td style="vertical-align: middle;" class="text-center">${item.key.getPrice()} USD per Unit</td>
 					<td style="vertical-align: middle;" class="text-center">
 						<form class="form-inline">
 							<div class="form-group">
-								<input class="form-control" type="text" value="1" size="2" maxlength="2">
+								<input class="form-control" type="text" value="${item.value}" size="2" maxlength="2">
 							</div>
 							<button type="submit" class="btn btn-primary">Update</button>
 						</form>
 					</td>
 				</tr>
+			#end
 				<tr>
-					<td colspan="2" class="text-center"><h4>Your shopping cart contains ... items.</h4></td>
-					<td class="text-center"><h4>Subtotal: ... &#36;</h4></td>
+					<td colspan="2" class="text-center"><h4>Your shopping cart contains ${itemMap.size()} items.</h4></td>
+					<td class="text-center"><h4>Subtotal: $subTotal USD</h4></td>
 					<td class="text-center">
 						<div class="btn-group">
-							<button type="button" class="btn btn-danger">Clear</button>						
-							<button type="button" class="btn btn-warning">Keep Shopping</button>
-							<button type="button" class="btn btn-info">Checkout</button>
+							<a href="#springUrl('/clearCart')" class="btn btn-danger">Clear</a>						
+							<a href="#springUrl('/')" class="btn btn-warning">Keep Shopping</a>
+							<a href="#" class="btn btn-info">Checkout</a>
 						</div>
 					</td>
 				</tr>
 			</tbody>
 		</table>
+	#end
 	</div>
 </div>
 

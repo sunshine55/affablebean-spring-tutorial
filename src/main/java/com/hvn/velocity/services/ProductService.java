@@ -20,4 +20,8 @@ public class ProductService {
 		return productDao.findByCategoryId(id);
 	}
 	
+	public Product getById(Integer id) {
+		return productDao.findById(id);
+	}
+	
 }

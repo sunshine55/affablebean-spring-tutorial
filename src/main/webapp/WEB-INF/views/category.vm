@@ -25,7 +25,7 @@
 					<td><img src="#springUrl("/resources/img/products/${prod.name}.png")" class="img-responsive"></td>
 					<td style="vertical-align: middle">$prod.name</td>
 					<td style="vertical-align: middle" class="text-center">$prod.price USD</td>
-					<td style="vertical-align: middle" class="text-right"><button type="button" class="btn btn-primary">Add to cart</button></td>
+					<td style="vertical-align: middle" class="text-right"><a href="#springUrl("/addToCart?id=${prod.id}")" class="btn btn-primary">Add to cart</a></td>
 				</tr>
 			#end
 			</tbody>

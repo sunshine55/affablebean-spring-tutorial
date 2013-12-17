@@ -18,4 +18,8 @@ public class ProductDao {
 		return sessionFactory.getCurrentSession().createQuery("from Product where category.id="+id).list();
 	}
 	
+	public Product findById(Integer id) {
+		return (Product) sessionFactory.getCurrentSession().get(Product.class, id);
+	}
+	
 }
