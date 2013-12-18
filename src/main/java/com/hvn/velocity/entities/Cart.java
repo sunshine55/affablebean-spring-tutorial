@@ -30,4 +30,12 @@ public class Cart {
         this.products.clear();
     }
     
+    public void updateProduct(Product prod, Integer qty) {
+    	if (qty <= 0) {
+    		this.products.remove(prod);
+    	} else {
+    		this.products.put(prod, qty);
+    	}
+    }
+    
 }

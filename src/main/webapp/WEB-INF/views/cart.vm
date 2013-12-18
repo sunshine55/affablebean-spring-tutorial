@@ -33,9 +33,10 @@
 					<td style="vertical-align: middle;">${item.key.getName()}</td>
 					<td style="vertical-align: middle;" class="text-center">${item.key.getPrice()} USD per Unit</td>
 					<td style="vertical-align: middle;" class="text-center">
-						<form class="form-inline">
+						<form action="#springUrl('/updateCart')" method="POST" class="form-inline">
+							<input type="hidden" name="id" value="${item.key.getId()}">
 							<div class="form-group">
-								<input class="form-control" type="text" value="${item.value}" size="2" maxlength="2">
+								<input name="quantity" class="form-control" type="text" value="${item.value}" size="2" maxlength="2">
 							</div>
 							<button type="submit" class="btn btn-primary">Update</button>
 						</form>

@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,9 +55,18 @@ public class CartController {
 	}
 	
 	@RequestMapping(value = "/clearCart", method = RequestMethod.GET)
-	public String addToCart() {
+	public String clearCart() {
 		logger.info("Clear cart");
 		cart.clear();
 		return "redirect:/cart";
 	}
+	
+	@RequestMapping(value = "/updateCart", method = RequestMethod.POST)
+	public String updateCart(@ModelAttribute("id") Integer id, @ModelAttribute("quantity") Integer quantity) {
+		logger.info("Update cart");
+		Product product = productService.getById(id);
+		cart.updateProduct(product, quantity);
+		return "redirect:/cart";
+	}
+	
 }
