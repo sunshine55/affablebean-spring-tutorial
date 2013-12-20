@@ -1,63 +1,67 @@
 #define($content)
 
-<div class="row clearfix">
-	<div class="col-md-12 column">		
-		<div class="jumbotron">
-		  	<h1>Affable Spring Bean!</h1>
-		  	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>		  
-		</div>
-	</div>
-</div>
-
-<div class="row clearfix">	
-	<div class="col-md-12 column">
 	#if ($itemMap.size() == 0)
-		<div class="jumbotron">
-  			<h4>There's no item in your shopping cart!</h4>
-  			<p><a href="#springUrl('/')" class="btn btn-primary btn-lg">Keep shopping</a></p>
+	<div class="row clearfix">
+		<div class="col-md-12 column">		
+			<div class="jumbotron">
+			  	<h1>Affable Spring Bean!</h1>
+			  	<p>There's no item in your shopping cart!</p>
+			  	<p><a href="#springUrl('/')" class="btn btn-warning">Keep Shopping</a></p>
+			</div>
 		</div>
-	#else
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th></th>
-					<th>Name</th>
-					<th class="text-center">Price</th>
-					<th class="text-center">Quantity</th>
-				</tr>
-			</thead>
-			<tbody>
-			#foreach($item in $itemMap.entrySet())
-				<tr>
-					<td><img src="#springUrl("/resources/img/products/${item.key.getName()}.png")"></td>
-					<td style="vertical-align: middle;">${item.key.getName()}</td>
-					<td style="vertical-align: middle;" class="text-center">${item.key.getPrice()} USD per Unit</td>
-					<td style="vertical-align: middle;" class="text-center">
-						<form action="#springUrl('/updateCart')" method="POST" class="form-inline">
-							<input type="hidden" name="id" value="${item.key.getId()}">
-							<div class="form-group">
-								<input name="quantity" class="form-control" type="text" value="${item.value}" size="2" maxlength="2">
-							</div>
-							<button type="submit" class="btn btn-primary">Update</button>
-						</form>
-					</td>
-				</tr>
-			#end
-				<tr>
-					<td colspan="2" class="text-center"><h4>Your shopping cart contains ${itemMap.size()} items.</h4></td>
-					<td class="text-center"><h4>Subtotal: $subTotal USD</h4></td>
-					<td class="text-center">
-						<div class="btn-group">
-							<a href="#springUrl('/clearCart')" class="btn btn-danger">Clear</a>						
-							<a href="#springUrl('/')" class="btn btn-warning">Keep Shopping</a>
-							<a href="#" class="btn btn-info">Checkout</a>
-						</div>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	#end
 	</div>
-</div>
+		
+	#else
+	<div class="row clearfix">
+		<div class="col-md-12 column">		
+			<div class="jumbotron">
+			  	<h1>Affable Spring Bean!</h1>
+			  	<p>Your shopping cart contains ${itemMap.size()} item(s).</p>
+			  	<p>If you want to remove any item, just update its quantity to 0.</p>
+			  	<p>
+			  		<a href="#springUrl('/')" class="btn btn-info">Keep Shopping</a>
+			  		<a href="#" class="btn btn-warning">Checkout</a>
+			  	</p>	  
+			</div>
+		</div>
+	</div>
+	
+	<div class="row clearfix">	
+		<div class="col-md-12 column">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Name</th>
+						<th class="text-center">Price</th>
+						<th class="text-center">Quantity</th>
+					</tr>
+				</thead>
+				<tbody>
+				#foreach($item in $itemMap.entrySet())
+					<tr>
+						<td><img src="#springUrl("/resources/img/products/${item.key.getName()}.png")"></td>
+						<td style="vertical-align: middle;">${item.key.getName()}</td>
+						<td style="vertical-align: middle;" class="text-center">${item.key.getPrice()} USD per Unit</td>
+						<td style="vertical-align: middle;" class="text-center">
+							<form class="form-inline">
+								<div class="form-group">
+									<input class="form-control" type="text" value="${item.value}" size="2" maxlength="2">
+								</div>
+								<button type="submit" class="btn btn-primary">Update</button>
+							</form>
+						</td>
+					</tr>
+				#end
+					<tr class="warning">
+						<td colspan="2" class="text-center"></td>
+						<td class="text-center"><h4>Subtotal: $subTotal USD</h4></td>
+						<td class="text-center"><a href="#springUrl('/clearCart')" class="btn btn-danger">Clear Cart</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	#end
 
 #end

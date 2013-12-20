@@ -8,34 +8,30 @@ public class Cart {
 
 	private Map<Product, Integer> products = new HashMap<Product, Integer>();
 
-    public Map<Product, Integer> getProducts() {
-        return Collections.unmodifiableMap(this.products);
-    }
+	public Map<Product, Integer> getProducts() {
+		return Collections.unmodifiableMap(this.products);
+	}
 
-    public void addProduct(Product product) {
-        if (this.products.containsKey(product)) {
-            int quantity = this.products.get(product);
-            quantity++;
-            this.products.put(product, quantity);
-        } else {
-            this.products.put(product, 1);
-        }
-    }
-    
-    public void removeProduct(Product product) {
-        this.products.remove(product);
-    }
+	public void addProduct(Product product) {
+		if (this.products.containsKey(product)) {
+			int quantity = this.products.get(product);
+			quantity++;
+			this.products.put(product, quantity);
+		} else {
+			this.products.put(product, 1);
+		}
+	}
 
-    public void clear() {
-        this.products.clear();
-    }
-    
-    public void updateProduct(Product prod, Integer qty) {
-    	if (qty <= 0) {
-    		this.products.remove(prod);
-    	} else {
-    		this.products.put(prod, qty);
-    	}
-    }
-    
+	public void clear() {
+		this.products.clear();
+	}
+
+	public void updateProduct(Product prod, Integer qty) {
+		if (this.products.containsKey(prod) && (qty <= 0)) {
+			this.products.remove(prod);
+		} else {
+			this.products.put(prod, qty);
+		}
+	}
+
 }
