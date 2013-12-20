@@ -9,12 +9,9 @@
 	    	#parse('/layout/navbar.vm')
 	    	
 	    	<div class="container">
-				<div class="row clearfix">
-					<div class="col-md-12 column">
-			    		$!content
-			    	</div>
-			    </div>
+				$!content
 	    	</div>
+	    	
 	    </div>
 		
 		#parse('/layout/footer.vm')

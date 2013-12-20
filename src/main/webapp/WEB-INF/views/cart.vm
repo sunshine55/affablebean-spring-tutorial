@@ -1,8 +1,8 @@
 #define($content)
 
 	#if ($itemMap.size() == 0)
-	<div class="row clearfix">
-		<div class="col-md-12 column">		
+	<div class="row">
+		<div class="col-xs-12 col-md-12">		
 			<div class="jumbotron">
 			  	<h1>Affable Spring Bean!</h1>
 			  	<p>There's no item in your shopping cart!</p>
@@ -12,8 +12,8 @@
 	</div>
 		
 	#else
-	<div class="row clearfix">
-		<div class="col-md-12 column">		
+	<div class="row">
+		<div class="col-xs-12 col-md-12">		
 			<div class="jumbotron">
 			  	<h1>Affable Spring Bean!</h1>
 			  	<p>Your shopping cart contains ${itemMap.size()} item(s).</p>
@@ -26,24 +26,24 @@
 		</div>
 	</div>
 	
-	<div class="row clearfix">	
-		<div class="col-md-12 column">
-			<table class="table table-striped">
+	<div class="row">	
+		<div class="col-xs-12 col-md-8">
+			<table class="table table-condensed">
 				<thead>
 					<tr>
 						<th></th>
 						<th>Name</th>
-						<th class="text-center">Price</th>
-						<th class="text-center">Quantity</th>
+						<th>Price</th>
+						<th>Quantity</th>
 					</tr>
 				</thead>
 				<tbody>
 				#foreach($item in $itemMap.entrySet())
 					<tr>
 						<td><img src="#springUrl("/resources/img/products/${item.key.getName()}.png")"></td>
-						<td style="vertical-align: middle;">${item.key.getName()}</td>
-						<td style="vertical-align: middle;" class="text-center">${item.key.getPrice()} USD per Unit</td>
-						<td style="vertical-align: middle;" class="text-center">
+						<td>${item.key.getName()}</td>
+						<td>${item.key.getPrice()} USD per Unit</td>
+						<td>
 							<form class="form-inline">
 								<div class="form-group">
 									<input class="form-control" type="text" value="${item.value}" size="2" maxlength="2">
@@ -53,13 +53,14 @@
 						</td>
 					</tr>
 				#end
-					<tr class="warning">
-						<td colspan="2" class="text-center"></td>
-						<td class="text-center"><h4>Subtotal: $subTotal USD</h4></td>
-						<td class="text-center"><a href="#springUrl('/clearCart')" class="btn btn-danger">Clear Cart</a></td>
-					</tr>
 				</tbody>
 			</table>
+		</div>
+		<div class="col-xs-12 col-md-4">
+			<div class="jumbotron">
+				<h3>Subtotal: $subTotal USD</h3>
+				<p><a href="#springUrl('/clearCart')" class="btn btn-danger">Clear Cart</a></p>
+			</div>
 		</div>
 	</div>
 	#end

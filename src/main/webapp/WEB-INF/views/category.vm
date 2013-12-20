@@ -1,7 +1,7 @@
 #define($content)
 
-<div class="row clearfix">
-	<div class="col-md-12 column">		
+<div class="row">
+	<div class="col-xs-12 col-md-12">		
 		<div class="jumbotron">
 		  	<h1>Affable Spring Bean!</h1>
 		  	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>		  
@@ -9,27 +9,31 @@
 	</div>
 </div>
 
-<div class="row clearfix">
-	<div class="col-md-2 column">
+<div class="row">
+	<div class="col-xs-12 col-md-3">
 		<ul class="nav nav-pills nav-stacked">
 		#foreach($category in $categoryList)
-			<li #if($id == ${category.id}) class="active" #end><a href="#springUrl("/category?id=${category.id}")">$category.name.toUpperCase()</a></li>
+			<li #if($id == ${category.id}) class="active" #end>
+				<a href="#springUrl("/category?id=${category.id}")">$category.name.toUpperCase()</a>
+			</li>
 		#end			
 		</ul>
 	</div>
-	<div class="col-md-10 column">
-		<table class="table table-striped">
-			<tbody>
-			#foreach($prod in $productList)
-				<tr>
-					<td><img src="#springUrl("/resources/img/products/${prod.name}.png")" class="img-responsive"></td>
-					<td style="vertical-align: middle">$prod.name</td>
-					<td style="vertical-align: middle" class="text-center">$prod.price USD</td>
-					<td style="vertical-align: middle" class="text-right"><a href="#springUrl("/addToCart?id=${prod.id}")" class="btn btn-primary">Add to cart</a></td>
-				</tr>
-			#end
-			</tbody>
-		</table>
+	<div class="col-xs-12 col-md-9">
+		<div class="row">
+		#foreach($product in $productList)
+			<div class="col-xs-12 col-md-3">
+				<div class="thumbnail">
+					<img class="img-responsive" src="#springUrl("/resources/img/products/${product.name}.png")">
+					<div class="caption">
+				        <p><b>Name:</b> $product.name</p>
+				        <p><b>Price:</b> $product.price USD</p>
+				        <p><a href="#springUrl("/addToCart?id=${product.id}")" class="btn btn-primary">Add to cart</a></p>
+				    </div>
+				</div>
+			</div>
+		#end
+		</div>
 	</div>
 </div>
 

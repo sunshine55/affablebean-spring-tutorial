@@ -1,7 +1,7 @@
 #define($content)
 
-<div class="row clearfix">
-	<div class="col-md-12 column">		
+<div class="row">
+	<div class="col-xs-12 col-md-12">		
 		<div class="jumbotron">
 		  	<h1>Affable Spring Bean!</h1>
 		  	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>		  
@@ -9,52 +9,27 @@
 	</div>
 </div>
 
-<div class="row clearfix">
-	<div class="col-md-4 column">
+<div class="row">
+	<div class="col-xs-12 col-md-4">
 		<div class="jumbotron">
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum velit augue, pellentesque tincidunt nunc convallis sed. Aliquam sit amet tempus quam. Vivamus sodales leo dui.</p>
 		</div>
 	</div>
-	<div class="col-md-8 column">
-		<div class="row clearfix">
-			<div class="col-md-6 column">		
+	<div class="col-xs-12 col-md-8">
+		<div class="row">
+		#foreach($category in $categoryList)
+			<div class="col-xs-12 col-md-6">
 				<div class="thumbnail">
-					<a href="#springUrl("/category?id=${categoryList.get(0).id}")"><img src="#springUrl("/resources/img/products/${categoryList.get(0).name}.jpg")"></a>
+					<a href="#springUrl("/category?id=${category.id}")">
+						<img class="img-responsive" src="#springUrl("/resources/img/products/${category.name}.jpg")">
+					</a>
 					<div class="caption">
-				        <h4>$categoryList.get(0).name.toUpperCase()</h4>
-				        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>				        
+				        <h4>$category.name.toUpperCase()</h4>
+				        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
 				    </div>
 				</div>
 			</div>
-			<div class="col-md-6 column">
-				<div class="thumbnail">
-					<a href="#springUrl("/category?id=${categoryList.get(1).id}")"><img src="#springUrl("/resources/img/products/${categoryList.get(1).name}.jpg")"></a>
-					<div class="caption">
-				        <h4>$categoryList.get(1).name.toUpperCase()</h4>
-				        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>				        
-				    </div>
-				</div>
-			</div>
-		</div>
-		<div class="row clearfix">
-			<div class="col-md-6 column">
-				<div class="thumbnail">					
-					<a href="#springUrl("/category?id=${categoryList.get(2).id}")"><img src="#springUrl("/resources/img/products/${categoryList.get(2).name}.jpg")"></a>
-					<div class="caption">
-				        <h4>$categoryList.get(2).name.toUpperCase()</h4>
-				        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>				        
-				    </div>
-				</div>
-			</div>
-			<div class="col-md-6 column">
-				<div class="thumbnail">					
-					<a href="#springUrl("/category?id=${categoryList.get(3).id}")"><img src="#springUrl("/resources/img/products/${categoryList.get(3).name}.jpg")"></a>
-					<div class="caption">
-				        <h4>$categoryList.get(3).name.toUpperCase()</h4>
-				        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>				        
-				    </div>
-				</div>
-			</div>
+		#end
 		</div>
 	</div>
 </div>
