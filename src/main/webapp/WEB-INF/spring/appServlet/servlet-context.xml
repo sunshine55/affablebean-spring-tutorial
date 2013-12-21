@@ -56,7 +56,7 @@
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
 	<!-- an HTTP Session-scoped bean exposed as a proxy -->
-	<bean id="shoppingCart" class="com.hvn.velocity.entities.Cart"
+	<bean id="shoppingCart" class="com.hvn.velocity.session.Cart"
 		scope="session">
 		<!-- this next element effects the proxying of the surrounding bean -->
 		<aop:scoped-proxy />
