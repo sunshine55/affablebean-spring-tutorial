@@ -61,7 +61,7 @@
 		</div>
 		<div class="col-xs-12 col-md-4">
 			<div class="jumbotron">
-				<h3>Subtotal: $subTotal USD</h3>
+				<h4>Subtotal: $subTotal USD</h4>
 				<p><a href="#springUrl('/clearCart')" class="btn btn-danger">Clear Cart</a></p>
 			</div>
 		</div>

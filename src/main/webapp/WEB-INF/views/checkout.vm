@@ -98,9 +98,9 @@
 	          				<label class="col-sm-3 control-label">Region</label>
 	          				<div class="col-sm-3">
 	          					<select name="region" class="form-control">
-		          					<option value="1">Prague</option>
-		          					<option value="2">Benarl</option>
-		          					<option value="3">Hassen</option>
+		          					<option value="PG">Prague</option>
+		          					<option value="BN">Benarl</option>
+		          					<option value="HS">Hassen</option>
 		          				</select>
 		          			</div>
 	          			</div>
