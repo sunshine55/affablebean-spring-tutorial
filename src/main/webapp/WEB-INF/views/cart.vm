@@ -20,7 +20,7 @@
 			  	<p>If you want to remove any item, just update its quantity to 0.</p>
 			  	<p>
 			  		<a href="#springUrl('/')" class="btn btn-info">Keep Shopping</a>
-			  		<a href="#" class="btn btn-warning">Checkout</a>
+			  		<a href="#springUrl('/checkout')" class="btn btn-warning">Checkout</a>
 			  	</p>	  
 			</div>
 		</div>
@@ -28,34 +28,36 @@
 	
 	<div class="row">	
 		<div class="col-xs-12 col-md-8">
-			<table class="table table-condensed">
-				<thead>
-					<tr>
-						<th></th>
-						<th>Name</th>
-						<th>Price</th>
-						<th>Quantity</th>
-					</tr>
-				</thead>
-				<tbody>
-				#foreach($item in $itemMap.entrySet())
-					<tr>
-						<td><img src="#springUrl("/resources/img/products/${item.key.getName()}.png")"></td>
-						<td>${item.key.getName()}</td>
-						<td>${item.key.getPrice()} USD per Unit</td>
-						<td>
-							<form action="#springUrl('/updateCart')" method="POST" class="form-inline">
-								<div class="form-group">
-									<input type="hidden" name="id" value="${item.key.getId()}">
-									<input class="form-control" type="text" name="quantity" value="${item.value}" size="2" maxlength="2">
-								</div>
-								<button type="submit" class="btn btn-primary">Update</button>
-							</form>
-						</td>
-					</tr>
-				#end
-				</tbody>
-			</table>
+			<div class="table-responsive">
+				<table class="table table-condensed">
+					<thead>
+						<tr>
+							<th></th>
+							<th>Name</th>
+							<th>Price</th>
+							<th>Quantity</th>
+						</tr>
+					</thead>
+					<tbody>
+					#foreach($item in $itemMap.entrySet())
+						<tr>
+							<td><img src="#springUrl("/resources/img/products/${item.key.getName()}.png")"></td>
+							<td>${item.key.getName()}</td>
+							<td>${item.key.getPrice()} USD per Unit</td>
+							<td>
+								<form action="#springUrl('/updateCart')" method="POST" class="form-inline">
+									<div class="form-group">
+										<input type="hidden" name="id" value="${item.key.getId()}">
+										<input class="form-control" type="text" name="quantity" value="${item.value}" size="2" maxlength="2">
+									</div>
+									<button type="submit" class="btn btn-primary">Update</button>
+								</form>
+							</td>
+						</tr>
+					#end
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<div class="col-xs-12 col-md-4">
 			<div class="jumbotron">
