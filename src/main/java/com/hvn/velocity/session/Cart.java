@@ -67,4 +67,10 @@ public class Cart {
 		DecimalFormat form = new DecimalFormat("#.##");
 		return Double.valueOf(form.format(sum));
 	}
+	
+	public double calculateTotal(double subTotal) {
+		DecimalFormat form = new DecimalFormat("#.##");
+		return Double.valueOf(form.format(subTotal + 3));
+	}
+	
 }

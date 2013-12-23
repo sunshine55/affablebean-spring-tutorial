@@ -19,6 +19,12 @@ public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String home(ModelMap mm) {
+		mm.put("categoryList", categoryService.listAll());
+		return "home";
+	}
+	
 	@RequestMapping(value = "/category", method = RequestMethod.GET)
 	public String category(@RequestParam("id") Byte id, ModelMap mm) {
 		mm.put("productList", productService.listByCategoryId(id));

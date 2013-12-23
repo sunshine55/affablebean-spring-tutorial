@@ -52,5 +52,23 @@ public class CartController {
 		cart.updateProduct(id, quantity);
 		return "redirect:/cart";
 	}
+	
+	@RequestMapping(value = "/checkout", method = RequestMethod.GET)
+	public String checkout(ModelMap mm) {
+		double subTotal = cart.calculateSubTotal();
+		if (subTotal == 0) {
+			mm.put("subTotal", subTotal);
+		} else {
+			double total = cart.calculateTotal(subTotal);
+			mm.put("subTotal", subTotal);
+			mm.put("total", total);
+		}
+		return "checkout";
+	}
+
+	@RequestMapping(value = "/confirmation", method = RequestMethod.GET)
+	public String confirmation() {
+		return "confirmation";
+	}
 
 }
