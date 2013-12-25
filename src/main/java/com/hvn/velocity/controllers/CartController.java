@@ -93,11 +93,11 @@ public class CartController {
 	public @ResponseBody String validateMember(@RequestParam("email") String email) {
 		Customer customer = customerService.getByEmail(email);
 		if (customer != null) {
-			return "false";
+			return "true";
 		}
-		return "true";
+		return "false";
 	}
-
+	
 	@RequestMapping(value = "/purchaseGuest", method = RequestMethod.POST)
 	public String purchaseMember(@ModelAttribute("customer") Customer customer, ModelMap mm) {
 		// 1. Save customer (customer)
@@ -124,7 +124,28 @@ public class CartController {
 	}
 	
 	@RequestMapping(value = "/purchaseMember", method = RequestMethod.POST)
-	public String purchaseGuest() {
+	public String purchaseGuest(@RequestParam("email") String email, ModelMap mm) {
+		// 1. Get id
+		Customer customer = customerService.getByEmail(email);
+		Integer customerId = customer.getId();
+
+		// 2. Save order (customer_order)
+		double subTotal = cart.calculateSubTotal();
+		double total = cart.calculateTotal(subTotal);
+		Integer orderId = orderService.save(customerId, total);
+
+		// 3. Save order details (ordered_product)
+		CustomerOrder order = orderService.getById(orderId);
+		Map<Product, Integer> itemMap = cart.getItems();
+		orderedProductService.save(order, itemMap);
+
+		mm.put("subTotal", subTotal);
+		mm.put("total", total);
+		mm.put("order", order);
+		mm.put("customer", customer);
+		mm.put("itemMap", itemMap);
+		
+		cart.clear();
 		return "confirmation";
 	}
 

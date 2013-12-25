@@ -15,9 +15,9 @@ $(document).ready(function() {
 	        success: function(response) {
 	        	var content = '';
 	        	if (response === 'false')
-	        		content += '<p class="text-danger text-right">This email is registered. Please go to Member tab.</p>';
+	        		content += '<p class="text-danger text-right">This email invalid. You are guest.</p>';
 	        	else
-	        		content += '<p class="text-success text-right">This email is valid. You are totaly new member.</p>';
+	        		content += '<p class="text-success text-right">This email is valid. You are already member.</p>';
 	            $("#isValidMember").html(content);
 	        }
 	    }); 
