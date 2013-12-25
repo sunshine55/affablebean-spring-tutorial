@@ -2,6 +2,7 @@ package com.hvn.velocity.repositories;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -12,18 +13,23 @@ public class CustomerDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	public Integer save(Customer customer) {
 		Session session = sessionFactory.getCurrentSession();
 		return (Integer) session.save(customer);
 	}
-	
+
 	public Customer findById(Integer id) {
 		return (Customer) sessionFactory.getCurrentSession().get(Customer.class, id);
 	}
-	
+
 	public Customer findByEmail(String email) {
-		return (Customer) sessionFactory.getCurrentSession().get(Customer.class, email);
+		Session session = sessionFactory.getCurrentSession();
+		Customer customer = (Customer) session.createCriteria(Customer.class)
+				.add(Restrictions.eq("email", email))
+				.setMaxResults(1)
+				.uniqueResult();
+		return customer;
 	}
-	
+
 }

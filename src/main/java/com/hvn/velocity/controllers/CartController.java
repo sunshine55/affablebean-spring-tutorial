@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hvn.velocity.entities.Customer;
 import com.hvn.velocity.entities.CustomerOrder;
@@ -87,6 +88,15 @@ public class CartController {
 		}
 		return "checkout";
 	}
+	
+	@RequestMapping(value = "/validateMember", method = RequestMethod.POST)
+	public @ResponseBody String validateMember(@RequestParam("email") String email) {
+		Customer customer = customerService.getByEmail(email);
+		if (customer != null) {
+			return "false";
+		}
+		return "true";
+	}
 
 	@RequestMapping(value = "/purchaseGuest", method = RequestMethod.POST)
 	public String purchaseMember(@ModelAttribute("customer") Customer customer, ModelMap mm) {
@@ -109,7 +119,7 @@ public class CartController {
 		mm.put("customer", customer);
 		mm.put("itemMap", itemMap);
 		
-		//cart.clear();
+		cart.clear();
 		return "confirmation";
 	}
 	
