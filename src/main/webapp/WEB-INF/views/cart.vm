@@ -26,7 +26,13 @@
 		</div>
 	</div>
 	
-	<div class="row">	
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<div class="jumbotron">
+				<h4>Subtotal: $subTotal USD</h4>
+				<p><a href="#springUrl('/clearCart')" class="btn btn-danger">Clear Cart</a></p>
+			</div>
+		</div>	
 		<div class="col-xs-12 col-md-8">
 			<div class="table-responsive">
 				<table class="table table-condensed">
@@ -57,12 +63,6 @@
 					#end
 					</tbody>
 				</table>
-			</div>
-		</div>
-		<div class="col-xs-12 col-md-4">
-			<div class="jumbotron">
-				<h4>Subtotal: $subTotal USD</h4>
-				<p><a href="#springUrl('/clearCart')" class="btn btn-danger">Clear Cart</a></p>
 			</div>
 		</div>
 	</div>

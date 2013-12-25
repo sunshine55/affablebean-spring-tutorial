@@ -25,31 +25,31 @@
 							<div class="col-sm-4 text-right">
 								<strong>Order reference:</strong>
 							</div>
-							<div class="col-sm-8 text-right">...</div>
+							<div class="col-sm-8 text-right">${order.confirmationNumber}</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-4 text-right">
 								<strong>Date processed:</strong>
 							</div>
-							<div class="col-sm-8 text-right">MM-DD-YYYY</div>
+							<div class="col-sm-8 text-right">${order.dateCreated}</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-4 text-right">
 								<strong>Subtotal:</strong>
 							</div>
-							<div class="col-sm-8 text-right">... USD</div>
+							<div class="col-sm-8 text-right">$subTotal USD</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-4 text-right">
 								<strong>Delivery surcharge:</strong>
 							</div>
-							<div class="col-sm-8 text-right">... USD</div>
+							<div class="col-sm-8 text-right">3.00 USD</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-4 text-right">
 								<strong>Total:</strong>
 							</div>
-							<div class="col-sm-8 text-right">... USD</div>
+							<div class="col-sm-8 text-right">$total USD</div>
 						</div>
 					</div>
 				</div>
@@ -66,37 +66,37 @@
 							<div class="col-sm-4 text-right">
 								<strong>Name:</strong>
 							</div>
-							<div class="col-sm-8 text-right">...</div>
+							<div class="col-sm-8 text-right">${customer.name}</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-4 text-right">
 								<strong>Email:</strong>
 							</div>
-							<div class="col-sm-8 text-right">...</div>
+							<div class="col-sm-8 text-right">${customer.email}</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-4 text-right">
 								<strong>Phone:</strong>
 							</div>
-							<div class="col-sm-8 text-right">...</div>
+							<div class="col-sm-8 text-right">${customer.phone}</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-4 text-right">
 								<strong>Address:</strong>
 							</div>
-							<div class="col-sm-8 text-right">...</div>
+							<div class="col-sm-8 text-right">${customer.address}</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-4 text-right">
 								<strong>Region:</strong>
 							</div>
-							<div class="col-sm-8 text-right">...</div>
+							<div class="col-sm-8 text-right">${customer.cityRegion}</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-4 text-right">
 								<strong>Credit card number:</strong>
 							</div>
-							<div class="col-sm-8 text-right">...</div>
+							<div class="col-sm-8 text-right">${customer.ccNumber}</div>
 						</div>
 					</div>
 				</div>
@@ -114,11 +114,13 @@
 					</tr>
 				</thead>
 				<tbody>
+				#foreach($item in $itemMap.entrySet())
 					<tr>
-						<td class="text-center">Name</td>
-						<td class="text-center">... &#36;</td>
-						<td class="text-center">Quantity</td>
+						<td class="text-center">${item.key.getName()}</td>
+						<td class="text-center">${item.key.getPrice()} &#36;</td>
+						<td class="text-center">${item.value}</td>
 					</tr>
+				#end
 				</tbody>
 			</table>
 		</div>
