@@ -27,7 +27,7 @@ CREATE  TABLE IF NOT EXISTS `affablebean`.`customer` (
   `phone` VARCHAR(45) NOT NULL ,
   `address` VARCHAR(45) NOT NULL ,
   `city_region` VARCHAR(2) NOT NULL ,
-  `cc_number` VARCHAR(19) NOT NULL ,
+  `cc_number` VARCHAR(50) NOT NULL ,
   PRIMARY KEY (`id`),
   UNIQUE (`email`) )
 ENGINE = InnoDB

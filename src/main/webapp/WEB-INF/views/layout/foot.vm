@@ -2,7 +2,8 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 
-<script type="text/javascript" src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="#springUrl('/resources/js/jquery-1.10.2.min.js')"></script>
 <script type="text/javascript" src="#springUrl('/resources/js/bootstrap.min.js')"></script>
-<script type="text/javascript" src="#springUrl('/resources/js/jquery.validate.min.js')"></script>
-<script type="text/javascript" src="#springUrl('/resources/js/scripts.js')"></script>
+<script type="text/javascript" src="#springUrl('/resources/js/plugins/jquery.validate.min.js')"></script>
+<script type="text/javascript" src="#springUrl('/resources/js/plugins/additional-methods.min.js')"></script>
+<script type="text/javascript" src="#springUrl('/resources/js/affablebean.js')"></script>

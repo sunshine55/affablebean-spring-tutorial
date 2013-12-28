@@ -1,5 +1,6 @@
 package com.hvn.velocity.controllers;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -109,7 +110,7 @@ public class CartController {
             
             // 3. Save order details (ordered_product)
             CustomerOrder order = orderService.getById(orderId);
-            Map<Product, Integer> itemMap = cart.getItems();
+            Map<Product, Integer> itemMap = new HashMap<Product, Integer>(cart.getItems());
             orderedProductService.save(order, itemMap);
             
             mm.put("subTotal", subTotal);
@@ -135,7 +136,7 @@ public class CartController {
 
             // 3. Save order details (ordered_product)
             CustomerOrder order = orderService.getById(orderId);
-            Map<Product, Integer> itemMap = cart.getItems();
+            Map<Product, Integer> itemMap = new HashMap<Product, Integer>(cart.getItems());
             orderedProductService.save(order, itemMap);
 
             mm.put("subTotal", subTotal);
