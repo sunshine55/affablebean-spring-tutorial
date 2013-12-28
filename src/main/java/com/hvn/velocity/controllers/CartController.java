@@ -40,11 +40,16 @@ public class CartController {
 	@Autowired
 	private OrderService orderService;
 
+	/*
+	 * CRUD on shopping cart
+	 */
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
 	public String cart(ModelMap mm) {
 		Map<Product, Integer> itemMap = cart.getItems();
 		double subTotal = cart.calculateSubTotal();
+		Integer numOfItems = cart.sumQuantity();
 		mm.put("itemMap", itemMap);
+		mm.put("numOfItems", numOfItems);
 		mm.put("subTotal", subTotal);
 		return "cart";
 	}
@@ -70,6 +75,9 @@ public class CartController {
 		return "redirect:/cart";
 	}
 	
+	/*
+	 * Checkout
+	 */
 	@RequestMapping(value = "/checkout", method = RequestMethod.GET)
 	public String checkout(ModelMap mm) {
 		double subTotal = cart.calculateSubTotal();
@@ -89,6 +97,60 @@ public class CartController {
 		return "checkout";
 	}
 	
+	@RequestMapping(value = "/purchaseGuest", method = RequestMethod.POST)
+    public String purchaseMember(@ModelAttribute("customer") Customer customer, ModelMap mm) {
+            // 1. Save customer (customer)
+            Integer customerId = customerService.save(customer);
+            
+            // 2. Save order (customer_order)
+            double subTotal = cart.calculateSubTotal();
+            double total = cart.calculateTotal(subTotal);
+            Integer orderId = orderService.save(customerId, total);
+            
+            // 3. Save order details (ordered_product)
+            CustomerOrder order = orderService.getById(orderId);
+            Map<Product, Integer> itemMap = cart.getItems();
+            orderedProductService.save(order, itemMap);
+            
+            mm.put("subTotal", subTotal);
+            mm.put("total", total);
+            mm.put("order", order);
+            mm.put("customer", customer);
+            mm.put("itemMap", itemMap);
+            
+            cart.clear();
+            return "confirmation";
+    }
+    
+    @RequestMapping(value = "/purchaseMember", method = RequestMethod.POST)
+    public String purchaseGuest(@RequestParam("email") String email, ModelMap mm) {
+            // 1. Get id
+            Customer customer = customerService.getByEmail(email);
+            Integer customerId = customer.getId();
+
+            // 2. Save order (customer_order)
+            double subTotal = cart.calculateSubTotal();
+            double total = cart.calculateTotal(subTotal);
+            Integer orderId = orderService.save(customerId, total);
+
+            // 3. Save order details (ordered_product)
+            CustomerOrder order = orderService.getById(orderId);
+            Map<Product, Integer> itemMap = cart.getItems();
+            orderedProductService.save(order, itemMap);
+
+            mm.put("subTotal", subTotal);
+            mm.put("total", total);
+            mm.put("order", order);
+            mm.put("customer", customer);
+            mm.put("itemMap", itemMap);
+            
+            cart.clear();
+            return "confirmation";
+    }
+	
+	/*
+	 * AJAX service
+	 */
 	@RequestMapping(value = "/validateMember", method = RequestMethod.POST)
 	public @ResponseBody String validateMember(@RequestParam("email") String email) {
 		Customer customer = customerService.getByEmail(email);
@@ -98,55 +160,9 @@ public class CartController {
 		return "false";
 	}
 	
-	@RequestMapping(value = "/purchaseGuest", method = RequestMethod.POST)
-	public String purchaseMember(@ModelAttribute("customer") Customer customer, ModelMap mm) {
-		// 1. Save customer (customer)
-		Integer customerId = customerService.save(customer);
-		
-		// 2. Save order (customer_order)
-		double subTotal = cart.calculateSubTotal();
-		double total = cart.calculateTotal(subTotal);
-		Integer orderId = orderService.save(customerId, total);
-		
-		// 3. Save order details (ordered_product)
-		CustomerOrder order = orderService.getById(orderId);
-		Map<Product, Integer> itemMap = cart.getItems();
-		orderedProductService.save(order, itemMap);
-		
-		mm.put("subTotal", subTotal);
-		mm.put("total", total);
-		mm.put("order", order);
-		mm.put("customer", customer);
-		mm.put("itemMap", itemMap);
-		
-		cart.clear();
-		return "confirmation";
+	@RequestMapping(value = "/getCartSize", method = RequestMethod.GET)
+	public @ResponseBody String getCartSize() {
+		return cart.sumQuantity().toString();
 	}
 	
-	@RequestMapping(value = "/purchaseMember", method = RequestMethod.POST)
-	public String purchaseGuest(@RequestParam("email") String email, ModelMap mm) {
-		// 1. Get id
-		Customer customer = customerService.getByEmail(email);
-		Integer customerId = customer.getId();
-
-		// 2. Save order (customer_order)
-		double subTotal = cart.calculateSubTotal();
-		double total = cart.calculateTotal(subTotal);
-		Integer orderId = orderService.save(customerId, total);
-
-		// 3. Save order details (ordered_product)
-		CustomerOrder order = orderService.getById(orderId);
-		Map<Product, Integer> itemMap = cart.getItems();
-		orderedProductService.save(order, itemMap);
-
-		mm.put("subTotal", subTotal);
-		mm.put("total", total);
-		mm.put("order", order);
-		mm.put("customer", customer);
-		mm.put("itemMap", itemMap);
-		
-		cart.clear();
-		return "confirmation";
-	}
-
 }

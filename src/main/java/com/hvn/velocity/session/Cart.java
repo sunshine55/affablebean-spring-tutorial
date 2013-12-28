@@ -9,9 +9,11 @@ import java.util.Set;
 
 import com.hvn.velocity.entities.Product;
 
-public class Cart {
-
-	private Map<Product, Integer> items = new HashMap<Product, Integer>();
+public class Cart implements java.io.Serializable {
+	
+	private static final long serialVersionUID = 7810676090697245518L;
+	
+	private Map<Product, Integer> items = new HashMap<Product, Integer>(0);
 
 	public Map<Product, Integer> getItems() {
 		return Collections.unmodifiableMap(this.items);
@@ -71,6 +73,15 @@ public class Cart {
 	public double calculateTotal(double subTotal) {
 		DecimalFormat form = new DecimalFormat("#.##");
 		return Double.valueOf(form.format(subTotal + 3));
+	}
+	
+	public Integer sumQuantity() {
+		Integer count = 0;
+		Set<Product> keys = items.keySet();
+		for (Product key : keys) {
+			count += items.get(key);
+		}
+		return count;
 	}
 	
 }

@@ -16,7 +16,7 @@
 		<div class="col-xs-12 col-md-12">		
 			<div class="jumbotron">
 			  	<h1>Affable Spring Bean!</h1>
-			  	<p>Your shopping cart contains ${itemMap.size()} item(s).</p>
+			  	<p>Your shopping cart contains $numOfItems item(s).</p>
 			  	<p>If you want to remove any item, just update its quantity to 0.</p>
 			  	<p>
 			  		<a href="#springUrl('/')" class="btn btn-info">Keep Shopping</a>

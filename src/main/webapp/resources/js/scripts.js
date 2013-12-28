@@ -1,26 +1,87 @@
-$(document).ready(function() {
+(function ($) {
 
+	/* Navbar: shopping cart items */
+	$.ajax({
+        url: $('#getCartSize').val(),
+        success: function(response) {
+            $("#nav-cart-size").html(response);
+        }
+    });
+	
 	/* Customer checkout tab */
-	$('#checkoutTab a').click(function(e) {
+	$('#checkout-tab a').click(function(e) {
 		e.preventDefault();
 		$(this).tab('show');
 	});
 	
-	/* AJAX for validating checkout member */
-	$('#email').focusout(function() {
-	    $.ajax({
-	        url: $('#validateMemberUrl').val(),
-	        data: "email=" + $('#email').val(),
-	        type: "POST",
-	        success: function(response) {
-	        	var content = '';
-	        	if (response === 'false')
-	        		content += '<p class="text-danger text-right">This email invalid. You are guest.</p>';
-	        	else
-	        		content += '<p class="text-success text-right">This email is valid. You are already member.</p>';
-	            $("#isValidMember").html(content);
-	        }
-	    }); 
-	});
+	/* Forms validation */
+	$("#form-guest").validate({
+        rules: {
+            name: "required",
+            email: {
+                required: true,
+                email: true
+            },
+            phone: {
+                required: true,
+                number: true,
+                minlength: 9
+            },
+            address: {
+                required: true
+            },
+            ccNumber: {
+                required: true,
+                creditcard: true
+            }
+        },
+		submitHandler: function() {
+			$('#form-guest').submit(function(e) {
+				e.preventDefault();
+				$.ajax({
+					url: $('#validateUrl').val(),
+					data: "email=" + $('#form-guest').find('#email').val(),
+					type: "POST",
+					success: function(response) {
+						var content = '';
+						if (response === 'true') {
+							content += '<div class="alert alert-danger">The provided email was already used. You can purchase as our member.</div>';
+							$('#valid-guest').html(content);
+						} else {
+							$('#form-guest').unbind().submit();
+						}
+					}
+				});
+			});
+		}
+    });
 	
-});
+	$("#form-member").validate({
+        rules: {
+            email: {
+                required: true,
+                email: true
+            }
+        },
+        submitHandler: function() {
+        	$('#form-member').submit(function(e) {
+        		e.preventDefault();
+        		$.ajax({
+        			url: $('#validateUrl').val(),
+        			data: "email=" + $('#form-member').find('#email').val(),
+        			type: "POST",
+        			success: function(response) {
+        				var content = '';
+        				if (response === 'false') {
+        					content = '<div class="alert alert-danger">The provided email is invalid. You have to register.</div>';
+        					$('#valid-member').html(content);
+        				} else {
+        					$('#form-guest').unbind().submit();
+        				}
+        			}
+        		});
+        	});
+        }
+    });
+	
+})(jQuery);

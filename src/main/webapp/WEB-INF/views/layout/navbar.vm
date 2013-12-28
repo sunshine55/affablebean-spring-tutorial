@@ -13,11 +13,15 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li>
-					<a href="#springUrl('/cart')">Cart <span class="badge">0</sapn></a>
+					<input id="getCartSize" type="hidden" value="#springUrl('/getCartSize')">
+					<a href="#springUrl('/cart')">
+						Cart
+						<span id="nav-cart-size" class="badge"></span>
+					</a>
 				</li>
 				<li>
 					<a href="#springUrl('/checkout')">Checkout &#x279f;</a>
-				</li>				
+				</li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Languages<strong class="caret"></strong></a>
 					<ul class="dropdown-menu">
@@ -25,8 +29,8 @@
 							<a href="#">English</a>
 						</li>
 						<li>
-							<a href="#">Japanese</a>
-						</li>					
+							<a href="#">Espanõl</a>
+						</li>
 					</ul>
 				</li>			
 			</ul>
