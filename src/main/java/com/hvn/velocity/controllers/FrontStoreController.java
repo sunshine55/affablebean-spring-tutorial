@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hvn.velocity.entities.Customer;
 import com.hvn.velocity.entities.CustomerOrder;
 import com.hvn.velocity.entities.Product;
+import com.hvn.velocity.services.CategoryService;
 import com.hvn.velocity.services.CustomerService;
 import com.hvn.velocity.services.OrderService;
 import com.hvn.velocity.services.OrderedProductService;
@@ -24,10 +25,13 @@ import com.hvn.velocity.services.ProductService;
 import com.hvn.velocity.session.Cart;
 
 @Controller
-public class CartController {
+public class FrontStoreController {
 
 	@Autowired
 	private Cart cart;
+	
+	@Autowired
+	private CategoryService categoryService;
 
 	@Autowired
 	private ProductService productService;
@@ -41,6 +45,23 @@ public class CartController {
 	@Autowired
 	private OrderService orderService;
 
+	/*
+	 * Category
+	 */
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String home(ModelMap mm) {
+		mm.put("categoryList", categoryService.listAll());
+		return "home";
+	}
+	
+	@RequestMapping(value = "/category", method = RequestMethod.GET)
+	public String category(@RequestParam("id") Byte id, ModelMap mm) {
+		mm.put("productList", productService.listByCategoryId(id));
+		mm.put("categoryList", categoryService.listAll());
+		mm.put("id", id);
+		return "category";
+	}
+	
 	/*
 	 * CRUD on shopping cart
 	 */
