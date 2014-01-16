@@ -5,12 +5,13 @@
 
 <title>Affable Spring Bean</title>
 
-<link href="#springUrl('/resources/css/bootstrap.min.css')" rel="stylesheet">
-<link href="#springUrl('/resources/css/style.css')" rel="stylesheet">
+<link href="#springUrl('/resources/css/affablebean/bootstrap.min.css')" rel="stylesheet">
+<link href="#springUrl('/resources/css/affablebean/affablebean-app.css')" rel="stylesheet">
 
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
   <script src="#springUrl('/resources/js/html5shiv.js')"></script>
+  <script src="#springUrl('/resources/js/respond.min.js')"></script>
 <![endif]-->
 
 <!-- Fav and touch icons -->

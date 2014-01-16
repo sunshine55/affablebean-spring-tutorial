@@ -1,0 +1,13 @@
+<div class="span2 main-menu-span">
+    <div class="well nav-collapse sidebar-nav">
+        <ul class="nav nav-tabs nav-stacked main-menu">
+            <li class="nav-header hidden-tablet">Sales Management</li>
+            <li><a class="ajax-link" href="#"><i class="icon-user"></i><span class="hidden-tablet"> Customer Info</span></a></li>
+            <li><a class="ajax-link" href="#"><i class="icon-edit"></i><span class="hidden-tablet"> Customer Order</span></a></li>
+            
+            <li class="nav-header hidden-tablet">Store Management</li>
+            <li><a class="ajax-link" href="#"><i class="icon-barcode"></i><span class="hidden-tablet"> Product</span></a></li>
+            <li><a class="ajax-link" href="#"><i class="icon-th-large"></i><span class="hidden-tablet"> Category</span></a></li>
+        </ul>
+    </div>
+</div>

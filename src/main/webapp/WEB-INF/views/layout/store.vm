@@ -1,12 +1,12 @@
 <!doctype html>
 <html>
 	<head>		
-		#parse('/layout/head.vm')
+		#parse('/fragment/store/head.vm')
     </head>
     
     <body>
 	    <div id="wrap">
-	    	#parse('/layout/navbar.vm')
+	    	#parse('/fragment/store/navbar.vm')
 	    	
 	    	<div class="container">
 				$!content
@@ -14,8 +14,8 @@
 	    	
 	    </div>
 		
-		#parse('/layout/footer.vm')
+		#parse('/fragment/store/footer.vm')
 		
-        #parse('/layout/foot.vm')
+        #parse('/fragment/store/foot.vm')
     </body>
 </html>

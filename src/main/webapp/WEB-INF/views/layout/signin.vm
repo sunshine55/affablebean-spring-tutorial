@@ -1,0 +1,11 @@
+<!doctype html>
+<html>
+	<head>
+		#parse('/fragment/signin/head.vm')
+	</head>
+	
+	<body>
+		$!content
+		#parse('/fragment/signin/foot.vm')
+	</body>
+</html>

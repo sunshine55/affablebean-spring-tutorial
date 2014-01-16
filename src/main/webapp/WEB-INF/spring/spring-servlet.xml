@@ -11,15 +11,18 @@
 	</bean>
 
 	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
+		class="com.hvn.velocity.utils.VelocityMultipleLayoutViewResolver">
 		<property name="cache" value="true" />
-		<property name="layoutUrl" value="layout/main.vm" />
 		<property name="prefix" value="" />
 		<property name="suffix" value=".vm" />
+		<property name="contentType" value="text/html; charset=utf-8"></property>
 		<property name="exposeSpringMacroHelpers" value="true" />
-		<property name="contentType" value="text/html;charset=UTF-8" />
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.velocity.VelocityLayoutView" />
+		<property name="mappings">
+			<map>
+				<entry key="admin/*" value="layout/admin.vm" />
+				<entry key="*" value="layout/store.vm" />
+			</map>
+		</property>
 	</bean>
 
 </beans>

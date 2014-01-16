@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+	<head>
+		#parse('/fragment/admin/head.vm')
+	</head>
+	
+	<body>
+		#parse('/fragment/admin/navbar.vm')
+		
+		<div class="container-fluid">
+        	<div class="row-fluid">
+        		#parse('/fragment/admin/leftmenu.vm')
+        		<div id="content" class="span10">
+        			$!content
+        		</div>
+        	</div>
+        	
+        	#parse('/fragment/admin/footer.vm')
+        </div>
+		
+		#parse('/fragment/admin/foot.vm')
+	</body>
+</html>

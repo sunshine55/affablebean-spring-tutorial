@@ -1,5 +1,7 @@
 package com.hvn.velocity.repositories;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -17,6 +19,10 @@ public class CustomerDao {
 	public Integer save(Customer customer) {
 		Session session = sessionFactory.getCurrentSession();
 		return (Integer) session.save(customer);
+	}
+	
+	public List<Customer> findAll() {
+		return sessionFactory.getCurrentSession().createQuery("from Customer").list();
 	}
 
 	public Customer findById(Integer id) {

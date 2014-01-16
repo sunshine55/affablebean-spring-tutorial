@@ -1,3 +1,5 @@
+#set($layout = "layout/store.vm")
+
 #define($content)
 
 	#if ($itemMap.size() == 0)

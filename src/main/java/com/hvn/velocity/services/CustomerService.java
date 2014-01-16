@@ -1,5 +1,7 @@
 package com.hvn.velocity.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +18,10 @@ public class CustomerService {
 	
 	public Integer save(Customer customer) {
 		return customerDao.save(customer);
+	}
+	
+	public List<Customer> listAll() {
+		return customerDao.findAll();
 	}
 	
 	public Customer getById(Integer id) {
