@@ -1,11 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 	<head>
-		#parse('/fragment/signin/head.vm')
+		#parse('/fragment/admin/head.vm')
 	</head>
-	
+
 	<body>
-		$!content
-		#parse('/fragment/signin/foot.vm')
+		<div class="container">
+			$!content
+    	</div>
+
+		#parse('/fragment/admin/foot.vm')
+
 	</body>
+
 </html>

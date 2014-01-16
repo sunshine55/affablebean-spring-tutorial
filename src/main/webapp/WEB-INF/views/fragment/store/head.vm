@@ -5,8 +5,8 @@
 
 <title>Affable Spring Bean</title>
 
-<link href="#springUrl('/resources/css/affablebean/bootstrap.min.css')" rel="stylesheet">
-<link href="#springUrl('/resources/css/affablebean/affablebean-app.css')" rel="stylesheet">
+<link href="#springUrl('/resources/css/bootstrap.min.css')" rel="stylesheet">
+<link href="#springUrl('/resources/css/affablebean.css')" rel="stylesheet">
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>

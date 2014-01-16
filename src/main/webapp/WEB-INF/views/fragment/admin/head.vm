@@ -7,17 +7,10 @@
 <title>Affable Spring Bean</title>
 
 <!-- The styles -->
-<link id="bs-css" href="#springUrl('/resources/css/charisma/bootstrap-cerulean.css')" rel="stylesheet">
-<style type="text/css">
-	body {
-		padding-bottom: 40px;
-	}
-	.sidebar-nav {
-        padding: 9px 0;
-	}
-</style>
-<link href="#springUrl('/resources/css/charisma/bootstrap-responsive.min.css')" rel="stylesheet">
-<link href="#springUrl('/resources/css/charisma/charisma-app.css')" rel="stylesheet">
+<link href="#springUrl('/resources/css/bootstrap.min.css')" rel="stylesheet">
+<link href="#springUrl('/resources/css/font-awesome.min.css')" rel="stylesheet">
+<link href="#springUrl('/resources/css/plugins/dataTables.bootstrap.css')" rel="stylesheet">
+<link href="#springUrl('/resources/css/sb-admin.css')" rel="stylesheet">
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
