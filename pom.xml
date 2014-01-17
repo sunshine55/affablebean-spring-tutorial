@@ -9,44 +9,59 @@
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
 		<org.springframework-version>3.2.5.RELEASE</org.springframework-version>
+		<org.springsecurity-version>3.2.0.RELEASE</org.springsecurity-version>
 		<org.slf4j-version>1.5.8</org.slf4j-version>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
-		<dependency>
+		<!-- Spring Context -->
+		<dependency> <!-- This is the central artifact for Spring's DI Container and is generally always defined -->
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${org.springframework-version}</version>
 			<exclusions>
-				<!-- Exclude Commons Logging in favor of SLF4j -->
-				<exclusion>
+				<exclusion> <!-- Exclude Commons Logging in favor of slf4j -->
 					<groupId>commons-logging</groupId>
 					<artifactId>commons-logging</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<dependency> <!-- Define the integration of application context utilities: EhCache, JavaMail, Quartz, Freemarker... -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<!-- Spring MVC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context-support</artifactId>
-			<version>${org.springframework-version}</version>
-		</dependency>
+		<!-- Spring ORM: integrate with Hibernate, JPA and iBatis -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+		<!-- Spring AOP -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
- 
- 		<!-- AspectJ -->
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${org.springsecurity-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${org.springsecurity-version}</version>
+		</dependency>
+
+		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
