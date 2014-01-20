@@ -11,21 +11,21 @@
 --
 -- Sample data for table `customer`
 --
-INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Charlie Pace', 'c.pace@mailinator.com', '605434778', 'Å irokÃ¡ 45', 'PG', '342392325479721');
-INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('MC Hammer', 'hammer@mailinator.com', '226884562', 'RuskÃ¡ 11', 'PG', '378168419808042');
-INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Karel Gott', 'gott@mailinator.com', '224517995', 'KostelnÃ­ 83', 'PG', '370126117019757');
-INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Helena VondrÃ¡ÄkovÃ¡', 'h.vondrackova@mailinator.cz', '224517995', 'LetohradskÃ¡ 18', 'PG', '371248067514600');
-INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Sawyer Ford', 'sawyer.ford@mailinator.com', '204888845', 'DuÅ¡nÃ­ 87', 'PG', '341197495395040');
-INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Dalibor Janda', 'dalibor@mailinator.cz', '728331184', 'KrkonoÅ¡skÃ¡ 9', 'BN', '378050877811223');
-INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Richard Genzer', 'r.genzer@mailinator.cz', '737610775', 'PlzeÅˆskÃ¡ 131', 'BN', '4485823813367068');
-INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Iveta BartoÅ¡ovÃ¡', 'i.bartosova@mailinator.cz', '734556133', 'ProkopskÃ¡ 60', 'BN', '4556259753482704');
-INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Jin-Soo Kwon', 'jin.kwon@mailinator.kr', '606338909', 'Ve StÅ™eÅ¡oviÄkÃ¡ch 49', 'BN', '4556076486388705');
-INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Benjamin Linus', 'b.linus@mailinator.com', '222756448', 'DruÅ¾stevnÃ­ 77', 'BN', '4539115340503505');
-INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('LeoÅ¡ MareÅ¡', 'mares@mailinator.it', '608995383', 'PaÅ™Ã­Å¾skÃ¡ 89', 'HS', '4716444626246463');
-INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('John Locke', 'maninblack@mailinator.com', '413443727', 'ValeÄovskÃ¡ 20', 'HS', '5509303732993327');
-INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Lucie BÃ­lÃ¡', 'lucie@mailinator.cz', '733556813', 'Na hÃ¡jku 3', 'HS', '5462453572139864');
-INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Sayid Jarrah', 'sayid@mailinator.com', '602680793', 'KodaÅˆskÃ¡ 78', 'HS', '5581415713843213');
-INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Hugo Reyes', 'hurley@mailinator.com', '605449336', 'Å½erotÃ­nova 64', 'HS', '5363537132894677');
+INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Charlie Pace', 'c.pace@mailinator.com', '844-134-3777', 'Autofcase Ouvonstaut 45', 'PG', '342392325479721');
+INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('MC Hammer', 'hammer@mailinator.com', '833-045-6368', 'Ruskacvotak 11', 'PG', '378168419808042');
+INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Karel Gott', 'gott@mailinator.com', '855-837-2290', 'Kosteln 83', 'PG', '370126117019757');
+INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Helena Vondrackova', 'h.vondrackova@mailinator.cz', '899-102-1174', 'LetohradskÃ¡ 18', 'PG', '371248067514600');
+INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Sawyer Ford', 'sawyer.ford@mailinator.com', '822-803-1623', 'Dual Rauls 87', 'PG', '341197495395040');
+INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Dalibor Janda', 'dalibor@mailinator.cz', '833-517-7188', 'Krononikal 9', 'BN', '378050877811223');
+INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Richard Genzer', 'r.genzer@mailinator.cz', '833-517-2188', 'PlzeAzA 131', 'BN', '4485823813367068');
+INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Iveta Bartosova', 'i.bartosova@mailinator.cz', '811-617-2519', 'Prokopskafiav 60', 'BN', '4556259753482704');
+INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Jin-Soo Kwon', 'jin.kwon@mailinator.kr', '844-136-8504', '1888 Ven. Staubert de Litkeinstein', 'BN', '4556076486388705');
+INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Benjamin Linus', 'b.linus@mailinator.com', '899) 118-3975', 'Drupal von Daustablish 77', 'BN', '4539115340503505');
+INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Leo Mares', 'mares@mailinator.it', '811-899-7746', 'Paladovski 89', 'HS', '4716444626246463');
+INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('John Locke', 'maninblack@mailinator.com', '844-647-1676', '777/11 De la Valeria', 'HS', '5509303732993327');
+INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Lucie Bacbara', 'lucie@mailinator.cz', '846-026-5206', 'Na 3 Kov 3 St.Aufeint', 'HS', '5462453572139864');
+INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Sayid Jarrah', 'sayid@mailinator.com', '822-026-5206', 'Kodakaown 78', 'HS', '5581415713843213');
+INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Hugo Reyes', 'hurley@mailinator.com', '844-026-5206', 'Andreina�nova 64', 'HS', '5363537132894677');
 
 
 --
@@ -106,3 +106,15 @@ INSERT INTO ordered_product (customer_order_id, product_id, quantity) VALUES (1,
 INSERT INTO ordered_product (customer_order_id, product_id, quantity) VALUES (1, 13, '1');
 INSERT INTO ordered_product (customer_order_id, product_id, quantity) VALUES (1, 10, '1');
 INSERT INTO ordered_product (customer_order_id, product_id, quantity) VALUES (1, 8, '1');
+
+
+--
+-- Sample data for table `role`
+--
+INSERT INTO role (name) VALUES ('ROLE_ADMIN'),('ROLE_USER');
+
+
+--
+-- Sample data for table `member`
+--
+INSERT INTO member (name, username, password, status, role_id) VALUES ('Danton Hamphire', 'affablist', '0192023a7bbd73250516f069df18b500', 1, 1);

@@ -117,6 +117,43 @@ CREATE  TABLE IF NOT EXISTS `affablebean`.`ordered_product` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `affablebean`.`role`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `affablebean`.`role` ;
+
+CREATE  TABLE IF NOT EXISTS `affablebean`.`role` (
+  `id` TINYINT UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB
+COMMENT = 'maintains admin console member roles';
+
+
+-- -----------------------------------------------------
+-- Table `affablebean`.`member`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `affablebean`.`member` ;
+
+CREATE  TABLE IF NOT EXISTS `affablebean`.`member` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(45) NOT NULL ,
+  `username` VARCHAR(45) NOT NULL ,
+  `password` VARCHAR(100) NOT NULL ,
+  `status` TINYINT UNSIGNED NOT NULL ,
+  `role_id` TINYINT UNSIGNED NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  UNIQUE (`username`) ,
+  INDEX `fk_user_role` (`role_id` ASC) ,
+  CONSTRAINT `fk_user_role`
+    FOREIGN KEY (`role_id` )
+    REFERENCES `affablebean`.`role` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION )
+ENGINE = InnoDB
+COMMENT = 'maintains admin console member details';
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
