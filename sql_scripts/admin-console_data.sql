@@ -20,7 +20,7 @@ INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VAL
 INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Richard Genzer', 'r.genzer@mailinator.cz', '833-517-2188', 'PlzeAzA 131', 'BN', '4485823813367068');
 INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Iveta Bartosova', 'i.bartosova@mailinator.cz', '811-617-2519', 'Prokopskafiav 60', 'BN', '4556259753482704');
 INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Jin-Soo Kwon', 'jin.kwon@mailinator.kr', '844-136-8504', '1888 Ven. Staubert de Litkeinstein', 'BN', '4556076486388705');
-INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Benjamin Linus', 'b.linus@mailinator.com', '899) 118-3975', 'Drupal von Daustablish 77', 'BN', '4539115340503505');
+INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Benjamin Linus', 'b.linus@mailinator.com', '899-118-3975', 'Drupal von Daustablish 77', 'BN', '4539115340503505');
 INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Leo Mares', 'mares@mailinator.it', '811-899-7746', 'Paladovski 89', 'HS', '4716444626246463');
 INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('John Locke', 'maninblack@mailinator.com', '844-647-1676', '777/11 De la Valeria', 'HS', '5509303732993327');
 INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Lucie Bacbara', 'lucie@mailinator.cz', '846-026-5206', 'Na 3 Kov 3 St.Aufeint', 'HS', '5462453572139864');
@@ -117,4 +117,4 @@ INSERT INTO role (name) VALUES ('ROLE_ADMIN'),('ROLE_USER');
 --
 -- Sample data for table `member`
 --
-INSERT INTO member (name, username, password, status, role_id) VALUES ('Danton Hamphire', 'affablist', '0192023a7bbd73250516f069df18b500', 1, 1);
+INSERT INTO member (name, username, password, status, role_id) VALUES ('Danton Hamphire', 'affablist', 'admin123', 1, 1);
