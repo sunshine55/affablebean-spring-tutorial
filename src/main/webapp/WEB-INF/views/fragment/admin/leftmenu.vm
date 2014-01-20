@@ -17,7 +17,7 @@
                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Sale Management<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="#">Customer</a>
+                        <a href="#springUrl('')">Customer</a>
                     </li>
                     <li>
                         <a href="#">Order</a>
@@ -44,7 +44,7 @@
                         <a href="#">Role</a>
                     </li>
                     <li>
-                        <a href="#">Member</a>
+                        <a href="#springUrl('/member')">Member</a>
                     </li>
                 </ul>
             </li>

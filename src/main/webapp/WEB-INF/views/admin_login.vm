@@ -1,4 +1,4 @@
-#set($layout = "layout/signin.vm")
+#set($layout = "layout/auth.vm")
 
 #define($content)
 
@@ -11,15 +11,21 @@
                 </h3>
             </div>
             <div class="panel-body">
-                <form role="form">
+            #if($message)
+            	<div class="alert alert-warning alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<strong>$message</strong>
+				</div>
+			#end
+                <form action="#springUrl('/j_spring_security_check')" method="POST" role="form">
                     <fieldset>
                         <div class="form-group">
-                            <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                            <input class="form-control" placeholder="Username" type="text" autofocus id="j_username" name="j_username" />
                         </div>
                         <div class="form-group">
-                            <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                            <input class="form-control" placeholder="Password" type="password" name="password" id="j_password" name="j_password" />
                         </div>
-                        <a href="#" class="btn btn-lg btn-success btn-block">Login</a>
+                        <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
                     </fieldset>
                 </form>
             </div>

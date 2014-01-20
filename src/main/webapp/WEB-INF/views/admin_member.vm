@@ -1,0 +1,7 @@
+#set($layout = "layout/admin.vm")
+
+#define($content)
+
+<h1>This Page is Constructing</h1>
+
+#end
