@@ -2,6 +2,7 @@ package com.hvn.velocity.repository;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -26,6 +27,10 @@ public class OrderDao {
 	
 	public CustomerOrder findById(Integer id) {
 		return (CustomerOrder) sessionFactory.getCurrentSession().get(CustomerOrder.class, id);
+	}
+	
+	public List<CustomerOrder> findAll() {
+		return sessionFactory.getCurrentSession().createQuery("from CustomerOrder").list();
 	}
 	
 }

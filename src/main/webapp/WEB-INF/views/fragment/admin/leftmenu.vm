@@ -12,15 +12,24 @@
                     </span>
                 </div>
             </li>
-            
+        #if($sec.anyGranted('ROLE_ADMIN'))
+            <li>
+                <a href="#"><i class="fa fa-group fa-fw"></i> Administrator<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="#springUrl('/admin/member')">Member</a>
+                    </li>
+                </ul>
+            </li>
+        #end    
             <li>
                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Sale Management<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="#springUrl('')">Customer</a>
+                        <a href="#springUrl('/admin')">Customer</a>
                     </li>
                     <li>
-                        <a href="#">Order</a>
+                        <a href="#springUrl('/admin/order')">Order</a>
                     </li>
                 </ul>
             </li>
@@ -36,19 +45,7 @@
                     </li>
                 </ul>
             </li>
-		#if($sec.anyGranted('ROLE_ADMIN'))
-            <li>
-                <a href="#"><i class="fa fa-group fa-fw"></i> Administrator<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="#">Role</a>
-                    </li>
-                    <li>
-                        <a href="#springUrl('/member')">Member</a>
-                    </li>
-                </ul>
-            </li>
-        #end    
+                
         </ul>
     </div>
 </nav>

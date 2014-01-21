@@ -2,6 +2,7 @@ package com.hvn.velocity.service;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,10 @@ public class OrderService {
 	
 	public CustomerOrder getById(Integer id) {
 		return (CustomerOrder) orderDao.findById(id);
+	}
+	
+	public List<CustomerOrder> getAll() {
+		return orderDao.findAll();
 	}
 	
 }

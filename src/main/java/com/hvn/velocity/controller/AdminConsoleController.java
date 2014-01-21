@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hvn.velocity.service.CustomerService;
 import com.hvn.velocity.service.MemberService;
+import com.hvn.velocity.service.OrderService;
 
 @Controller
 @RequestMapping("/admin")
@@ -19,6 +20,9 @@ public class AdminConsoleController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private OrderService orderService;
 	
 	/*
 	 * Auth process
@@ -47,4 +51,11 @@ public class AdminConsoleController {
 		mm.put("memberList", memberService.getAll());
 		return "admin_member";
 	}
+	
+	@RequestMapping(value = "/order", method = RequestMethod.GET)
+	public String orderConsole(ModelMap mm) {
+		mm.put("orderList", orderService.getAll());
+		return "admin_order";
+	}
+	
 }
