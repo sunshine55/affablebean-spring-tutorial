@@ -17,13 +17,14 @@
 					<strong>$message</strong>
 				</div>
 			#end
-                <form action="#springUrl('/j_spring_security_check')" method="POST" role="form">
+                <form action="#springUrl('/j_spring_security_check')" method="POST">
+                	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <fieldset>
                         <div class="form-group">
                             <input class="form-control" placeholder="Username" type="text" autofocus id="j_username" name="j_username" />
                         </div>
                         <div class="form-group">
-                            <input class="form-control" placeholder="Password" type="password" name="password" id="j_password" name="j_password" />
+                            <input class="form-control" placeholder="Password" type="password" id="j_password" name="j_password" />
                         </div>
                         <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
                     </fieldset>

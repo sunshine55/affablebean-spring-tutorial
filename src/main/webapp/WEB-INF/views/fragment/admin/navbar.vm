@@ -11,13 +11,8 @@
     </div>
 
     <ul class="nav navbar-top-links navbar-right">
-    	<li class="dropdown">
-	        <a href="#">
-	            <i class="fa fa-user fa-fw"></i> Profile
-	        </a>
-	    </li>
 	    <li class="dropdown">
-	        <a href="#">
+	        <a href="#springUrl('/admin/logout')">
 	            <i class="fa fa-sign-out fa-fw"></i> Logout
 	        </a>
 	    </li>

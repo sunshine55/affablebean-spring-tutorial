@@ -36,7 +36,7 @@
                     </li>
                 </ul>
             </li>
-            
+		#if($sec.anyGranted('ROLE_ADMIN'))
             <li>
                 <a href="#"><i class="fa fa-group fa-fw"></i> Administrator<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
@@ -48,7 +48,7 @@
                     </li>
                 </ul>
             </li>
-            
+        #end    
         </ul>
     </div>
 </nav>
