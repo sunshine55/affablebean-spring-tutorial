@@ -1,11 +1,6 @@
--- Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
---
--- You may not modify, use, reproduce, or distribute this software
--- except in compliance with the terms of the license at:
--- http://developer.sun.com/berkeley_license.html
---
--- author: tgiunipero
---
+-- -----------------------------------------------------
+-- Affable Spring Bean tutorial database schema
+-- -----------------------------------------------------
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
