@@ -10,7 +10,7 @@
 	</bean>
 
 	<bean id="viewResolver"
-		class="com.hvn.velocity.utils.VelocityMultipleLayoutViewResolver">
+		class="com.hvn.velocity.util.VelocityMultipleLayoutViewResolver">
 		<property name="cache" value="true" />
 		<property name="prefix" value="" />
 		<property name="suffix" value=".vm" />

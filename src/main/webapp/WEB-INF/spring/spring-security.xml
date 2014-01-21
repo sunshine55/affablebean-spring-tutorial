@@ -1,39 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://www.springframework.org/schema/security" xmlns:beans="http://www.springframework.org/schema/beans"
-	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
 	<!-- Use "security" as the default namespace rather than "beans" which means 
 		 we can omit the prefix on all the security namespace elements making the 
 		 content easier to read -->
 
-	<http pattern="/resources" security="none" />
-
 	<http auto-config="true" use-expressions="true">
-		<intercept-url pattern="/admin/login" access="permitAll" />
-		<intercept-url pattern="/admin/logout" access="permitAll" />
-		<intercept-url pattern="/admin" access="hasRole('ROLE_USER')" />
-		<!-- <intercept-url pattern="/admin/order" access="hasRole('ROLE_USER')" />
-		<intercept-url pattern="/admin/category" access="hasRole('ROLE_USER')" />
-		<intercept-url pattern="/admin/product" access="hasRole('ROLE_USER')" />
-		<intercept-url pattern="/admin/role" access="hasRole('ROLE_ADMIN')" /> -->
-		<intercept-url pattern="/admin/member" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/admin/login" access="permitAll"/>
+		<intercept-url pattern="/admin/logout" access="permitAll"/>
+		<intercept-url pattern="/admin/member" access="hasRole('ROLE_ADMIN')"/>
+		<!-- <intercept-url pattern="/admin/role" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/admin/order" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/admin/category" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/admin/product" access="hasRole('ROLE_USER')"/> -->
+		<intercept-url pattern="/admin" access="hasRole('ROLE_USER')"/>
 		
-		<form-login login-page="/admin/login" authentication-failure-url="/admin/login/failure"
-			default-target-url="/admin" />
+		<form-login login-page="/admin/login" authentication-failure-url="/admin/login?error=true" default-target-url="/admin"/>
+		<logout invalidate-session="true" logout-success-url="/admin/login" logout-url="/admin/logout"/>
+		<csrf/>
 		
 		<!-- In case we has a custom 403 page, configure this and add request mapping into the controller 
 		<intercept-url pattern="/admin/denied" access="hasRole('ROLE_USER')" />
 		<access-denied-handler error-page="/admin/denied" /> -->
-		
-		<logout invalidate-session="true" logout-success-url="/admin/logout/success" logout-url="/admin/logout" />
 	</http>
 
 	<authentication-manager>
-		<authentication-provider user-service-ref="memberService">
-			<password-encoder hash="md5" />
+		<authentication-provider user-service-ref="customUserDetailsService">
+			<password-encoder hash="md5"/>
 		</authentication-provider>
 	</authentication-manager>
-
+	
 </beans:beans>

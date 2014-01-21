@@ -2,7 +2,6 @@ $(function() {
 
     $('#side-menu').metisMenu();
     $('#dataTables-example').dataTable();
-    
 });
 
 //Loads the correct sidebar on window load
@@ -21,7 +20,6 @@ $(function() {
 $(function() {
 
     $(window).bind("resize", function() {
-        console.log($(this).width());
         if ($(this).width() < 768) {
             $('div.sidebar-collapse').addClass('collapse');
         } else {
