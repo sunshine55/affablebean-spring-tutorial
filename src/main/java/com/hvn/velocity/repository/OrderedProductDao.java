@@ -1,4 +1,4 @@
-package com.hvn.velocity.repositories;
+package com.hvn.velocity.repository;
 
 import java.util.Set;
 
@@ -7,7 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.hvn.velocity.entities.OrderedProduct;
+import com.hvn.velocity.domain.OrderedProduct;
 
 @Repository
 public class OrderedProductDao {

@@ -1,4 +1,4 @@
-package com.hvn.velocity.controllers;
+package com.hvn.velocity.controller;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.hvn.velocity.entities.Customer;
-import com.hvn.velocity.entities.CustomerOrder;
-import com.hvn.velocity.entities.Product;
-import com.hvn.velocity.services.CategoryService;
-import com.hvn.velocity.services.CustomerService;
-import com.hvn.velocity.services.OrderService;
-import com.hvn.velocity.services.OrderedProductService;
-import com.hvn.velocity.services.ProductService;
+import com.hvn.velocity.domain.Customer;
+import com.hvn.velocity.domain.CustomerOrder;
+import com.hvn.velocity.domain.Product;
+import com.hvn.velocity.service.CategoryService;
+import com.hvn.velocity.service.CustomerService;
+import com.hvn.velocity.service.OrderService;
+import com.hvn.velocity.service.OrderedProductService;
+import com.hvn.velocity.service.ProductService;
 import com.hvn.velocity.session.Cart;
 
 @Controller

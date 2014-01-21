@@ -1,4 +1,4 @@
-package com.hvn.velocity.services;
+package com.hvn.velocity.service;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hvn.velocity.entities.CustomerOrder;
-import com.hvn.velocity.repositories.OrderDao;
+import com.hvn.velocity.domain.CustomerOrder;
+import com.hvn.velocity.repository.OrderDao;
 
 @Service
 @Transactional

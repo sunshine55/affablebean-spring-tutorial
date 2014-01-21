@@ -1,4 +1,4 @@
-package com.hvn.velocity.services;
+package com.hvn.velocity.service;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hvn.velocity.entities.Product;
-import com.hvn.velocity.repositories.ProductDao;
+import com.hvn.velocity.domain.Product;
+import com.hvn.velocity.repository.ProductDao;
 
 @Service
 @Transactional

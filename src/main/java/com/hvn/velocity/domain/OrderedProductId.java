@@ -1,4 +1,4 @@
-package com.hvn.velocity.entities;
+package com.hvn.velocity.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

@@ -1,11 +1,13 @@
-package com.hvn.velocity.repositories;
+package com.hvn.velocity.repository;
+
+import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.hvn.velocity.entities.Member;
+import com.hvn.velocity.domain.Member;
 
 @Repository
 public class MemberDao {
@@ -20,4 +22,9 @@ public class MemberDao {
 				.uniqueResult(); // note: we can add many Restrictions, refer Hibernate querying
 		return member;
 	}
+	
+	public List<Member> findAll() {
+		return sessionFactory.getCurrentSession().createQuery("from Member").list();
+	}
+	
 }

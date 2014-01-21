@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import com.hvn.velocity.entities.Product;
+import com.hvn.velocity.domain.Product;
 
 public class Cart implements java.io.Serializable {
 	

@@ -1,4 +1,4 @@
-package com.hvn.velocity.repositories;
+package com.hvn.velocity.repository;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.hvn.velocity.entities.Customer;
+import com.hvn.velocity.domain.Customer;
 
 @Repository
 public class CustomerDao {

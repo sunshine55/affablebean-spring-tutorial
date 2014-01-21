@@ -1,4 +1,4 @@
-package com.hvn.velocity.entities;
+package com.hvn.velocity.domain;
 
 import java.util.HashSet;
 import java.util.Set;

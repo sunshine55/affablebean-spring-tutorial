@@ -1,4 +1,4 @@
-package com.hvn.velocity.services;
+package com.hvn.velocity.service;
 
 import java.util.HashSet;
 import java.util.Map;
@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hvn.velocity.entities.CustomerOrder;
-import com.hvn.velocity.entities.Product;
-import com.hvn.velocity.entities.OrderedProductId;
-import com.hvn.velocity.entities.OrderedProduct;
-import com.hvn.velocity.repositories.OrderedProductDao;
+import com.hvn.velocity.domain.CustomerOrder;
+import com.hvn.velocity.domain.OrderedProduct;
+import com.hvn.velocity.domain.OrderedProductId;
+import com.hvn.velocity.domain.Product;
+import com.hvn.velocity.repository.OrderedProductDao;
 
 @Service
 @Transactional

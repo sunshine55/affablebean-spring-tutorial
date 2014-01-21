@@ -1,4 +1,4 @@
-package com.hvn.velocity.controllers;
+package com.hvn.velocity.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.hvn.velocity.services.CustomerService;
+import com.hvn.velocity.service.CustomerService;
+import com.hvn.velocity.service.MemberService;
 
 @Controller
 @RequestMapping("/admin")
@@ -16,25 +17,20 @@ public class AdminConsoleController {
 	@Autowired
 	private CustomerService customerService;
 	
+	@Autowired
+	private MemberService memberService;
+	
 	/*
 	 * Auth process
 	 */
 	@RequestMapping(value = "/login", method= RequestMethod.GET )
-	public String loginConsole(@RequestParam(required = false) String message, ModelMap mm) {
-		mm.put("message", message);
+	public String loginConsole(@RequestParam(value = "error", required = false) boolean error, ModelMap mm) {
+		if(error == true) {
+			mm.put("message", "Login Failed!");
+		} else {
+			mm.put("message", false);
+		}
 		return "admin_login";
-	}
-
-	@RequestMapping(value = "/login/failure")
-	public String loginFailure() {
-		String message = "Login Failure!";
-		return "redirect:/admin/login?message=" + message;
-	}
-	
-	@RequestMapping(value = "/logout/success")
-	public String logoutSuccess() {
-		String message = "Logout Success!";
-		return "redirect:/admin/login?message=" + message;
 	}
 	
 	/*
@@ -47,7 +43,8 @@ public class AdminConsoleController {
 	}
 	
 	@RequestMapping(value = "/member", method = RequestMethod.GET)
-	public String memberConsole() {
+	public String memberConsole(ModelMap mm) {
+		mm.put("memberList", memberService.getAll());
 		return "admin_member";
 	}
 }

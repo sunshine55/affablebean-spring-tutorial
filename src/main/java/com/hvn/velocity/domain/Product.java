@@ -1,4 +1,4 @@
-package com.hvn.velocity.entities;
+package com.hvn.velocity.domain;
 
 import java.math.BigDecimal;
 import java.util.Date;

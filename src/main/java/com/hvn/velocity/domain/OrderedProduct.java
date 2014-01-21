@@ -1,4 +1,4 @@
-package com.hvn.velocity.entities;
+package com.hvn.velocity.domain;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;

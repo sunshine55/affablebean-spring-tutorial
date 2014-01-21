@@ -1,4 +1,4 @@
-package com.hvn.velocity.utils;
+package com.hvn.velocity.util;
 
 import java.util.HashMap;
 import java.util.Map;

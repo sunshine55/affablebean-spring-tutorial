@@ -1,4 +1,4 @@
-package com.hvn.velocity.repositories;
+package com.hvn.velocity.repository;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -8,8 +8,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.hvn.velocity.entities.Customer;
-import com.hvn.velocity.entities.CustomerOrder;
+import com.hvn.velocity.domain.Customer;
+import com.hvn.velocity.domain.CustomerOrder;
 
 @Repository
 public class OrderDao {
