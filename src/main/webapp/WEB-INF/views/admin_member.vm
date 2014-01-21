@@ -31,7 +31,7 @@
 								<td>${member.username}</td>
 								<td>${member.password}</td>
 								<td>${member.status}</td>
-								<td>${member.role.name}</td>
+								<td>${member.role.id}</td>
 							</tr>
 						#end
 						</tbody>
