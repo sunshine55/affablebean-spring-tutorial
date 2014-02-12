@@ -24,4 +24,4 @@ Rewrite [Netbeans e-commerce tutorial](https://netbeans.org/kb/docs/javaee/ecomm
    * Testing
    * Deploying on [OpenShift](https://www.openshift.com/) -> visit demo app:
    	 - [The front store](http://affablebean-tonyvo.rhcloud.com/)
-   	 - [The admin console](http://affablebean-tonyvo.rhcloud.com/admin) (please find the username/password in `sql_scripts/admin-console_data.sql`)
+   	 - [The admin console](http://affablebean-tonyvo.rhcloud.com/admin) (username/password found in `sql_scripts/admin-console_data.sql`)
