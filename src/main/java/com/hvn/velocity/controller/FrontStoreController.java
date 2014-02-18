@@ -1,7 +1,6 @@
 package com.hvn.velocity.controller;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +22,7 @@ import com.hvn.velocity.service.OrderService;
 import com.hvn.velocity.service.OrderedProductService;
 import com.hvn.velocity.service.ProductService;
 import com.hvn.velocity.session.Cart;
+import com.hvn.velocity.util.RegionHashMap;
 
 @Controller
 public class FrontStoreController {
@@ -107,10 +107,8 @@ public class FrontStoreController {
 			mm.put("subTotal", subTotal);
 		} else {
 			double total = cart.calculateTotal(subTotal);
-			Map<String, String> cityRegion = new LinkedHashMap<String, String>();
-			cityRegion.put("PG", "Prague");
-			cityRegion.put("BN", "Benarl");
-			cityRegion.put("HS", "Hassen");
+			RegionHashMap regionHashMap = new RegionHashMap();
+			Map<String, String> cityRegion = regionHashMap.getCityRegion();
 			mm.put("subTotal", subTotal);
 			mm.put("total", total);
 			mm.put("customer", new Customer());
