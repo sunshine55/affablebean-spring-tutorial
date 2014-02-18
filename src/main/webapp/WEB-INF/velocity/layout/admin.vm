@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+	<head>
+		#parse('/views/admin/fragment/head.vm')
+	</head>
+	
+	<body>
+		<div id="wrapper">
+			#parse('/views/admin/fragment/navbar.vm')
+			
+			#parse('/views/admin/fragment/leftmenu.vm')
+			
+			<div id="page-wrapper">
+				$!content
+			</div>
+		</div>
+		
+		#parse('/views/admin/fragment/foot.vm')
+	</body>
+</html>
