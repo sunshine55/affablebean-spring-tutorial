@@ -16,7 +16,7 @@ public class ProductService {
 	@Autowired
 	private ProductDao productDao;
 	
-	public List<Product> listByCategoryId(Byte id) {
+	public List<Product> getByCategoryId(Byte id) {
 		return productDao.findByCategoryId(id);
 	}
 	

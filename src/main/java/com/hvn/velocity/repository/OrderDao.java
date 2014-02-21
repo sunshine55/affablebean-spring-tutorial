@@ -17,20 +17,20 @@ public class OrderDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
-	public Integer save(Integer customerId, BigDecimal amount, Date dateProcessed, int refNum) {
-		Session session = sessionFactory.getCurrentSession();
-		Customer customer = (Customer) session.get(Customer.class, customerId);
-		CustomerOrder order = new CustomerOrder(customer, amount, dateProcessed, refNum);
-		return (Integer) session.save(order);
+		
+	public List<CustomerOrder> findAll() {
+		return sessionFactory.getCurrentSession().createQuery("from CustomerOrder").list();
 	}
 	
 	public CustomerOrder findById(Integer id) {
 		return (CustomerOrder) sessionFactory.getCurrentSession().get(CustomerOrder.class, id);
 	}
 	
-	public List<CustomerOrder> findAll() {
-		return sessionFactory.getCurrentSession().createQuery("from CustomerOrder").list();
+	public Integer save(Integer customerId, BigDecimal amount, Date dateProcessed, int refNum) {
+		Session session = sessionFactory.getCurrentSession();
+		Customer customer = (Customer) session.get(Customer.class, customerId);
+		CustomerOrder order = new CustomerOrder(customer, amount, dateProcessed, refNum);
+		return (Integer) session.save(order);
 	}
 	
 }

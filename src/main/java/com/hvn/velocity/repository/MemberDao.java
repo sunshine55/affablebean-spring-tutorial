@@ -15,16 +15,16 @@ public class MemberDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	public List<Member> findAll() {
+		return sessionFactory.getCurrentSession().createQuery("from Member").list();
+	}
+	
 	public Member findByUsername(String username) {
 		Member member = (Member) sessionFactory.getCurrentSession()
 				.createCriteria(Member.class)
 				.add(Restrictions.eq("username", username))
 				.uniqueResult(); // note: we can add many Restrictions, refer Hibernate querying
 		return member;
-	}
-	
-	public List<Member> findAll() {
-		return sessionFactory.getCurrentSession().createQuery("from Member").list();
 	}
 	
 }

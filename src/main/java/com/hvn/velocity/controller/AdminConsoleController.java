@@ -24,7 +24,7 @@ public class AdminConsoleController {
 	@Autowired
 	private OrderService orderService;
 	
-	/*
+	/**
 	 * Auth process
 	 */
 	@RequestMapping(value = "/login", method= RequestMethod.GET )
@@ -37,12 +37,12 @@ public class AdminConsoleController {
 		return "views/admin/login";
 	}
 	
-	/*
+	/**
 	 * Login succeeded, inside AdminConsole
 	 */
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String customerConsole(ModelMap mm) {
-		mm.put("customerList", customerService.listAll());
+		mm.put("customerList", customerService.getAll());
 		return "views/admin/customer";
 	}
 	

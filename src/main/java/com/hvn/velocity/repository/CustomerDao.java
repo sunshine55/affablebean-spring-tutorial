@@ -15,11 +15,6 @@ public class CustomerDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-
-	public Integer save(Customer customer) {
-		Session session = sessionFactory.getCurrentSession();
-		return (Integer) session.save(customer);
-	}
 	
 	public List<Customer> findAll() {
 		return sessionFactory.getCurrentSession().createQuery("from Customer").list();
@@ -36,6 +31,11 @@ public class CustomerDao {
 				.setMaxResults(1)
 				.uniqueResult();
 		return customer;
+	}
+	
+	public Integer save(Customer customer) {
+		Session session = sessionFactory.getCurrentSession();
+		return (Integer) session.save(customer);
 	}
 
 }

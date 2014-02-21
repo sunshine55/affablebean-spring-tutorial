@@ -27,12 +27,12 @@ public class OrderService {
 		return orderDao.save(customerId, amount, dateProcessed, refNum);
 	}
 	
-	public CustomerOrder getById(Integer id) {
-		return (CustomerOrder) orderDao.findById(id);
-	}
-	
 	public List<CustomerOrder> getAll() {
 		return orderDao.findAll();
+	}
+	
+	public CustomerOrder getById(Integer id) {
+		return (CustomerOrder) orderDao.findById(id);
 	}
 	
 }

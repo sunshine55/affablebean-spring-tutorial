@@ -20,7 +20,7 @@ public class CustomerService {
 		return customerDao.save(customer);
 	}
 	
-	public List<Customer> listAll() {
+	public List<Customer> getAll() {
 		return customerDao.findAll();
 	}
 	
