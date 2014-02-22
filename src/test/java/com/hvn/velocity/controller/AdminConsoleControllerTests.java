@@ -1,69 +1,69 @@
 package com.hvn.velocity.controller;
 
-import static org.assertj.core.api.Assertions.assertThat;
+//import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.servlet.View;
 
+import com.hvn.velocity.domain.Customer;
 import com.hvn.velocity.service.CustomerService;
-import com.hvn.velocity.service.MemberService;
-import com.hvn.velocity.service.OrderService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AdminConsoleControllerTests {
 
 	/** {@link AdminConsoleController} instance under test */
+	@InjectMocks
 	private AdminConsoleController controller;
-	
+
 	/**
 	 * Mock objects declaration
 	 */
-	@Mock private CustomerService customerService;
-	@Mock private MemberService memberService;
-	@Mock private OrderService orderService;
-	
-	/**
-	 * Instances passed to test
-	 */
-	private ModelMap mm;
-	private boolean error;
+	@Mock private CustomerService mockCustomerService;
+	@Mock private View mockView;
+	private MockMvc mockMvc;
 
 	/**
-     * Method to perform setup work for each test.
-     */
+	 * Method to perform setup work for each test.
+	 */
 	@Before
-	public void setup() {
-		controller = new AdminConsoleController();
-		mm = new ModelMap();
+	public void setup() throws Exception {
+		MockitoAnnotations.initMocks(this);
+		Mockito.reset(mockCustomerService);
+		mockMvc = MockMvcBuilders.standaloneSetup(controller)
+				.setSingleView(mockView).build();
 	}
 
 	/**
-	 * Test the {@link AdminConsoleController#loginConsole(boolean, ModelMap)}
+	 * Test {@link AdminConsoleController#customerConsole(ModelMap)}
 	 */
 	@Test
-	public void loginFail() {
-		// Given
-		error = true;
-		// When
-		String rs = controller.loginConsole(error, mm);
-		// Then
-		assertThat(rs).isEqualTo("views/admin/login");
-		assertThat(mm).containsEntry("message", "Login Failed!");
-	}
-
-	@Test
-	public void loginSuccess() {
-		// Given
-		error = false;
-		// When
-		String rs = controller.loginConsole(error, mm);
-		// Then
-		assertThat(rs).isEqualTo("views/admin/login");
-		assertThat(mm).containsEntry("message", false);
+	public void showCustomers() throws Exception {
+		// initialize
+		List<Customer> customerList = Arrays.asList(new Customer());
+		// setup expectation
+		Mockito.when(mockCustomerService.getAll()).thenReturn(customerList);
+		// exercise & verify
+		mockMvc.perform(get("/admin"))
+				.andExpect(status().isOk())
+				.andExpect(model().attribute("customerList", customerList))
+				.andExpect(view().name("views/admin/customer"));
 	}
 
 }
