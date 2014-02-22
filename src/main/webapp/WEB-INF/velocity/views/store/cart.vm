@@ -54,6 +54,7 @@
 							<td>${item.key.getPrice()} USD per Unit</td>
 							<td>
 								<form action="#springUrl('/updateCart')" method="POST" class="form-inline">
+									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 									<div class="form-group">
 										<input type="hidden" name="id" value="${item.key.getId()}">
 										<input class="form-control" type="text" name="quantity" value="${item.value}" size="2" maxlength="2">
