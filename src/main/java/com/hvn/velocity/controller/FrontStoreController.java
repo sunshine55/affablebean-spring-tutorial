@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,7 +44,7 @@ public class FrontStoreController {
 	@Autowired
 	private OrderService orderService;
 
-	/*
+	/**
 	 * Category
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -62,7 +61,7 @@ public class FrontStoreController {
 		return "views/store/category";
 	}
 	
-	/*
+	/**
 	 * CRUD on shopping cart
 	 */
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
@@ -77,12 +76,11 @@ public class FrontStoreController {
 	}
 
 	@RequestMapping(value = "/addToCart", method = RequestMethod.GET)
-	public String addToCart(@RequestParam("id") Integer id,
-			@RequestHeader("referer") String referer) {
+	public @ResponseBody String addToCart(@RequestParam("id") Integer id) {
 		Product product = productService.getById(id);
 		cart.addItem(product);
-		return "redirect:" + referer;
-	}
+		return cart.sumQuantity().toString();
+	} // Response for AJAX request
 
 	@RequestMapping(value = "/clearCart", method = RequestMethod.GET)
 	public String clearCart() {
@@ -97,7 +95,7 @@ public class FrontStoreController {
 		return "redirect:/cart";
 	}
 	
-	/*
+	/**
 	 * Checkout
 	 */
 	@RequestMapping(value = "/checkout", method = RequestMethod.GET)
@@ -168,7 +166,7 @@ public class FrontStoreController {
             return "views/store/confirmation";
     }
 	
-	/*
+	/**
 	 * AJAX service
 	 */
 	@RequestMapping(value = "/validateMember", method = RequestMethod.POST)
