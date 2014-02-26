@@ -25,6 +25,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.View;
 
 import com.hvn.velocity.domain.Category;
+import com.hvn.velocity.domain.Customer;
 import com.hvn.velocity.domain.Product;
 import com.hvn.velocity.service.CategoryService;
 import com.hvn.velocity.service.CustomerService;
@@ -32,6 +33,7 @@ import com.hvn.velocity.service.ProductService;
 import com.hvn.velocity.service.OrderService;
 import com.hvn.velocity.service.OrderedProductService;
 import com.hvn.velocity.session.Cart;
+import com.hvn.velocity.util.RegionHashMap;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FrontStoreControllerTests {
@@ -67,6 +69,7 @@ public class FrontStoreControllerTests {
 	 */
 	@After
 	public void tearDown() throws Exception {
+		Mockito.reset(mockCart);
 		Mockito.reset(mockCategoryService);
 		Mockito.reset(mockProductService);
 		Mockito.reset(mockCustomerService);
@@ -175,6 +178,87 @@ public class FrontStoreControllerTests {
 				.andExpect(status().isOk())
 				.andExpect(view().name("redirect:/cart"));
 		Mockito.verify(mockCart).updateItem(productId, quantity);
+	}
+	
+	/**
+	 * Test {@link FrontStoreController#checkout(ModelMap)}
+	 */
+	@Test
+	public void checkoutEmptyCart() throws Exception {
+		double subTotal = 0;
+		Mockito.when(mockCart.calculateSubTotal()).thenReturn(subTotal);
+		mockMvc.perform(get("/checkout"))
+				.andExpect(status().isOk())
+				.andExpect(model().attribute("subTotal", subTotal))
+				.andExpect(view().name("views/store/checkout"));
+	}
+	
+	@Test
+	public void checkoutFullCart() throws Exception {
+		double subTotal = 3.05;
+		double total = subTotal + 3;
+		Map<String, String> cityRegion = new RegionHashMap().getCityRegion();
+		Mockito.when(mockCart.calculateSubTotal()).thenReturn(subTotal);
+		Mockito.when(mockCart.calculateTotal(subTotal)).thenReturn(total);
+		mockMvc.perform(get("/checkout"))
+				.andExpect(status().isOk())
+				.andExpect(model().attribute("subTotal", subTotal))
+				.andExpect(model().attribute("total", total))
+				.andExpect(model().attributeExists("customer"))
+				.andExpect(model().attribute("cityRegion", cityRegion))
+				.andExpect(view().name("views/store/checkout"));
+		Mockito.verify(mockCart).calculateTotal(subTotal);
+	}
+	
+	/**
+	 * Test {@link FrontStoreController#purchaseMember(Customer, ModelMap)}
+	 */
+	@Test
+	public void purchaseMember() throws Exception {
+		
+	}
+	
+	/**
+	 * Test {@link FrontStoreController#purchaseGuest(String, ModelMap)}
+	 */
+	@Test
+	public void purchaseGuest() throws Exception {
+		
+	}
+	
+	/**
+	 * Test {@link FrontStoreController#validateMember(String)}
+	 */
+	@Test
+	public void validateMemberTrue() throws Exception {
+		String email = "abc@co.uk";
+		Customer customer = new Customer();
+		Mockito.when(mockCustomerService.getByEmail(email)).thenReturn(customer);
+		mockMvc.perform(post("/validateMember").param("email", email))				
+				.andExpect(status().isOk())
+				.andExpect(content().contentType("text/plain;charset=ISO-8859-1"));
+		Mockito.verify(mockCustomerService).getByEmail(email);
+	}
+	
+	@Test
+	public void validateMemberFalse() throws Exception {
+		String email = "abc@co.uk";
+		Mockito.when(mockCustomerService.getByEmail(email)).thenReturn(null);
+		mockMvc.perform(post("/validateMember").param("email", email))				
+				.andExpect(status().isOk())
+				.andExpect(content().contentType("text/plain;charset=ISO-8859-1"));
+		Mockito.verify(mockCustomerService).getByEmail(email);
+	}
+	
+	/**
+	 * Test {@link FrontStoreController#getCartSize()}
+	 */
+	@Test
+	public void getCartSize() throws Exception {
+		mockMvc.perform(get("/getCartSize"))				
+				.andExpect(status().isOk())
+				.andExpect(content().contentType("text/plain;charset=ISO-8859-1"));
+		Mockito.verify(mockCart).sumQuantity();
 	}
 	
 }
