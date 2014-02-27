@@ -18,7 +18,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.stubbing.Answer;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.ModelMap;
@@ -26,6 +28,7 @@ import org.springframework.web.servlet.View;
 
 import com.hvn.velocity.domain.Category;
 import com.hvn.velocity.domain.Customer;
+import com.hvn.velocity.domain.CustomerOrder;
 import com.hvn.velocity.domain.Product;
 import com.hvn.velocity.service.CategoryService;
 import com.hvn.velocity.service.CustomerService;
@@ -209,21 +212,90 @@ public class FrontStoreControllerTests {
 				.andExpect(view().name("views/store/checkout"));
 		Mockito.verify(mockCart).calculateTotal(subTotal);
 	}
-	
+
 	/**
-	 * Test {@link FrontStoreController#purchaseMember(Customer, ModelMap)}
-	 */
-	@Test
-	public void purchaseMember() throws Exception {
-		
-	}
-	
-	/**
-	 * Test {@link FrontStoreController#purchaseGuest(String, ModelMap)}
+	 * Test {@link FrontStoreController#purchaseGuest(Customer, ModelMap)}
 	 */
 	@Test
 	public void purchaseGuest() throws Exception {
+		/** arrange */
+		// prepare data
+		Integer customerId = 1;
+		double subTotal = 1.15;
+		double total = subTotal + 3;
+		Integer orderId = 1;
+		CustomerOrder order = new CustomerOrder();
+		Map<Product, Integer> itemMap = new HashMap<Product, Integer>();
+		// mockito
+		Mockito.when(mockCustomerService.save(Mockito.any(Customer.class))).thenReturn(customerId);
+		Mockito.when(mockCart.calculateSubTotal()).thenReturn(subTotal);
+		Mockito.when(mockCart.calculateTotal(subTotal)).thenReturn(total);
+		Mockito.when(mockOrderService.save(customerId, total)).thenReturn(orderId);
+		Mockito.when(mockOrderService.getById(orderId)).thenReturn(order);
+		Mockito.when(mockCart.getItems()).thenReturn(itemMap);
 		
+		/** exercise & verify */
+		mockMvc.perform(post("/purchaseGuest").requestAttr("customer", new Customer()))
+				.andExpect(status().isOk())
+				.andExpect(model().attribute("subTotal", subTotal))
+				.andExpect(model().attribute("total", total))
+				.andExpect(model().attributeExists("order", "customer"))
+				.andExpect(model().attribute("itemMap", itemMap))
+				.andExpect(view().name("views/store/confirmation"));
+		Mockito.verify(mockCustomerService).save(Mockito.any(Customer.class));
+		Mockito.verify(mockCart).calculateSubTotal();
+		Mockito.verify(mockCart).calculateTotal(subTotal);
+		Mockito.verify(mockOrderService).save(customerId, total);
+		Mockito.verify(mockOrderService).getById(orderId);
+		Mockito.verify(mockCart).getItems();
+		Mockito.verify(mockOrderedProductService).save(order, itemMap);
+		Mockito.verify(mockCart).clear();
+	}
+	
+	/**
+	 * Test {@link FrontStoreController#purchaseMember(String, ModelMap)}
+	 */
+	@Test
+	public void purchaseMember() throws Exception {
+		/** arrange *//*
+		// prepare data
+		String email = "abc@co.uk";
+		Integer customerId = 1;
+		double subTotal = 1.15;
+		double total = subTotal + 3;
+		Integer orderId = 1;
+		CustomerOrder order = new CustomerOrder();
+		Map<Product, Integer> itemMap = new HashMap<Product, Integer>();
+		// mockito
+		Mockito.when(mockCustomerService.getByEmail(email)).thenAnswer(
+				new Answer<Customer>() {
+					public Customer answer(InvocationOnMock invocation) {
+						return new Customer();
+					}
+				});
+		
+		Mockito.when(mockCart.calculateSubTotal()).thenReturn(subTotal);
+		Mockito.when(mockCart.calculateTotal(subTotal)).thenReturn(total);
+		Mockito.when(mockOrderService.save(customerId, total)).thenReturn(orderId);
+		Mockito.when(mockOrderService.getById(orderId)).thenReturn(order);
+		Mockito.when(mockCart.getItems()).thenReturn(itemMap);
+		
+		*//** exercise & verify *//*
+		mockMvc.perform(post("/purchaseMember").param("email", email))
+				.andExpect(status().isOk())
+				.andExpect(model().attribute("subTotal", subTotal))
+				.andExpect(model().attribute("total", total))
+				.andExpect(model().attributeExists("customer"))
+				.andExpect(model().attribute("itemMap", itemMap))
+				.andExpect(view().name("views/store/confirmation"));
+		Mockito.verify(mockCustomerService).getByEmail(email);
+		Mockito.verify(mockCart).calculateSubTotal();
+		Mockito.verify(mockCart).calculateTotal(subTotal);
+		Mockito.verify(mockOrderService).save(customerId, total);
+		Mockito.verify(mockOrderService).getById(orderId);
+		Mockito.verify(mockCart).getItems();
+		Mockito.verify(mockOrderedProductService).save(order, itemMap);
+		Mockito.verify(mockCart).clear();*/
 	}
 	
 	/**
@@ -232,10 +304,15 @@ public class FrontStoreControllerTests {
 	@Test
 	public void validateMemberTrue() throws Exception {
 		String email = "abc@co.uk";
-		Customer customer = new Customer();
-		Mockito.when(mockCustomerService.getByEmail(email)).thenReturn(customer);
+		Mockito.when(mockCustomerService.getByEmail(email)).thenAnswer(
+				new Answer<Customer>() {
+					public Customer answer(InvocationOnMock invocation) {
+						return new Customer();
+					}
+				});
 		mockMvc.perform(post("/validateMember").param("email", email))				
 				.andExpect(status().isOk())
+				.andExpect(content().string("true"))
 				.andExpect(content().contentType("text/plain;charset=ISO-8859-1"));
 		Mockito.verify(mockCustomerService).getByEmail(email);
 	}
@@ -244,8 +321,9 @@ public class FrontStoreControllerTests {
 	public void validateMemberFalse() throws Exception {
 		String email = "abc@co.uk";
 		Mockito.when(mockCustomerService.getByEmail(email)).thenReturn(null);
-		mockMvc.perform(post("/validateMember").param("email", email))				
+		mockMvc.perform(post("/validateMember").param("email", email))
 				.andExpect(status().isOk())
+				.andExpect(content().string("false"))
 				.andExpect(content().contentType("text/plain;charset=ISO-8859-1"));
 		Mockito.verify(mockCustomerService).getByEmail(email);
 	}
@@ -255,8 +333,11 @@ public class FrontStoreControllerTests {
 	 */
 	@Test
 	public void getCartSize() throws Exception {
+		Integer quantity = 1;
+		Mockito.when(mockCart.sumQuantity()).thenReturn(quantity);
 		mockMvc.perform(get("/getCartSize"))				
 				.andExpect(status().isOk())
+				.andExpect(content().string(quantity.toString()))
 				.andExpect(content().contentType("text/plain;charset=ISO-8859-1"));
 		Mockito.verify(mockCart).sumQuantity();
 	}
