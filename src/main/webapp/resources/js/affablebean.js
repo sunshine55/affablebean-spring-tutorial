@@ -14,67 +14,59 @@
 		$(this).tab('show');
 	});
 	
+	/* Add to cart AJAX action */
+	$("a[name='btnAddItem']").click(function(e) {
+		e.preventDefault();
+		$.ajax({
+			url: $(this).attr("href"),
+			success: function(response) {
+	            $("#nav-cart-size").html(response);
+	        }
+		});
+	});
+	
 	/* Forms validation */
-	$("#form-guest").validate({
-        rules: {
-            name: "required",
-            email: {
-                required: true,
-                email: true
-            },
-            phone: {
-                required: true,
-                phoneUS: true
-            },
-            address: {
-                required: true
-            },
-            ccNumber: {
-                required: true,
-                creditcard: true
-            }
-        },
-		submitHandler: function(form) {
-			$.ajax({
-				url: $('#validateUrl').val(),
-				data: "email=" + $('#form-guest').find('#email').val(),
-				type: "POST",
-				success: function(response) {
-					var content = '';
-					if (response === 'true') {
-						content += '<div class="alert alert-danger">The provided email was already used. You can purchase as our member.</div>';
-						$('#valid-guest').html(content);
-					} else {
-						$(form).unbind().submit();
-					}
-				}
-			});
-		}
-    });
-	
-	$("#form-member").validate({
-        rules: {
-            email: {
-                required: true,
-                email: true
-            }
-        },
-        submitHandler: function(form) {
-    		$.ajax({
-    			url: $('#validateUrl').val(),
-    			data: "email=" + $('#form-member').find('#email').val(),
-    			type: "POST",
-    			success: function(response) {
-    				var content = '';
-    				if (response === 'false') {
-    					content = '<div class="alert alert-danger">The provided email is invalid. You have to register.</div>';
-    					$('#valid-member').html(content);
-    				} else {
-    					$(form).unbind().submit();
-    				}
-    			}
-    		});
-        }
-    });
-	
+	$("form[id*='purchase-']").each(function() {
+		$(this).validate({
+			rules: {
+	            name: "required",
+	            email: {
+	                required: true,
+	                email: true
+	            },
+	            phone: "required",
+	            address: "required",
+	            ccNumber: {
+	                required: true,
+	                creditcard: true
+	            }
+	        },
+	        submitHandler: function(form) {
+	        	$(form).ajaxSubmit({
+	        		url: $("#validateUrl").val(),
+	        		data: "email=" + $(form).find('#email').val(),
+	        		type: "POST",
+	        		success: function(resValid) {
+	        			var content = '';
+	        			if ($(form).attr("id") === 'purchase-guest'){
+	        				if (resValid === 'true') {
+	        					content += '<div class="alert alert-danger">The provided email was already used. You can purchase as our member.</div>';
+	    						$('#valid-guest').html(content);
+	        				} else {
+	        					form.submit();
+	        				}
+	        			} else {
+	        				if (resValid === 'true') {
+	        					form.submit();
+	        				} else {
+	        					content = '<div class="alert alert-danger">The provided email is invalid. You have to register.</div>';
+	        					$('#valid-member').html(content);
+	        				} 
+	        			}
+	        		}
+	        	});
+	        }
+		});
+	});
+
 })(jQuery);

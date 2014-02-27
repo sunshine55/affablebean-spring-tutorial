@@ -5,4 +5,5 @@
 <script type="text/javascript" src="#springUrl('/resources/js/jquery-1.10.2.min.js')"></script>
 <script type="text/javascript" src="#springUrl('/resources/js/bootstrap.min.js')"></script>
 <script type="text/javascript" src="#springUrl('/resources/js/plugins/jquery.validate.min.js')"></script>
+<script type="text/javascript" src="#springUrl('/resources/js/plugins/jquery.form.min.js')"></script>
 <script type="text/javascript" src="#springUrl('/resources/js/affablebean.js')"></script>

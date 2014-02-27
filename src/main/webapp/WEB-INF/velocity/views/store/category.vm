@@ -30,7 +30,7 @@
 					<div class="caption">
 				        <p><b>Name:</b> $product.name</p>
 				        <p><b>Price:</b> $product.price USD</p>
-				        <p><a href="#springUrl("/addToCart?id=${product.id}")" class="btn btn-primary">Add to cart</a></p>
+				        <p><a name="btnAddItem" href="#springUrl("/addToCart?id=${product.id}")" class="btn btn-primary">Add to cart</a></p>
 				    </div>
 				</div>
 			</div>
