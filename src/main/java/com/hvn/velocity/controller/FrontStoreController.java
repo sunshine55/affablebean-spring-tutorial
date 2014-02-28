@@ -116,7 +116,7 @@ public class FrontStoreController {
 	}
 	
 	@RequestMapping(value = "/purchaseGuest", method = RequestMethod.POST)
-    public String purchaseMember(@ModelAttribute("customer") Customer customer, ModelMap mm) {
+    public String purchaseGuest(@ModelAttribute("customer") Customer customer, ModelMap mm) {
             // 1. Save customer (customer)
             Integer customerId = customerService.save(customer);
             
@@ -141,7 +141,7 @@ public class FrontStoreController {
     }
     
     @RequestMapping(value = "/purchaseMember", method = RequestMethod.POST)
-    public String purchaseGuest(@RequestParam("email") String email, ModelMap mm) {
+    public String purchaseMember(@RequestParam("email") String email, ModelMap mm) {
             // 1. Get id
             Customer customer = customerService.getByEmail(email);
             Integer customerId = customer.getId();
