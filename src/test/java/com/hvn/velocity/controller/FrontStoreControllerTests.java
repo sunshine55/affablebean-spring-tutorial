@@ -32,9 +32,9 @@ import com.hvn.velocity.domain.CustomerOrder;
 import com.hvn.velocity.domain.Product;
 import com.hvn.velocity.service.CategoryService;
 import com.hvn.velocity.service.CustomerService;
-import com.hvn.velocity.service.ProductService;
 import com.hvn.velocity.service.OrderService;
 import com.hvn.velocity.service.OrderedProductService;
+import com.hvn.velocity.service.ProductService;
 import com.hvn.velocity.session.Cart;
 import com.hvn.velocity.util.RegionHashMap;
 
@@ -222,7 +222,7 @@ public class FrontStoreControllerTests {
 		// prepare data
 		Integer customerId = 1;
 		double subTotal = 1.15;
-		double total = subTotal + 3;
+		double total = subTotal + 3;		
 		Integer orderId = 1;
 		CustomerOrder order = new CustomerOrder();
 		Map<Product, Integer> itemMap = new HashMap<Product, Integer>();
@@ -235,12 +235,13 @@ public class FrontStoreControllerTests {
 		Mockito.when(mockCart.getItems()).thenReturn(itemMap);
 		
 		/** exercise & verify */
-		mockMvc.perform(post("/purchaseGuest").requestAttr("customer", new Customer()))
+		mockMvc.perform(post("/purchaseGuest").sessionAttr("customer", new Customer()))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("subTotal", subTotal))
 				.andExpect(model().attribute("total", total))
-				.andExpect(model().attributeExists("order", "customer"))
-				.andExpect(model().attribute("itemMap", itemMap))
+				.andExpect(model().attribute("order", order))
+				.andExpect(model().attributeExists("customer"))
+				.andExpect(model().attributeExists("itemMap"))
 				.andExpect(view().name("views/store/confirmation"));
 		Mockito.verify(mockCustomerService).save(Mockito.any(Customer.class));
 		Mockito.verify(mockCart).calculateSubTotal();
@@ -259,21 +260,16 @@ public class FrontStoreControllerTests {
 	public void purchaseMember() throws Exception {
 		/** arrange *//*
 		// prepare data
-		String email = "abc@co.uk";
+		String email = "abc@co.uk";		
 		Integer customerId = 1;
+		Customer customer = new Customer();
 		double subTotal = 1.15;
-		double total = subTotal + 3;
+		double total = subTotal + 3;		
 		Integer orderId = 1;
 		CustomerOrder order = new CustomerOrder();
 		Map<Product, Integer> itemMap = new HashMap<Product, Integer>();
 		// mockito
-		Mockito.when(mockCustomerService.getByEmail(email)).thenAnswer(
-				new Answer<Customer>() {
-					public Customer answer(InvocationOnMock invocation) {
-						return new Customer();
-					}
-				});
-		
+		Mockito.when(mockCustomerService.getByEmail(email)).thenReturn(customer);
 		Mockito.when(mockCart.calculateSubTotal()).thenReturn(subTotal);
 		Mockito.when(mockCart.calculateTotal(subTotal)).thenReturn(total);
 		Mockito.when(mockOrderService.save(customerId, total)).thenReturn(orderId);
@@ -281,12 +277,12 @@ public class FrontStoreControllerTests {
 		Mockito.when(mockCart.getItems()).thenReturn(itemMap);
 		
 		*//** exercise & verify *//*
-		mockMvc.perform(post("/purchaseMember").param("email", email))
+		mockMvc.perform(post("/purchaseGuest").param("email", email))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("subTotal", subTotal))
 				.andExpect(model().attribute("total", total))
-				.andExpect(model().attributeExists("customer"))
-				.andExpect(model().attribute("itemMap", itemMap))
+				.andExpect(model().attributeExists("order", "customer"))
+				.andExpect(model().attributeExists("itemMap"))
 				.andExpect(view().name("views/store/confirmation"));
 		Mockito.verify(mockCustomerService).getByEmail(email);
 		Mockito.verify(mockCart).calculateSubTotal();
