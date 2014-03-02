@@ -55,9 +55,9 @@ public class CategoryServiceTests {
 		List<Category> categoryList = Arrays.asList(new Category());
 		Mockito.when(mockCategoryDao.findAll()).thenReturn(categoryList);
 		// exercise
-		List<Category> expectedCategoryList = service.getAll();
+		List<Category> expectedList = service.getAll();
 		// verify
-		assertThat(expectedCategoryList).isEqualTo(categoryList);
+		assertThat(expectedList).isEqualTo(categoryList);
 		Mockito.verify(mockCategoryDao).findAll();
 	}
 
