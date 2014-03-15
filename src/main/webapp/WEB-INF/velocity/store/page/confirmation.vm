@@ -1,4 +1,4 @@
-#set($layout = "layout/store.vm")
+#set($layout = "store/layout/main.vm")
 
 #define($content)
 

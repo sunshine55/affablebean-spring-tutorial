@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		#parse('/views/admin/fragment/head.vm')
+		#parse('/admin/template/head.vm')
 	</head>
 
 	<body>
@@ -9,7 +9,7 @@
 			$!content
     	</div>
 
-		#parse('/views/admin/fragment/foot.vm')
+		#parse('/admin/template/foot.vm')
 
 	</body>
 

@@ -1,4 +1,4 @@
-#set($layout = "layout/store.vm")
+#set($layout = "store/layout/main.vm")
 
 #define($content)
 
@@ -49,7 +49,7 @@
 					<tbody>
 					#foreach($item in $itemMap.entrySet())
 						<tr>
-							<td><img src="#springUrl("/resources/img/products/${item.key.getName()}.png")"></td>
+							<td><img src="#springUrl("/resources/upload/products/${item.key.getName()}.png")"></td>
 							<td>${item.key.getName()}</td>
 							<td>${item.key.getPrice()} USD per Unit</td>
 							<td>

@@ -1,0 +1,9 @@
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<script type="text/javascript" src="#springUrl('/resources/velocity/js/jquery-1.10.2.min.js')"></script>
+<script type="text/javascript" src="#springUrl('/resources/velocity/js/bootstrap.min.js')"></script>
+<script type="text/javascript" src="#springUrl('/resources/velocity/js/plugins/jquery.validate.min.js')"></script>
+<script type="text/javascript" src="#springUrl('/resources/velocity/js/plugins/jquery.form.min.js')"></script>
+<script type="text/javascript" src="#springUrl('/resources/velocity/js/affablebean.js')"></script>

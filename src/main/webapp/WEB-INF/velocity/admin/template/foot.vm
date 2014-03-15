@@ -1,0 +1,9 @@
+<!-- external javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="#springUrl('/resources/velocity/js/jquery-1.10.2.min.js')"></script>
+<script type="text/javascript" src="#springUrl('/resources/velocity/js/bootstrap.min.js')"></script>
+<script type="text/javascript" src="#springUrl('/resources/velocity/js/plugins/jquery.metisMenu.js')"></script>
+<script type="text/javascript" src="#springUrl('/resources/velocity/js/plugins/jquery.dataTables.min.js')"></script>
+<script type="text/javascript" src="#springUrl('/resources/velocity/js/plugins/dataTables.bootstrap.js')"></script>
+<script type="text/javascript" src="#springUrl('/resources/velocity/js/sb-admin.js')"></script>

@@ -1,4 +1,4 @@
-#set($layout = "layout/store.vm")
+#set($layout = "store/layout/main.vm")
 
 #define($content)
 
@@ -26,7 +26,7 @@
 		#foreach($product in $productList)
 			<div class="col-xs-12 col-md-3">
 				<div class="thumbnail">
-					<img class="img-responsive" src="#springUrl("/resources/img/products/${product.name}.png")">
+					<img class="img-responsive" src="#springUrl("/resources/upload/products/${product.name}.png")">
 					<div class="caption">
 				        <p><b>Name:</b> $product.name</p>
 				        <p><b>Price:</b> $product.price USD</p>

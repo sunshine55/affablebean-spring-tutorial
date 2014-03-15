@@ -21,8 +21,8 @@
 		<property name="exposeSpringMacroHelpers" value="true" />
 		<property name="mappings">
 			<map>
-				<entry key="admin/*" value="layout/admin.vm" />
-				<entry key="*" value="layout/store.vm" />
+				<entry key="admin/*" value="admin/layout/main.vm" />
+				<entry key="*" value="store/layout/main.vm" />
 			</map>
 		</property>
 		<property name="attributesMap">

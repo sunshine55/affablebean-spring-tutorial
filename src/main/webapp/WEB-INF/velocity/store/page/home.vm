@@ -1,4 +1,4 @@
-#set($layout = "layout/store.vm")
+#set($layout = "store/layout/main.vm")
 
 #define($content)
 
@@ -23,7 +23,7 @@
 			<div class="col-xs-12 col-md-6">
 				<div class="thumbnail">
 					<a href="#springUrl("/category?id=${category.id}")">
-						<img class="img-responsive" src="#springUrl("/resources/img/products/${category.name}.jpg")">
+						<img class="img-responsive" src="#springUrl("/resources/upload/products/${category.name}.jpg")">
 					</a>
 					<div class="caption">
 				        <h4>$category.name.toUpperCase()</h4>

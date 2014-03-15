@@ -1,4 +1,4 @@
-#set($layout = "layout/auth.vm")
+#set($layout = "admin/layout/auth.vm")
 
 #define($content)
 
