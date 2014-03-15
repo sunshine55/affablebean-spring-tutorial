@@ -71,7 +71,7 @@ public class AdminConsoleControllerTests {
 		mockMvc.perform(get("/admin/login").param("error", "true"))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("message", "Login Failed!"))
-				.andExpect(view().name("views/admin/login"));
+				.andExpect(view().name("admin/page/login"));
 	}
 
 	@Test
@@ -79,7 +79,7 @@ public class AdminConsoleControllerTests {
 		mockMvc.perform(get("/admin/login").param("error", "false"))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("message", false))
-				.andExpect(view().name("views/admin/login"));
+				.andExpect(view().name("admin/page/login"));
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class AdminConsoleControllerTests {
 		mockMvc.perform(get("/admin"))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("customerList", customerList))
-				.andExpect(view().name("views/admin/customer"));
+				.andExpect(view().name("admin/page/customer"));
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class AdminConsoleControllerTests {
 		mockMvc.perform(get("/admin/member"))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("memberList", memberList))
-				.andExpect(view().name("views/admin/member"));
+				.andExpect(view().name("admin/page/member"));
 	}
 	
 	/**
@@ -118,7 +118,7 @@ public class AdminConsoleControllerTests {
 		mockMvc.perform(get("/admin/order"))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("orderList", orderList))
-				.andExpect(view().name("views/admin/order"));
+				.andExpect(view().name("admin/page/order"));
 	}
 	
 }

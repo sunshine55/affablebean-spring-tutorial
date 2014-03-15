@@ -90,7 +90,7 @@ public class FrontStoreControllerTests {
 		mockMvc.perform(get("/"))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("categoryList", categoryList))
-				.andExpect(view().name("views/store/home"));
+				.andExpect(view().name("store/page/home"));
 	}
 	
 	/**
@@ -118,7 +118,7 @@ public class FrontStoreControllerTests {
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("productList", productList))
 				.andExpect(model().attribute("categoryList", categoryList))
-				.andExpect(view().name("views/store/category"));
+				.andExpect(view().name("store/page/category"));
 		Mockito.verify(mockProductService).getByCategoryId(categoryId);
 	}
 
@@ -138,7 +138,7 @@ public class FrontStoreControllerTests {
 				.andExpect(model().attribute("itemMap", itemMap))
 				.andExpect(model().attribute("subTotal", subTotal))
 				.andExpect(model().attribute("numOfItems", numOfItems))
-				.andExpect(view().name("views/store/cart"));
+				.andExpect(view().name("store/page/cart"));
 	}
 	
 	/**
@@ -193,7 +193,7 @@ public class FrontStoreControllerTests {
 		mockMvc.perform(get("/checkout"))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("subTotal", subTotal))
-				.andExpect(view().name("views/store/checkout"));
+				.andExpect(view().name("store/page/checkout"));
 	}
 	
 	@Test
@@ -209,7 +209,7 @@ public class FrontStoreControllerTests {
 				.andExpect(model().attribute("total", total))
 				.andExpect(model().attributeExists("customer"))
 				.andExpect(model().attribute("cityRegion", cityRegion))
-				.andExpect(view().name("views/store/checkout"));
+				.andExpect(view().name("store/page/checkout"));
 		Mockito.verify(mockCart).calculateTotal(subTotal);
 	}
 
@@ -242,7 +242,7 @@ public class FrontStoreControllerTests {
 				.andExpect(model().attribute("order", order))
 				.andExpect(model().attributeExists("customer"))
 				.andExpect(model().attributeExists("itemMap"))
-				.andExpect(view().name("views/store/confirmation"));
+				.andExpect(view().name("store/page/confirmation"));
 		Mockito.verify(mockCustomerService).save(Mockito.any(Customer.class));
 		Mockito.verify(mockCart).calculateSubTotal();
 		Mockito.verify(mockCart).calculateTotal(subTotal);
