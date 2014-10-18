@@ -25,8 +25,8 @@ public class CustomerDao {
 	}
 
 	public Customer findByEmail(String email) {
-		Session session = sessionFactory.getCurrentSession();
-		Customer customer = (Customer) session.createCriteria(Customer.class)
+		Customer customer = (Customer) sessionFactory.getCurrentSession()
+				.createCriteria(Customer.class)
 				.add(Restrictions.eq("email", email))
 				.setMaxResults(1)
 				.uniqueResult();
@@ -34,8 +34,7 @@ public class CustomerDao {
 	}
 	
 	public Integer save(Customer customer) {
-		Session session = sessionFactory.getCurrentSession();
-		return (Integer) session.save(customer);
+		return (Integer) sessionFactory.getCurrentSession().save(customer);
 	}
 
 }
