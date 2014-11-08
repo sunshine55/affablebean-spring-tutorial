@@ -1,5 +1,5 @@
 --
--- Sample data for table `product`
+-- Sample data for table `category`
 --
 INSERT INTO `category` (`name`) VALUES ('dairy'),('meats'),('bakery'),('fruit & veg');
 
