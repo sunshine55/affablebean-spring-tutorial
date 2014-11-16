@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="store/layouts/default">
+<body>
+	<div class="container" layout:fragment="content">
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<div class="jumbotron">
+					<h1>Affable Spring Bean!</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-md-4">
+				<div class="jumbotron">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						Suspendisse dictum velit augue, pellentesque tincidunt nunc
+						convallis sed. Aliquam sit amet tempus quam. Vivamus sodales leo
+						dui.</p>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-8">
+				<div class="row">
+					<div class="col-xs-12 col-md-6" th:each="category : ${categoryList}">
+						<div class="thumbnail">
+							<a th:href="@{/category(id=${category.id})}">
+							
+								<img class="img-responsive" th:src="@{|/resources/upload/products/${category.name}.jpg|}" />
+							</a>
+							<div class="caption">
+								<h4 th:text="${#strings.toUpperCase(category.name)}">Category Name</h4>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+									sed do eiusmod tempor incididunt.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -50,7 +50,7 @@ public class FrontStoreController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(ModelMap mm) {
 		mm.put("categoryList", categoryService.getAll());
-		return "store/page/home";
+		return "store/home";
 	}
 	
 	@RequestMapping(value = "/category", method = RequestMethod.GET)
@@ -58,7 +58,7 @@ public class FrontStoreController {
 		mm.put("productList", productService.getByCategoryId(id));
 		mm.put("categoryList", categoryService.getAll());
 		mm.put("id", id);
-		return "store/page/category";
+		return "store/category";
 	}
 	
 	/**
@@ -72,7 +72,7 @@ public class FrontStoreController {
 		mm.put("itemMap", itemMap);
 		mm.put("numOfItems", numOfItems);
 		mm.put("subTotal", subTotal);
-		return "store/page/cart";
+		return "store/cart";
 	}
 
 	@RequestMapping(value = "/addToCart", method = RequestMethod.GET)
@@ -112,7 +112,7 @@ public class FrontStoreController {
 			mm.put("customer", new Customer());
 			mm.put("cityRegion", cityRegion);
 		}
-		return "store/page/checkout";
+		return "store/checkout";
 	}
 	
 	@RequestMapping(value = "/purchaseGuest", method = RequestMethod.POST)
@@ -163,7 +163,7 @@ public class FrontStoreController {
             mm.put("itemMap", itemMap);
             
             cart.clear();
-            return "store/page/confirmation";
+            return "store/confirmation";
     }
 	
 	/**
