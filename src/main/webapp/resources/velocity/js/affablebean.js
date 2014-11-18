@@ -15,10 +15,10 @@
 	});
 	
 	/* Add to cart AJAX action */
-	$("a[name='btnAddItem']").click(function(e) {
+	$("a[title^=addItem]").click(function(e) {
 		e.preventDefault();
 		$.ajax({
-			url: $(this).attr("href"),
+			url: $(this).attr('href'),
 			success: function(response) {
 	            $("#nav-cart-size").html(response);
 	        }
