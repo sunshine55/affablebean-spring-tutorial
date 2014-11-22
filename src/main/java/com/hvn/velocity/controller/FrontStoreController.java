@@ -136,7 +136,7 @@ public class FrontStoreController {
             mm.put("itemMap", itemMap);
             
             cart.clear();
-            return "front_store/page/confirmation";
+            return "front_store/confirmation";
     }
     
     @RequestMapping(value = "/purchaseMember", method = RequestMethod.POST)
