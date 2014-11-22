@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-	layout:decorator="store/layouts/default">
+	layout:decorator="layouts/default">
 <body>
 	<div class="container" layout:fragment="content">
 		<div class="row" th:switch="${itemMap.size()}">
@@ -50,7 +50,6 @@
 								<td th:text="|${item.key.getPrice()} USD per Unit|"></td>
 								<td>
 									<form th:action="@{/updateCart}" method="POST" class="form-inline">
-										<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 										<div class="form-group">
 											<input type="hidden" name="id" th:value="${item.key.getId()}" />
 											<input class="form-control" type="text" name="quantity"	th:value="${item.value}" size="2" maxlength="2" />

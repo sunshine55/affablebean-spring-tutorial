@@ -50,7 +50,7 @@ public class FrontStoreController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(ModelMap mm) {
 		mm.put("categoryList", categoryService.getAll());
-		return "store/home";
+		return "front_store/home";
 	}
 	
 	@RequestMapping(value = "/category", method = RequestMethod.GET)
@@ -58,7 +58,7 @@ public class FrontStoreController {
 		mm.put("productList", productService.getByCategoryId(id));
 		mm.put("categoryList", categoryService.getAll());
 		mm.put("id", id);
-		return "store/category";
+		return "front_store/category";
 	}
 	
 	/**
@@ -72,7 +72,7 @@ public class FrontStoreController {
 		mm.put("itemMap", itemMap);
 		mm.put("numOfItems", numOfItems);
 		mm.put("subTotal", subTotal);
-		return "store/cart";
+		return "front_store/cart";
 	}
 
 	@RequestMapping(value = "/addToCart", method = RequestMethod.GET)
@@ -99,20 +99,19 @@ public class FrontStoreController {
 	 * Checkout
 	 */
 	@RequestMapping(value = "/checkout", method = RequestMethod.GET)
-	public String checkout(ModelMap mm) {
+	public String checkout(Customer customer, ModelMap mm) {
 		double subTotal = cart.calculateSubTotal();
 		if (subTotal == 0) {
 			mm.put("subTotal", subTotal);
 		} else {
 			double total = cart.calculateTotal(subTotal);
 			RegionHashMap regionHashMap = new RegionHashMap();
-			Map<String, String> cityRegion = regionHashMap.getCityRegion();
+			Map<String, String> regions = regionHashMap.getCityRegion();
 			mm.put("subTotal", subTotal);
 			mm.put("total", total);
-			mm.put("customer", new Customer());
-			mm.put("cityRegion", cityRegion);
+			mm.put("regions", regions);
 		}
-		return "store/checkout";
+		return "front_store/checkout";
 	}
 	
 	@RequestMapping(value = "/purchaseGuest", method = RequestMethod.POST)
@@ -137,7 +136,7 @@ public class FrontStoreController {
             mm.put("itemMap", itemMap);
             
             cart.clear();
-            return "store/page/confirmation";
+            return "front_store/page/confirmation";
     }
     
     @RequestMapping(value = "/purchaseMember", method = RequestMethod.POST)
@@ -163,7 +162,7 @@ public class FrontStoreController {
             mm.put("itemMap", itemMap);
             
             cart.clear();
-            return "store/confirmation";
+            return "front_store/confirmation";
     }
 	
 	/**
