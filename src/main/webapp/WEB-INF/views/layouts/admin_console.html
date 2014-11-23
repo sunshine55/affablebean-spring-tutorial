@@ -27,10 +27,66 @@
 	<title>Affable Spring Bean</title>
 </head>
 <body>
-	<div class="container" layout:fragment="content">
-		<section><h1>GUTEN MORGEN!!!</h1></section>
+	<div id="wrapper">
+		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class="navbar-brand">AffableBean Admin Console</div>
+			</div>
+			<ul class="nav navbar-top-links navbar-right">
+				<li class="dropdown">
+					<a th:href="@{/admin/logout}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+				</li>
+			</ul>
+		</nav>
+
+		<nav class="navbar-default navbar-static-side" role="navigation">
+			<div class="sidebar-collapse">
+				<ul class="nav" id="side-menu">
+					<li class="sidebar-search">
+						<div class="input-group custom-search-form">
+							<input type="text" class="form-control" placeholder="Search..." />
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button">
+									<i class="fa fa-search"></i>
+								</button>
+							</span>
+						</div>
+					</li>
+					<li sec:authorize="hasRole('ROLE_ADMIN')">
+						<a href="#"><i class="fa fa-group fa-fw"></i> Administrator<span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+							<li><a th:href="@{/admin/member}">Member</a></li>
+						</ul>
+					</li>
+					<li sec:authorize="hasRole('ROLE_USER')">
+						<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>	Sale Management<span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+							<li><a th:href="@{/admin}">Customer</a></li>
+							<li><a th:href="@{/admin/order}">Order</a></li>
+						</ul>
+					</li>
+					<li sec:authorize="hasRole('ROLE_USER')">
+						<a href="#"><i class="fa fa-shopping-cart fa-fw"></i> Store Management<span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+							<li><a href="#">Category</a></li>
+							<li><a href="#">Product</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div id="page-wrapper" layout:fragment="content">
+			<section><h1>GUTEN MORGEN!!!</h1></section>
+		</div>
 	</div>
-	
+
 	<script type="text/javascript" th:src="@{/resources/velocity/js/jquery-1.10.2.min.js}"></script>
 	<script type="text/javascript" th:src="@{/resources/velocity/js/bootstrap.min.js}"></script>
 	<script type="text/javascript" th:src="@{/resources/velocity/js/plugins/jquery.metisMenu.js}"></script>
