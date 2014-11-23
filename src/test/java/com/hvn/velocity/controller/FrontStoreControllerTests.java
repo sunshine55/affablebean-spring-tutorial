@@ -90,7 +90,7 @@ public class FrontStoreControllerTests {
 		mockMvc.perform(get("/"))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("categoryList", categoryList))
-				.andExpect(view().name("store/page/home"));
+				.andExpect(view().name("front_store/home"));
 	}
 	
 	/**
@@ -118,7 +118,7 @@ public class FrontStoreControllerTests {
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("productList", productList))
 				.andExpect(model().attribute("categoryList", categoryList))
-				.andExpect(view().name("store/page/category"));
+				.andExpect(view().name("front_store/category"));
 		Mockito.verify(mockProductService).getByCategoryId(categoryId);
 	}
 
@@ -138,7 +138,7 @@ public class FrontStoreControllerTests {
 				.andExpect(model().attribute("itemMap", itemMap))
 				.andExpect(model().attribute("subTotal", subTotal))
 				.andExpect(model().attribute("numOfItems", numOfItems))
-				.andExpect(view().name("store/page/cart"));
+				.andExpect(view().name("front_store/cart"));
 	}
 	
 	/**
@@ -193,14 +193,14 @@ public class FrontStoreControllerTests {
 		mockMvc.perform(get("/checkout"))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("subTotal", subTotal))
-				.andExpect(view().name("store/page/checkout"));
+				.andExpect(view().name("front_store/checkout"));
 	}
 	
 	@Test
 	public void checkoutFullCart() throws Exception {
 		double subTotal = 3.05;
 		double total = subTotal + 3;
-		Map<String, String> cityRegion = new RegionHashMap().getCityRegion();
+		Map<String, String> regions = new RegionHashMap().getCityRegion();
 		Mockito.when(mockCart.calculateSubTotal()).thenReturn(subTotal);
 		Mockito.when(mockCart.calculateTotal(subTotal)).thenReturn(total);
 		mockMvc.perform(get("/checkout"))
@@ -208,8 +208,8 @@ public class FrontStoreControllerTests {
 				.andExpect(model().attribute("subTotal", subTotal))
 				.andExpect(model().attribute("total", total))
 				.andExpect(model().attributeExists("customer"))
-				.andExpect(model().attribute("cityRegion", cityRegion))
-				.andExpect(view().name("store/page/checkout"));
+				.andExpect(model().attribute("regions", regions))
+				.andExpect(view().name("front_store/checkout"));
 		Mockito.verify(mockCart).calculateTotal(subTotal);
 	}
 
@@ -242,7 +242,7 @@ public class FrontStoreControllerTests {
 				.andExpect(model().attribute("order", order))
 				.andExpect(model().attributeExists("customer"))
 				.andExpect(model().attributeExists("itemMap"))
-				.andExpect(view().name("store/page/confirmation"));
+				.andExpect(view().name("front_store/confirmation"));
 		Mockito.verify(mockCustomerService).save(Mockito.any(Customer.class));
 		Mockito.verify(mockCart).calculateSubTotal();
 		Mockito.verify(mockCart).calculateTotal(subTotal);

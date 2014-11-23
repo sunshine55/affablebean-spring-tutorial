@@ -13,10 +13,10 @@
 		<intercept-url pattern="/admin/logout" access="permitAll"/>
 		<intercept-url pattern="/admin/member" access="hasRole('ROLE_ADMIN')"/>
 		<!-- <intercept-url pattern="/admin/role" access="hasRole('ROLE_ADMIN')"/>
-		<intercept-url pattern="/admin/order" access="hasRole('ROLE_USER')"/>
 		<intercept-url pattern="/admin/category" access="hasRole('ROLE_USER')"/>
 		<intercept-url pattern="/admin/product" access="hasRole('ROLE_USER')"/> -->
 		<intercept-url pattern="/admin" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/admin/order" access="hasRole('ROLE_USER')"/>
 		
 		<form-login login-page="/admin/login" authentication-failure-url="/admin/login?error=true" default-target-url="/admin"/>
 		<logout invalidate-session="true" logout-success-url="/admin/login" logout-url="/admin/logout"/>

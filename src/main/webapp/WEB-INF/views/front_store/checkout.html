@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layouts/front_store">
+<body>
+	<div class="container" layout:fragment="content">
+		<div class="row" th:switch="${subTotal}">
+			<div class="col-xs-12 col-md-12" th:case="0">
+				<div class="jumbotron">
+					<h1>Affable Spring Bean!</h1>
+					<p>There's no item in your shopping cart!</p>
+					<p><a th:href="@{/}" class="btn btn-warning">Keep Shopping</a></p>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-12" th:case="*">
+				<div class="jumbotron">
+					<h1>Affable Spring Bean!</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row" th:unless="${subTotal == 0}">
+			<div class="col-xs-12 col-md-6">
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+						<div class="well">
+							<ul>
+								<li><b>Next-day delivery is guaranteed.</b></li>
+								<li><b>A &#36;3.00 delivery surcharge is applied to all	purchase order.</b></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-sm-4 text-right">
+										<strong>Subtotal:</strong>
+									</div>
+									<div class="col-sm-8 text-right" th:text="|${subTotal} USD|"></div>
+								</div>
+								<div class="row">
+									<div class="col-sm-4 text-right">
+										<strong>Delivery surcharge:</strong>
+									</div>
+									<div class="col-sm-8 text-right">3.00 USD</div>
+								</div>
+							</div>
+							<div class="panel-footer">
+								<div class="row">
+									<div class="col-sm-4 text-right">
+										<strong>Total:</strong>
+									</div>
+									<div class="col-sm-8 text-right" th:text="|${total} USD|"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-6">
+				<ul class="nav nav-tabs" id="checkout-tab">
+					<li class="active"><a data-toggle="tab" href="#member">Member</a></li>
+					<li class=""><a data-toggle="tab" href="#guest">Register</a></li>
+				</ul>
+				<div id="checkoutTabContent" class="tab-content well-lg" th:object="${customer}">
+					<input type="hidden" id="validateUrl" th:value="@{/validateMember}" />
+					<div id="member" class="tab-pane fade in active">
+						<div id="valid-member"></div>
+						<form id="purchase-member" th:action="@{/purchaseMember}" method="POST" class="form-horizontal">
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Email</label>
+								<div class="col-sm-10">
+									<input type="text" th:field="*{email}" class="form-control" placeholder="e.g.: example@mailinator.com" />
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10">
+									<button type="submit" class="btn btn-primary">Purchase</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div id="guest" class="tab-pane fade">
+						<div id="valid-guest"></div>
+						<form id="purchase-guest" th:action="@{/purchaseGuest}"	method="POST" class="form-horizontal">
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Name</label>
+								<div class="col-sm-9">
+									<input type="text" th:field="*{name}" class="form-control" placeholder="e.g.: Firstname Lastname" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Email</label>
+								<div class="col-sm-9">
+									<input type="text" th:field="*{email}" class="form-control" placeholder="e.g.: example@mailinator.com" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Phone</label>
+								<div class="col-sm-9">
+									<input type="text" th:field="*{phone}" class="form-control" placeholder="e.g.: 734-555-1212" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Address</label>
+								<div class="col-sm-9">
+									<input type="text" th:field="*{address}" class="form-control" placeholder="e.g.: 123 Ave., St.Peterburg" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Region</label>
+								<div class="col-sm-3">
+									<select th:field="*{cityRegion}" class="form-control">
+										<option th:each="regionKey : ${regions.keySet()}" th:value="${regionKey}" th:text="${regions.get(regionKey)}"></option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Credit Card</label>
+								<div class="col-sm-9">
+									<input type="text" th:field="*{ccNumber}" class="form-control" placeholder="e.g.: 0123456789101112131" />
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-3 col-sm-9">
+									<button type="submit" class="btn btn-primary">Purchase</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

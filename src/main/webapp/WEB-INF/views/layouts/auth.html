@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Netbeans e-commerce tutorial: Spring Velocity Bootstrap" />
+	<meta name="author" content="sunshine55 - a gist of github" />
+	
+	<!-- The styles -->
+	<link th:href="@{/resources/velocity/css/bootstrap.min.css}" rel="stylesheet" />
+	<link th:href="@{/resources/velocity/css/font-awesome.min.css}"	rel="stylesheet" />
+	<link th:href="@{/resources/velocity/css/plugins/dataTables.bootstrap.css}"	rel="stylesheet" />
+	<link th:href="@{/resources/velocity/css/sb-admin.css}" rel="stylesheet" />
+	
+	<!-- Fav and touch icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" th:href="@{/resources/velocity/img/apple-touch-icon-144-precomposed.png}" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" th:href="@{/resources/velocity/img/apple-touch-icon-114-precomposed.png}" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" th:href="@{/resources/velocity/img/apple-touch-icon-72-precomposed.png}" />
+	<link rel="apple-touch-icon-precomposed" th:href="@{/resources/velocity/img/apple-touch-icon-57-precomposed.png}" />
+	<link rel="shortcut icon" th:href="@{/resources/velocity/img/favicon.png}" />
+	
+	<title>Affable Spring Bean</title>
+</head>
+<body>
+	<div class="container" layout:fragment="content">
+		<section><h1>GUTEN MORGEN!!!</h1></section>
+	</div>
+	
+	<script type="text/javascript" th:src="@{/resources/velocity/js/jquery-1.10.2.min.js}"></script>
+	<script type="text/javascript" th:src="@{/resources/velocity/js/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/resources/velocity/js/plugins/jquery.metisMenu.js}"></script>
+	<script type="text/javascript" th:src="@{/resources/velocity/js/plugins/jquery.dataTables.min.js}"></script>
+	<script type="text/javascript" th:src="@{/resources/velocity/js/plugins/dataTables.bootstrap.js}"></script>
+	<script type="text/javascript" th:src="@{/resources/velocity/js/sb-admin.js}"></script>
+</body>
+</html>

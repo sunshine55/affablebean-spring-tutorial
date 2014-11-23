@@ -3,33 +3,26 @@
 	xmlns="http://www.springframework.org/schema/beans"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
-	<!-- For displaying links in the UI based on the logged in user roles -->
-	<bean id ="velocitySecUser" class ="com.hvn.velocity.util.VelocitySecUser"/>
-	
-	<!-- Configure Velocity views resolver -->
-	<bean id="velocityConfig"
-		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
-		<property name="resourceLoaderPath" value="/WEB-INF/velocity/" />
+	<!-- Configure Thymeleaf views resolver -->
+	<bean id="templateResolver"
+		class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".html" />
+		<property name="templateMode" value="HTML5" />
 	</bean>
 
-	<bean id="viewResolver"
-		class="com.hvn.velocity.util.VelocityMultipleLayoutViewResolver">
-		<property name="cache" value="true" />
-		<property name="prefix" value="" />
-		<property name="suffix" value=".vm" />
-		<property name="contentType" value="text/html; charset=utf-8"></property>
-		<property name="exposeSpringMacroHelpers" value="true" />
-		<property name="mappings">
-			<map>
-				<entry key="admin/*" value="admin/layout/main.vm" />
-				<entry key="*" value="store/layout/main.vm" />
-			</map>
+	<bean id="templateEngine" class="org.thymeleaf.spring3.SpringTemplateEngine">
+		<property name="templateResolver" ref="templateResolver" />
+		<property name="additionalDialects">
+			<set>
+				<bean class="nz.net.ultraq.thymeleaf.LayoutDialect" />
+				<bean class="org.thymeleaf.extras.springsecurity3.dialect.SpringSecurityDialect" />
+			</set>
 		</property>
-		<property name="attributesMap">
-			<map>
-				<entry key="sec"><ref bean="velocitySecUser"/></entry>
-			</map>
-		</property>
+	</bean>
+
+	<bean class="org.thymeleaf.spring3.view.ThymeleafViewResolver">
+		<property name="templateEngine" ref="templateEngine" />
 	</bean>
 
 </beans>

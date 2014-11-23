@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layouts/front_store">
+<body>
+	<div class="container" layout:fragment="content">
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<div class="jumbotron">
+					<h1>Affable Spring Bean!</h1>
+					<p><strong>Your order has been successfully processed and will be delivered within 24 hours.</strong></p>
+					<p>Please keep a note on your confirmation number.</p>
+					<p>If you have any concerns, feel free to contact us.</p>
+					<p>Thank you for shopping!</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-md-6">
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">Order Summary</h3>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-sm-4 text-right">
+										<strong>Order reference:</strong>
+									</div>
+									<div class="col-sm-8 text-right" th:text="${order.confirmationNumber}"></div>
+								</div>
+								<div class="row">
+									<div class="col-sm-4 text-right">
+										<strong>Date processed:</strong>
+									</div>
+									<div class="col-sm-8 text-right" th:text="${order.dateCreated}"></div>
+								</div>
+								<div class="row">
+									<div class="col-sm-4 text-right">
+										<strong>Subtotal:</strong>
+									</div>
+									<div class="col-sm-8 text-right" th:text="|${subTotal} USD|"></div>
+								</div>
+								<div class="row">
+									<div class="col-sm-4 text-right">
+										<strong>Delivery surcharge:</strong>
+									</div>
+									<div class="col-sm-8 text-right">3.00 USD</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-4 text-right">
+										<strong>Total:</strong>
+									</div>
+									<div class="col-sm-8 text-right" th:text="|${total} USD|"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">Delivery Details</h3>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-sm-4 text-right">
+										<strong>Name:</strong>
+									</div>
+									<div class="col-sm-8 text-right" th:text="${customer.name}"></div>
+								</div>
+								<div class="row">
+									<div class="col-sm-4 text-right">
+										<strong>Email:</strong>
+									</div>
+									<div class="col-sm-8 text-right" th:text="${customer.email}"></div>
+								</div>
+								<div class="row">
+									<div class="col-sm-4 text-right">
+										<strong>Phone:</strong>
+									</div>
+									<div class="col-sm-8 text-right" th:text="${customer.phone}"></div>
+								</div>
+								<div class="row">
+									<div class="col-sm-4 text-right">
+										<strong>Address:</strong>
+									</div>
+									<div class="col-sm-8 text-right" th:text="${customer.address}"></div>
+								</div>
+								<div class="row">
+									<div class="col-sm-4 text-right">
+										<strong>Region:</strong>
+									</div>
+									<div class="col-sm-8 text-right" th:text="${customer.cityRegion}"></div>
+								</div>
+								<div class="row">
+									<div class="col-sm-4 text-right">
+										<strong>Credit card number:</strong>
+									</div>
+									<div class="col-sm-8 text-right" th:text="${customer.ccNumber}"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-6">
+				<div class="table-responsive">
+					<table class="table table-bordered">
+						<thead>
+							<tr class="active">
+								<th class="text-center">Name</th>
+								<th class="text-center">Price</th>
+								<th class="text-center">Quantity</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="item : ${itemMap.entrySet()}">
+								<td class="text-center" th:text="${item.key.getName()}"></td>
+								<td class="text-center" th:text="|${item.key.getPrice()} &#36;|"></td>
+								<td class="text-center" th:text="${item.value}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

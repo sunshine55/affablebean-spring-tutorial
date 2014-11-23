@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Netbeans e-commerce tutorial: Spring Velocity Bootstrap" />
+	<meta name="author" content="sunshine55 - a gist of github" />
+	
+	<link th:href="@{/resources/velocity/css/bootstrap.min.css}" rel="stylesheet" />
+	<link th:href="@{/resources/velocity/css/affablebean.css}" rel="stylesheet" />
+	
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" th:href="@{/resources/velocity/img/apple-touch-icon-144-precomposed.png}" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" th:href="@{/resources/velocity/img/apple-touch-icon-114-precomposed.png}" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" th:href="@{/resources/velocity/img/apple-touch-icon-72-precomposed.png}" />
+	<link rel="apple-touch-icon-precomposed" th:href="@{/resources/velocity/img/apple-touch-icon-57-precomposed.png}" />
+	<link rel="shortcut icon" th:href="@{/resources/velocity/img/favicon.png}" />
+	
+	<title>Affable Spring Bean</title>
+</head>
+<body>
+	<div id="wrap">
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" th:href="@{/}">AffableBean</a>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li>
+							<input id="getCartSize" type="hidden" th:value="@{/getCartSize}" />
+							<a th:href="@{/cart}"> Cart <span id="nav-cart-size" class="badge"></span></a>
+						</li>
+						<li><a th:href="@{/checkout}">Checkout &#x279f;</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle"	data-toggle="dropdown">Languages<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">English</a></li>
+								<li><a href="#">Deutschland</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		
+		<div class="container" layout:fragment="content">
+			<section><h1>GUTEN MORGEN!!!</h1></section>
+		</div>
+	</div>
+	
+	<div id="footer">
+		<div class="container">
+			<p class="text-muted credit">&copy; Developed by <a href="https://github.com/sunshine55?tab=repositories">sunshine55</a></p>
+		</div>
+	</div>
+	
+	<script type="text/javascript" th:src="@{/resources/velocity/js/jquery-1.10.2.min.js}"></script>
+	<script type="text/javascript" th:src="@{/resources/velocity/js/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/resources/velocity/js/plugins/jquery.validate.min.js}"></script>
+	<script type="text/javascript" th:src="@{/resources/velocity/js/plugins/jquery.form.min.js}"></script>
+	<script type="text/javascript" th:src="@{/resources/velocity/js/affablebean.js}"></script>
+</body>
+</html>

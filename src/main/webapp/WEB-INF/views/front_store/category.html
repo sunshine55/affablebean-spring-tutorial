@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layouts/front_store">
+<body>
+	<div class="container" layout:fragment="content">
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<div class="jumbotron">
+					<h1>Affable Spring Bean!</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-md-3">
+				<ul class="nav nav-pills nav-stacked">
+					<li th:each="category : ${categoryList}" th:class="${id} == ${category.id} ? 'active'">
+						<a th:href="@{/category(id=${category.id})}" th:text="${#strings.toUpperCase(category.name)}"></a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-xs-12 col-md-9">
+				<div class="row">
+					<div class="col-xs-12 col-md-3" th:each="product : ${productList}">
+						<div class="thumbnail">
+							<img class="img-responsive" th:src="@{|/resources/upload/products/${product.name}.png|}" />
+							<div class="caption">
+								<p>
+									<b>Name:</b> <span th:text="${product.name}"></span>
+								</p>
+								<p>
+									<b>Price:</b> <span th:text="|${product.price} USD|"></span>
+								</p>
+								<p>
+									<a th:title="|addItem::${product.id}|" th:href="@{/addToCart(id=${product.id})}" class="btn btn-primary">
+										Add to cart
+									</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
