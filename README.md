@@ -1,7 +1,7 @@
 Affable Bean Tutorial
 =====================
 
-Rewrite [Netbeans e-commerce tutorial](https://netbeans.org/kb/docs/javaee/ecommerce/intro.html) using Spring framework and Velocity + Bootstrap
+Rewrite [Netbeans e-commerce tutorial](https://netbeans.org/kb/docs/javaee/ecommerce/intro.html) using Spring framework
 
 1. Designing application:
    * Scenario
@@ -12,6 +12,7 @@ Rewrite [Netbeans e-commerce tutorial](https://netbeans.org/kb/docs/javaee/ecomm
    * IDE: [Spring Tool Suite](https://spring.io/tools/sts/all)
    * DBMS: MySQL
    * Create a new Spring MVC template project
+   * Template engine: Velocity or Thymeleaf; Layout: Bootstrap
 3. Preparing views and controllers (front-end).
 4. Designing data model:
    * Identify the entities and their relationships

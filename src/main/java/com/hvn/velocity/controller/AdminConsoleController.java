@@ -34,7 +34,7 @@ public class AdminConsoleController {
 		} else {
 			mm.put("message", false);
 		}
-		return "admin/page/login";
+		return "admin_console/login";
 	}
 	
 	/**
@@ -43,19 +43,19 @@ public class AdminConsoleController {
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String customerConsole(ModelMap mm) {
 		mm.put("customerList", customerService.getAll());
-		return "admin/page/customer";
+		return "admin_console/customer";
 	}
 	
 	@RequestMapping(value = "/member", method = RequestMethod.GET)
 	public String memberConsole(ModelMap mm) {
 		mm.put("memberList", memberService.getAll());
-		return "admin/page/member";
+		return "admin_console/member";
 	}
 	
 	@RequestMapping(value = "/order", method = RequestMethod.GET)
 	public String orderConsole(ModelMap mm) {
 		mm.put("orderList", orderService.getAll());
-		return "admin/page/order";
+		return "admin_console/order";
 	}
 	
 }
