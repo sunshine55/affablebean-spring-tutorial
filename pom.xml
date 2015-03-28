@@ -6,7 +6,6 @@
 	<artifactId>tutorial</artifactId>
 	<name>affablebean-spring-tutorial</name>
 	<packaging>war</packaging>
-	<version>development</version>
 	<properties>
 		<org.springframework-version>3.2.5.RELEASE</org.springframework-version>
 		<org.springsecurity-version>3.2.0.RELEASE</org.springsecurity-version>
@@ -251,4 +250,5 @@
 			</plugin>
 		</plugins>
 	</build>
+	<version>2.1.0</version>
 </project>
