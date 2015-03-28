@@ -2,8 +2,11 @@ package com.hvn.velocity.service;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import org.junit.After;
 import org.junit.Before;
@@ -51,16 +54,17 @@ public class OrderServiceTests {
 	 */
 	@Test
 	public void save() {
-		/*// arrange
+		// given
 		Integer customerId = 1;
 		double total = 4.05;
 		BigDecimal amount = new BigDecimal(total);
 		Date dateProcessed = new Date();
-		Mockito.when(mockOrderDao.save(customerId, amount, dateProcessed, (int) Mockito.anyInt())).thenReturn(0);
-		// exercise
+		int refNum = new Random().nextInt(999999999);
+		Mockito.when(mockOrderDao.save(customerId, amount, dateProcessed, refNum)).thenReturn(0);
+		// when
 		Integer expectedId = service.save(customerId, total);
-		// verify
-		assertThat(expectedId).isEqualTo(0);*/
+		// then
+		assertThat(expectedId).isEqualTo(0);
 	}
 
 	/**
@@ -68,12 +72,12 @@ public class OrderServiceTests {
 	 */
 	@Test
 	public void getAll() {
-		// arrange
+		// given
 		List<CustomerOrder> orderList = Arrays.asList(new CustomerOrder());
 		Mockito.when(mockOrderDao.findAll()).thenReturn(orderList);
-		// exercise
+		// when
 		List<CustomerOrder> expectedList = service.getAll();
-		// verify
+		// then
 		assertThat(expectedList).isEqualTo(orderList);
 		Mockito.verify(mockOrderDao).findAll();
 	}
@@ -83,13 +87,13 @@ public class OrderServiceTests {
 	 */
 	@Test
 	public void getById() {
-		// arrange
+		// given
 		CustomerOrder order = new CustomerOrder();
 		Integer orderId = 1;
 		Mockito.when(mockOrderDao.findById(orderId)).thenReturn(order);
-		// exercise
+		// when
 		CustomerOrder expectedCustomer = service.getById(orderId);
-		// verify
+		// then
 		assertThat(expectedCustomer).isEqualTo(order);
 		Mockito.verify(mockOrderDao).findById(orderId);
 	}

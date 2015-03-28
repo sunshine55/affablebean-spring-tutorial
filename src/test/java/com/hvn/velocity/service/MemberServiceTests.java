@@ -51,12 +51,12 @@ public class MemberServiceTests {
 	 */
 	@Test
 	public void getAll() {
-		// arrange
+		// given
 		List<Member> memberList = Arrays.asList(new Member());
 		Mockito.when(mockMemberDao.findAll()).thenReturn(memberList);
-		// exercise
+		// when
 		List<Member> expectedList = service.getAll();
-		// verify
+		// then
 		assertThat(expectedList).isEqualTo(memberList);
 		Mockito.verify(mockMemberDao).findAll();
 	}

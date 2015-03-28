@@ -51,13 +51,13 @@ public class CustomerServiceTests {
 	 */
 	@Test
 	public void save() {
-		// arrange
+		// given
 		Customer customer = new Customer();
 		Integer customerId = 1;
 		Mockito.when(mockCustomerDao.save(customer)).thenReturn(customerId);
-		// exercise
+		// when
 		Integer expectedId = service.save(customer);
-		// verify
+		// then
 		assertThat(expectedId).isEqualTo(customerId);
 		Mockito.verify(mockCustomerDao).save(customer);
 	}
@@ -67,12 +67,12 @@ public class CustomerServiceTests {
 	 */
 	@Test
 	public void getAll() {
-		// arrange
+		// given
 		List<Customer> customerList = Arrays.asList(new Customer());
 		Mockito.when(mockCustomerDao.findAll()).thenReturn(customerList);
-		// exercise
+		// when
 		List<Customer> expectedList = service.getAll();
-		// verify
+		// then
 		assertThat(expectedList).isEqualTo(customerList);
 		Mockito.verify(mockCustomerDao).findAll();
 	}
@@ -82,13 +82,13 @@ public class CustomerServiceTests {
 	 */
 	@Test
 	public void getById() {
-		// arrange
+		// given
 		Customer customer = new Customer();
 		Integer customerId = 1;
 		Mockito.when(mockCustomerDao.findById(customerId)).thenReturn(customer);
-		// exercise
+		// when
 		Customer expectedCustomer = service.getById(customerId);
-		// verify
+		// then
 		assertThat(expectedCustomer).isEqualTo(customer);
 		Mockito.verify(mockCustomerDao).findById(customerId);
 	}
@@ -98,13 +98,13 @@ public class CustomerServiceTests {
 	 */
 	@Test
 	public void getByEmail() {
-		// arrange
+		// given
 		Customer customer = new Customer();
 		String email = "abc@co.uk";
 		Mockito.when(mockCustomerDao.findByEmail(email)).thenReturn(customer);
-		// exercise
+		// when
 		Customer expectedCustomer = service.getByEmail(email);
-		// verify
+		// then
 		assertThat(expectedCustomer).isEqualTo(customer);
 		Mockito.verify(mockCustomerDao).findByEmail(email);
 	}

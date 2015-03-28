@@ -7,8 +7,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.springframework.stereotype.Component;
+
 import com.hvn.velocity.domain.Product;
 
+@Component
 public class Cart implements java.io.Serializable {
 	
 	private static final long serialVersionUID = 7810676090697245518L;
