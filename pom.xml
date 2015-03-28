@@ -6,7 +6,7 @@
 	<artifactId>tutorial</artifactId>
 	<name>affablebean-spring-tutorial</name>
 	<packaging>war</packaging>
-	<version>2.0.0</version>
+	<version>development</version>
 	<properties>
 		<org.springframework-version>3.2.5.RELEASE</org.springframework-version>
 		<org.springsecurity-version>3.2.0.RELEASE</org.springsecurity-version>
@@ -162,8 +162,8 @@
 		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
 			<scope>provided</scope>
 		</dependency>
 
