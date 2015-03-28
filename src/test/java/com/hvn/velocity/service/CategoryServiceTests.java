@@ -51,12 +51,12 @@ public class CategoryServiceTests {
 	 */
 	@Test
 	public void getAll() {
-		// arrange
+		// given
 		List<Category> categoryList = Arrays.asList(new Category());
 		Mockito.when(mockCategoryDao.findAll()).thenReturn(categoryList);
-		// exercise
+		// when
 		List<Category> expectedList = service.getAll();
-		// verify
+		// then
 		assertThat(expectedList).isEqualTo(categoryList);
 		Mockito.verify(mockCategoryDao).findAll();
 	}

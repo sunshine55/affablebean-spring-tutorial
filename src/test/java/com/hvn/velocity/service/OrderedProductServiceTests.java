@@ -50,12 +50,12 @@ public class OrderedProductServiceTests {
 	 */
 	@Test
 	public void save() {
-		// arrange
+		// given
 		CustomerOrder order = new CustomerOrder();
 		Map<Product, Integer> items = new HashMap<Product, Integer>();
-		// exercise
+		// when
 		service.save(order, items);
-		// verify
+		// then
 		Mockito.verify(mockOrderedProductDao).save(Mockito.anySet());
 	}
 

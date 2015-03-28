@@ -51,13 +51,13 @@ public class ProductServiceTests {
 	 */
 	@Test
 	public void getByCategoryId() {
-		// arrange
+		// given
 		Byte categoryId = 1;
 		List<Product> productList = Arrays.asList(new Product());
 		Mockito.when(mockProductDao.findByCategoryId(categoryId)).thenReturn(productList);
-		// exercise
+		// when
 		List<Product> expectedList = service.getByCategoryId(categoryId);
-		// verify
+		// then
 		assertThat(expectedList).isEqualTo(productList);
 	}
 
@@ -66,13 +66,13 @@ public class ProductServiceTests {
 	 */
 	@Test
 	public void getById() {
-		// arrange
+		// given
 		Integer productId = 1;
 		Product product = new Product();
 		Mockito.when(mockProductDao.findById(productId)).thenReturn(product);
-		// exercise
+		// when
 		Product expectedProduct = service.getById(productId);
-		// verify
+		// then
 		assertThat(expectedProduct).isEqualTo(product);
 	}
 

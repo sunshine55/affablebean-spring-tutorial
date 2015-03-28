@@ -98,7 +98,7 @@ public class FrontStoreControllerTests {
 	 */
 	@Test
 	public void showCategoryProducts() throws Exception {
-		/** arrange */
+		/** given */
 		// category
 		Byte categoryId = 3;
 		String categoryName = "bakery";
@@ -113,7 +113,7 @@ public class FrontStoreControllerTests {
 		Mockito.when(mockCategoryService.getAll()).thenReturn(categoryList);
 		Mockito.when(mockProductService.getByCategoryId(categoryId)).thenReturn(productList);
 		
-		/** exercise & verify */
+		/** when & then */
 		mockMvc.perform(get("/category").param("id", categoryId.toString()))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("productList", productList))
@@ -127,12 +127,15 @@ public class FrontStoreControllerTests {
 	 */
 	@Test
 	public void showCart() throws Exception {
+		// given
 		Map<Product, Integer> itemMap = new HashMap<Product, Integer>();
 		double subTotal = 0;
 		Integer numOfItems = 0;
 		Mockito.when(mockCart.getItems()).thenReturn(itemMap);
 		Mockito.when(mockCart.calculateSubTotal()).thenReturn(subTotal);
 		Mockito.when(mockCart.sumQuantity()).thenReturn(numOfItems);
+		
+		// when & then
 		mockMvc.perform(get("/cart"))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("itemMap", itemMap))
@@ -146,9 +149,12 @@ public class FrontStoreControllerTests {
 	 */
 	@Test
 	public void addToCart() throws Exception {
+		// given
 		Integer productId = 1;
 		Product product = new Product();
 		Mockito.when(mockProductService.getById(productId)).thenReturn(product);
+		
+		// when & then
 		mockMvc.perform(get("/addToCart").param("id", productId.toString()))
 				.andExpect(status().isOk())
 				.andExpect(content().contentType("text/plain;charset=ISO-8859-1"));
@@ -173,8 +179,11 @@ public class FrontStoreControllerTests {
 	 */
 	@Test
 	public void updateCart() throws Exception {
+		// given
 		Integer productId = 1;
 		Integer quantity = 10;
+		
+		// when & then
 		mockMvc.perform(post("/updateCart")
 				.param("id", productId.toString())
 				.param("quantity", quantity.toString()))
@@ -188,8 +197,11 @@ public class FrontStoreControllerTests {
 	 */
 	@Test
 	public void checkoutEmptyCart() throws Exception {
+		// given
 		double subTotal = 0;
 		Mockito.when(mockCart.calculateSubTotal()).thenReturn(subTotal);
+		
+		// when & then
 		mockMvc.perform(get("/checkout"))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("subTotal", subTotal))
@@ -198,11 +210,14 @@ public class FrontStoreControllerTests {
 	
 	@Test
 	public void checkoutFullCart() throws Exception {
+		// given
 		double subTotal = 3.05;
 		double total = subTotal + 3;
 		Map<String, String> regions = new RegionHashMap().getCityRegion();
 		Mockito.when(mockCart.calculateSubTotal()).thenReturn(subTotal);
 		Mockito.when(mockCart.calculateTotal(subTotal)).thenReturn(total);
+		
+		// when & then
 		mockMvc.perform(get("/checkout"))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("subTotal", subTotal))
@@ -218,7 +233,7 @@ public class FrontStoreControllerTests {
 	 */
 	@Test
 	public void purchaseGuest() throws Exception {
-		/** arrange */
+		/** given */
 		// prepare data
 		Integer customerId = 1;
 		double subTotal = 1.15;
@@ -234,7 +249,7 @@ public class FrontStoreControllerTests {
 		Mockito.when(mockOrderService.getById(orderId)).thenReturn(order);
 		Mockito.when(mockCart.getItems()).thenReturn(itemMap);
 		
-		/** exercise & verify */
+		/** when & then */
 		mockMvc.perform(post("/purchaseGuest").sessionAttr("customer", new Customer()))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("subTotal", subTotal))
@@ -258,11 +273,11 @@ public class FrontStoreControllerTests {
 	 */
 	@Test
 	public void purchaseMember() throws Exception {
-		/** arrange *//*
+		/** given */
 		// prepare data
-		String email = "abc@co.uk";		
-		Integer customerId = 1;
+		String email = "abc@co.uk";
 		Customer customer = new Customer();
+		customer.setId(1);
 		double subTotal = 1.15;
 		double total = subTotal + 3;		
 		Integer orderId = 1;
@@ -272,26 +287,27 @@ public class FrontStoreControllerTests {
 		Mockito.when(mockCustomerService.getByEmail(email)).thenReturn(customer);
 		Mockito.when(mockCart.calculateSubTotal()).thenReturn(subTotal);
 		Mockito.when(mockCart.calculateTotal(subTotal)).thenReturn(total);
-		Mockito.when(mockOrderService.save(customerId, total)).thenReturn(orderId);
+		Mockito.when(mockOrderService.save(customer.getId(), total)).thenReturn(orderId);
 		Mockito.when(mockOrderService.getById(orderId)).thenReturn(order);
 		Mockito.when(mockCart.getItems()).thenReturn(itemMap);
 		
-		*//** exercise & verify *//*
-		mockMvc.perform(post("/purchaseGuest").param("email", email))
+		/** when & then */
+		mockMvc.perform(post("/purchaseMember").param("email", email))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("subTotal", subTotal))
 				.andExpect(model().attribute("total", total))
-				.andExpect(model().attributeExists("order", "customer"))
+				.andExpect(model().attribute("order", order))
+				.andExpect(model().attribute("customer", customer))
 				.andExpect(model().attributeExists("itemMap"))
-				.andExpect(view().name("views/store/confirmation"));
+				.andExpect(view().name("front_store/confirmation"));
 		Mockito.verify(mockCustomerService).getByEmail(email);
 		Mockito.verify(mockCart).calculateSubTotal();
 		Mockito.verify(mockCart).calculateTotal(subTotal);
-		Mockito.verify(mockOrderService).save(customerId, total);
+		Mockito.verify(mockOrderService).save(customer.getId(), total);
 		Mockito.verify(mockOrderService).getById(orderId);
 		Mockito.verify(mockCart).getItems();
 		Mockito.verify(mockOrderedProductService).save(order, itemMap);
-		Mockito.verify(mockCart).clear();*/
+		Mockito.verify(mockCart).clear();
 	}
 	
 	/**
@@ -299,6 +315,7 @@ public class FrontStoreControllerTests {
 	 */
 	@Test
 	public void validateMemberTrue() throws Exception {
+		// given
 		String email = "abc@co.uk";
 		Mockito.when(mockCustomerService.getByEmail(email)).thenAnswer(
 				new Answer<Customer>() {
@@ -306,6 +323,8 @@ public class FrontStoreControllerTests {
 						return new Customer();
 					}
 				});
+		
+		// when & then
 		mockMvc.perform(post("/validateMember").param("email", email))				
 				.andExpect(status().isOk())
 				.andExpect(content().string("true"))
@@ -315,8 +334,11 @@ public class FrontStoreControllerTests {
 	
 	@Test
 	public void validateMemberFalse() throws Exception {
+		// given
 		String email = "abc@co.uk";
 		Mockito.when(mockCustomerService.getByEmail(email)).thenReturn(null);
+		
+		// when & then
 		mockMvc.perform(post("/validateMember").param("email", email))
 				.andExpect(status().isOk())
 				.andExpect(content().string("false"))
@@ -329,8 +351,11 @@ public class FrontStoreControllerTests {
 	 */
 	@Test
 	public void getCartSize() throws Exception {
+		// given
 		Integer quantity = 1;
 		Mockito.when(mockCart.sumQuantity()).thenReturn(quantity);
+		
+		// when & then
 		mockMvc.perform(get("/getCartSize"))				
 				.andExpect(status().isOk())
 				.andExpect(content().string(quantity.toString()))
