@@ -1,10 +1,7 @@
 package com.hvn.velocity.service;
 
-import static org.assertj.core.api.Assertions.*;
-
-import java.util.Arrays;
-import java.util.List;
-
+import com.hvn.velocity.domain.Product;
+import com.hvn.velocity.repository.ProductDao;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,8 +12,10 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.hvn.velocity.domain.Product;
-import com.hvn.velocity.repository.ProductDao;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ProductServiceTests {
@@ -69,7 +68,7 @@ public class ProductServiceTests {
 		// given
 		Integer productId = 1;
 		Product product = new Product();
-		Mockito.when(mockProductDao.findById(productId)).thenReturn(product);
+		Mockito.when(mockProductDao.findOne(productId)).thenReturn(product);
 		// when
 		Product expectedProduct = service.getById(productId);
 		// then

@@ -245,8 +245,7 @@ public class FrontStoreControllerTests {
 		Mockito.when(mockCustomerService.save(Mockito.any(Customer.class))).thenReturn(customerId);
 		Mockito.when(mockCart.calculateSubTotal()).thenReturn(subTotal);
 		Mockito.when(mockCart.calculateTotal(subTotal)).thenReturn(total);
-		Mockito.when(mockOrderService.save(customerId, total)).thenReturn(orderId);
-		Mockito.when(mockOrderService.getById(orderId)).thenReturn(order);
+		Mockito.when(mockOrderService.save(customerId, total)).thenReturn(order);
 		Mockito.when(mockCart.getItems()).thenReturn(itemMap);
 		
 		/** when & then */
@@ -262,7 +261,6 @@ public class FrontStoreControllerTests {
 		Mockito.verify(mockCart).calculateSubTotal();
 		Mockito.verify(mockCart).calculateTotal(subTotal);
 		Mockito.verify(mockOrderService).save(customerId, total);
-		Mockito.verify(mockOrderService).getById(orderId);
 		Mockito.verify(mockCart).getItems();
 		Mockito.verify(mockOrderedProductService).save(order, itemMap);
 		Mockito.verify(mockCart).clear();
@@ -287,8 +285,7 @@ public class FrontStoreControllerTests {
 		Mockito.when(mockCustomerService.getByEmail(email)).thenReturn(customer);
 		Mockito.when(mockCart.calculateSubTotal()).thenReturn(subTotal);
 		Mockito.when(mockCart.calculateTotal(subTotal)).thenReturn(total);
-		Mockito.when(mockOrderService.save(customer.getId(), total)).thenReturn(orderId);
-		Mockito.when(mockOrderService.getById(orderId)).thenReturn(order);
+		Mockito.when(mockOrderService.save(customer.getId(), total)).thenReturn(order);
 		Mockito.when(mockCart.getItems()).thenReturn(itemMap);
 		
 		/** when & then */
@@ -304,7 +301,6 @@ public class FrontStoreControllerTests {
 		Mockito.verify(mockCart).calculateSubTotal();
 		Mockito.verify(mockCart).calculateTotal(subTotal);
 		Mockito.verify(mockOrderService).save(customer.getId(), total);
-		Mockito.verify(mockOrderService).getById(orderId);
 		Mockito.verify(mockCart).getItems();
 		Mockito.verify(mockOrderedProductService).save(order, itemMap);
 		Mockito.verify(mockCart).clear();

@@ -9,11 +9,13 @@ import org.springframework.transaction.annotation.Transactional;
 import com.hvn.velocity.domain.Category;
 import com.hvn.velocity.repository.CategoryDao;
 
+import javax.annotation.Resource;
+
 @Service
 @Transactional
 public class CategoryService {
 
-	@Autowired
+	@Resource
 	private CategoryDao categoryDao;
 	
 	public List<Category> getAll() {

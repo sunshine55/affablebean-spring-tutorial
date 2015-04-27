@@ -1,10 +1,7 @@
 package com.hvn.velocity.service;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import com.hvn.velocity.domain.Member;
+import com.hvn.velocity.repository.MemberDao;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -14,14 +11,16 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hvn.velocity.domain.Member;
-import com.hvn.velocity.repository.MemberDao;
+import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
 public class CustomUserDetailsService implements UserDetailsService {
 
-	@Autowired
+	@Resource
 	private MemberDao memberDao;
 	
 	/*
@@ -31,7 +30,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
 		try {
-			Member domainUser = memberDao.findByUsername(username);
+			Member domainUser = memberDao.findByUsername(username).get(0);
 			boolean enabled = true;
 			boolean accountNonExpired = true;
 			boolean credentialsNonExpired = true;
@@ -74,4 +73,5 @@ public class CustomUserDetailsService implements UserDetailsService {
 	public List<Member> getAll() {
 		return memberDao.findAll();
 	}
+
 }

@@ -1,25 +1,20 @@
 package com.hvn.velocity.service;
 
-import static org.assertj.core.api.Assertions.*;
-
-import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
-
+import com.hvn.velocity.domain.Customer;
+import com.hvn.velocity.domain.CustomerOrder;
+import com.hvn.velocity.repository.CustomerDao;
+import com.hvn.velocity.repository.OrderDao;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
+import org.mockito.*;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.hvn.velocity.domain.CustomerOrder;
-import com.hvn.velocity.repository.OrderDao;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
 public class OrderServiceTests {
@@ -32,6 +27,7 @@ public class OrderServiceTests {
 	 * Mock objects declaration
 	 */
 	@Mock private OrderDao mockOrderDao;
+	@Mock private CustomerDao mockCustomerDao;
 	
 	/**
 	 * Method to perform setup work for each test.
@@ -56,15 +52,19 @@ public class OrderServiceTests {
 	public void save() {
 		// given
 		Integer customerId = 1;
+		Customer customer = new Customer();
+		Mockito.when(mockCustomerDao.findOne(customerId)).thenReturn(customer);
+
 		double total = 4.05;
-		BigDecimal amount = new BigDecimal(total);
-		Date dateProcessed = new Date();
-		int refNum = new Random().nextInt(999999999);
-		Mockito.when(mockOrderDao.save(customerId, amount, dateProcessed, refNum)).thenReturn(0);
+		CustomerOrder order = new CustomerOrder();
+		order.setId(1);
+		Mockito.when(mockOrderDao.save(Matchers.any(CustomerOrder.class))).thenReturn(order);
 		// when
-		Integer expectedId = service.save(customerId, total);
+		CustomerOrder expectedOrder = service.save(customerId, total);
 		// then
-		assertThat(expectedId).isEqualTo(0);
+		assertThat(expectedOrder.getId()).isEqualTo(order.getId());
+		Mockito.verify(mockCustomerDao).findOne(customerId);
+		Mockito.verify(mockOrderDao).save(Matchers.any(CustomerOrder.class));
 	}
 
 	/**
@@ -80,22 +80,6 @@ public class OrderServiceTests {
 		// then
 		assertThat(expectedList).isEqualTo(orderList);
 		Mockito.verify(mockOrderDao).findAll();
-	}
-
-	/**
-	 * Test {@link OrderService#getById(Integer)}
-	 */
-	@Test
-	public void getById() {
-		// given
-		CustomerOrder order = new CustomerOrder();
-		Integer orderId = 1;
-		Mockito.when(mockOrderDao.findById(orderId)).thenReturn(order);
-		// when
-		CustomerOrder expectedCustomer = service.getById(orderId);
-		// then
-		assertThat(expectedCustomer).isEqualTo(order);
-		Mockito.verify(mockOrderDao).findById(orderId);
 	}
 
 }
