@@ -2,12 +2,8 @@ package com.hvn.velocity.repository;
 
 import com.hvn.velocity.domain.OrderedProduct;
 import com.hvn.velocity.domain.OrderedProductId;
-import org.springframework.data.repository.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Set;
-
-public interface OrderedProductDao extends Repository<OrderedProduct, OrderedProductId> {
-	
-	Set<OrderedProduct> save(Set<OrderedProduct> orderedProducts);
+public interface OrderedProductDao extends JpaRepository<OrderedProduct, OrderedProductId> {
 	
 }

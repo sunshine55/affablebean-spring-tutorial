@@ -160,9 +160,8 @@ public class FrontStoreController {
      * AJAX service
      */
     @RequestMapping(value = "/validateMember", method = RequestMethod.POST)
-    public
     @ResponseBody
-    String validateMember(@RequestParam("email") String email) {
+    public String validateMember(@RequestParam("email") String email) {
         Customer customer = customerService.getByEmail(email);
         if (customer != null) {
             return "true";
@@ -171,9 +170,8 @@ public class FrontStoreController {
     }
 
     @RequestMapping(value = "/getCartSize", method = RequestMethod.GET)
-    public
     @ResponseBody
-    String getCartSize() {
+    public String getCartSize() {
         return cart.sumQuantity().toString();
     }
 

@@ -1,13 +1,13 @@
 package com.hvn.velocity.config;
 
 import com.hvn.velocity.session.Cart;
-import org.hibernate.ejb.HibernatePersistence;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.annotation.Resource;
@@ -33,9 +33,9 @@ class SpringDataConfig {
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
+        emf.setPackagesToScan(new String[]{"com.hvn.velocity.domain"});
         emf.setDataSource(getDataSource());
-        emf.setPersistenceProviderClass(HibernatePersistence.class);
-        emf.setPackagesToScan("com.hvn.velocity.domain");
+        emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         emf.setJpaProperties(getProperties());
         return emf;
     }

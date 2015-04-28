@@ -12,7 +12,6 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -101,14 +100,12 @@ public class CustomerServiceTests {
 		// given
 		Customer customer = new Customer();
 		customer.setId(1);
-		List<Customer> listCustomer = new ArrayList<Customer>();
-		listCustomer.add(customer);
 		String email = "abc@co.uk";
-		Mockito.when(mockCustomerDao.findByEmail(email)).thenReturn(listCustomer);
+		Mockito.when(mockCustomerDao.findByEmail(email)).thenReturn(customer);
 		// when
 		Customer expectedCustomer = service.getByEmail(email);
 		// then
-		assertThat(expectedCustomer.getId()).isEqualTo(listCustomer.get(0).getId());
+		assertThat(expectedCustomer.getId()).isEqualTo(customer.getId());
 		Mockito.verify(mockCustomerDao).findByEmail(email);
 	}
 

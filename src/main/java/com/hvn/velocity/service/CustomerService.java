@@ -29,7 +29,7 @@ public class CustomerService {
 	}
 	
 	public Customer getByEmail(String email) {
-		return customerDao.findByEmail(email).get(0);
+		return customerDao.findByEmail(email);
 	}
 	
 }
