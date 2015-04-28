@@ -3,3 +3,5 @@
 .project
 .springBeans
 /target
+.idea/
+*.iml
