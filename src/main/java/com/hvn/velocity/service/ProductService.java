@@ -1,19 +1,19 @@
 package com.hvn.velocity.service;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import com.hvn.velocity.domain.Product;
+import com.hvn.velocity.repository.ProductDao;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hvn.velocity.domain.Product;
-import com.hvn.velocity.repository.ProductDao;
+import javax.annotation.Resource;
+import java.util.List;
+
 
 @Service
 @Transactional
 public class ProductService {
 
-	@Autowired
+	@Resource
 	private ProductDao productDao;
 	
 	public List<Product> getByCategoryId(Byte id) {
@@ -21,7 +21,7 @@ public class ProductService {
 	}
 	
 	public Product getById(Integer id) {
-		return productDao.findById(id);
+		return productDao.findOne(id);
 	}
 	
 }

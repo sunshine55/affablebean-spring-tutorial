@@ -1,10 +1,7 @@
 package com.hvn.velocity.service;
 
-import static org.assertj.core.api.Assertions.*;
-
-import java.util.Arrays;
-import java.util.List;
-
+import com.hvn.velocity.domain.Customer;
+import com.hvn.velocity.repository.CustomerDao;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,8 +12,10 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.hvn.velocity.domain.Customer;
-import com.hvn.velocity.repository.CustomerDao;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CustomerServiceTests {
@@ -53,12 +52,12 @@ public class CustomerServiceTests {
 	public void save() {
 		// given
 		Customer customer = new Customer();
-		Integer customerId = 1;
-		Mockito.when(mockCustomerDao.save(customer)).thenReturn(customerId);
+		customer.setId(1);
+		Mockito.when(mockCustomerDao.save(customer)).thenReturn(customer);
 		// when
 		Integer expectedId = service.save(customer);
 		// then
-		assertThat(expectedId).isEqualTo(customerId);
+		assertThat(expectedId).isEqualTo(1);
 		Mockito.verify(mockCustomerDao).save(customer);
 	}
 
@@ -85,12 +84,12 @@ public class CustomerServiceTests {
 		// given
 		Customer customer = new Customer();
 		Integer customerId = 1;
-		Mockito.when(mockCustomerDao.findById(customerId)).thenReturn(customer);
+		Mockito.when(mockCustomerDao.findOne(customerId)).thenReturn(customer);
 		// when
 		Customer expectedCustomer = service.getById(customerId);
 		// then
 		assertThat(expectedCustomer).isEqualTo(customer);
-		Mockito.verify(mockCustomerDao).findById(customerId);
+		Mockito.verify(mockCustomerDao).findOne(customerId);
 	}
 
 	/**
@@ -100,12 +99,13 @@ public class CustomerServiceTests {
 	public void getByEmail() {
 		// given
 		Customer customer = new Customer();
+		customer.setId(1);
 		String email = "abc@co.uk";
 		Mockito.when(mockCustomerDao.findByEmail(email)).thenReturn(customer);
 		// when
 		Customer expectedCustomer = service.getByEmail(email);
 		// then
-		assertThat(expectedCustomer).isEqualTo(customer);
+		assertThat(expectedCustomer.getId()).isEqualTo(customer.getId());
 		Mockito.verify(mockCustomerDao).findByEmail(email);
 	}
 

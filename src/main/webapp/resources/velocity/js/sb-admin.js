@@ -2,6 +2,9 @@ $(function() {
 
     $('#side-menu').metisMenu();
     $('#dataTables-example').dataTable();
+    $('#f_logout').click(function() {
+    	$('#f_logout').submit();
+    });
 });
 
 //Loads the correct sidebar on window load

@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
-@ComponentScan(basePackages = { "com.hvn.velocity" })
+@ComponentScan("com.hvn.velocity")
 @EnableWebMvc
 public class ApplicationContext extends WebMvcConfigurerAdapter {
 	

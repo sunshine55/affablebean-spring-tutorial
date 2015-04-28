@@ -1,8 +1,8 @@
 package com.hvn.velocity.service;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import com.hvn.velocity.domain.CustomerOrder;
+import com.hvn.velocity.domain.Product;
+import com.hvn.velocity.repository.OrderedProductDao;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,9 +13,8 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.hvn.velocity.domain.Product;
-import com.hvn.velocity.domain.CustomerOrder;
-import com.hvn.velocity.repository.OrderedProductDao;
+import java.util.HashMap;
+import java.util.Map;
 
 @RunWith(MockitoJUnitRunner.class)
 public class OrderedProductServiceTests {

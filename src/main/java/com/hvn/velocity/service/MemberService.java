@@ -1,22 +1,22 @@
 package com.hvn.velocity.service;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import com.hvn.velocity.domain.Member;
+import com.hvn.velocity.repository.MemberDao;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hvn.velocity.domain.Member;
-import com.hvn.velocity.repository.MemberDao;
+import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 @Transactional
 public class MemberService {
 	
-	@Autowired
+	@Resource
 	private MemberDao memberDao;
 	
 	public List<Member> getAll() {
 		return memberDao.findAll();
 	}
+
 }

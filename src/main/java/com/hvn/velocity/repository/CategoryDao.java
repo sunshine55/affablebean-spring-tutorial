@@ -1,21 +1,12 @@
 package com.hvn.velocity.repository;
 
+import com.hvn.velocity.domain.Category;
+import org.springframework.data.repository.Repository;
+
 import java.util.List;
 
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+public interface CategoryDao extends Repository<Category, Byte> {
 
-import com.hvn.velocity.domain.Category;
-
-@Repository
-public class CategoryDao {
-
-	@Autowired
-	private SessionFactory sessionFactory;
-	
-	public List<Category> findAll() {
-		return sessionFactory.getCurrentSession().createQuery("from Category").list();
-	}
+	List<Category> findAll();
 	
 }
