@@ -1,15 +1,14 @@
 package com.hvn.velocity.session;
 
-import static org.assertj.core.api.Assertions.*;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-
+import com.hvn.velocity.domain.Product;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.hvn.velocity.domain.Product;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CartTests {
 	

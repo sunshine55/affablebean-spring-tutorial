@@ -1,15 +1,14 @@
 package com.hvn.velocity.session;
 
+import com.hvn.velocity.domain.Product;
+import org.springframework.stereotype.Component;
+
 import java.text.DecimalFormat;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-
-import org.springframework.stereotype.Component;
-
-import com.hvn.velocity.domain.Product;
 
 @Component
 public class Cart implements java.io.Serializable {

@@ -1,11 +1,11 @@
 package com.hvn.velocity.controller;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import java.util.Arrays;
-import java.util.List;
-
+import com.hvn.velocity.domain.Customer;
+import com.hvn.velocity.domain.CustomerOrder;
+import com.hvn.velocity.domain.Member;
+import com.hvn.velocity.service.CustomerService;
+import com.hvn.velocity.service.MemberService;
+import com.hvn.velocity.service.OrderService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,12 +20,11 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.View;
 
-import com.hvn.velocity.domain.Customer;
-import com.hvn.velocity.domain.CustomerOrder;
-import com.hvn.velocity.domain.Member;
-import com.hvn.velocity.service.CustomerService;
-import com.hvn.velocity.service.MemberService;
-import com.hvn.velocity.service.OrderService;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AdminConsoleControllerTests {

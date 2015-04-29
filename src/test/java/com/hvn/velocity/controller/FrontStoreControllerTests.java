@@ -1,15 +1,12 @@
 package com.hvn.velocity.controller;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import com.hvn.velocity.domain.Category;
+import com.hvn.velocity.domain.Customer;
+import com.hvn.velocity.domain.CustomerOrder;
+import com.hvn.velocity.domain.Product;
+import com.hvn.velocity.service.*;
+import com.hvn.velocity.session.Cart;
+import com.hvn.velocity.util.RegionHashMap;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,17 +23,11 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.View;
 
-import com.hvn.velocity.domain.Category;
-import com.hvn.velocity.domain.Customer;
-import com.hvn.velocity.domain.CustomerOrder;
-import com.hvn.velocity.domain.Product;
-import com.hvn.velocity.service.CategoryService;
-import com.hvn.velocity.service.CustomerService;
-import com.hvn.velocity.service.OrderService;
-import com.hvn.velocity.service.OrderedProductService;
-import com.hvn.velocity.service.ProductService;
-import com.hvn.velocity.session.Cart;
-import com.hvn.velocity.util.RegionHashMap;
+import java.util.*;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FrontStoreControllerTests {

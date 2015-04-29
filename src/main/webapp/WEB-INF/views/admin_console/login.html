@@ -18,15 +18,15 @@
 							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 							<strong th:text="${message}"></strong>
 						</div>
-						<form th:action="@{/j_spring_security_check}" method="POST">
+						<form th:action="@{/login}" method="POST">
 							<fieldset>
 								<div class="form-group">
 									<input class="form-control" placeholder="Username" type="text" autofocus="autofocus"
-										id="j_username" name="j_username" />
+										id="username" name="username" />
 								</div>
 								<div class="form-group">
 									<input class="form-control" placeholder="Password" type="password"
-										id="j_password" name="j_password" />
+										id="password" name="password" />
 								</div>
 								<button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
 							</fieldset>

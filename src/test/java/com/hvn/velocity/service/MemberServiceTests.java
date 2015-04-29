@@ -1,10 +1,7 @@
 package com.hvn.velocity.service;
 
-import static org.assertj.core.api.Assertions.*;
-
-import java.util.Arrays;
-import java.util.List;
-
+import com.hvn.velocity.domain.Member;
+import com.hvn.velocity.repository.MemberDao;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,8 +12,10 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.hvn.velocity.domain.Member;
-import com.hvn.velocity.repository.MemberDao;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MemberServiceTests {
