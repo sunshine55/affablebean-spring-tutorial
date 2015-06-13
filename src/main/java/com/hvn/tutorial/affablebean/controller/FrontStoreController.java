@@ -3,7 +3,7 @@ package com.hvn.tutorial.affablebean.controller;
 import com.hvn.tutorial.affablebean.domain.CustomerOrder;
 import com.hvn.tutorial.affablebean.domain.Product;
 import com.hvn.tutorial.affablebean.service.*;
-import com.hvn.tutorial.affablebean.session.Cart;
+import com.hvn.tutorial.affablebean.service.Cart;
 import com.hvn.tutorial.affablebean.util.RegionHashMap;
 import com.hvn.tutorial.affablebean.domain.Customer;
 import org.springframework.beans.factory.annotation.Autowired;

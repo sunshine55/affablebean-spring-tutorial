@@ -1,6 +1,6 @@
 package com.hvn.tutorial.affablebean.config;
 
-import com.hvn.tutorial.affablebean.session.Cart;
+import com.hvn.tutorial.affablebean.service.Cart;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;

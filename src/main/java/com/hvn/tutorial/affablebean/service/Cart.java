@@ -1,4 +1,4 @@
-package com.hvn.tutorial.affablebean.session;
+package com.hvn.tutorial.affablebean.service;
 
 import com.hvn.tutorial.affablebean.domain.Product;
 import org.springframework.stereotype.Component;

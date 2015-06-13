@@ -1,6 +1,7 @@
 package com.hvn.tutorial.affablebean.session;
 
 import com.hvn.tutorial.affablebean.domain.Product;
+import com.hvn.tutorial.affablebean.service.Cart;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
