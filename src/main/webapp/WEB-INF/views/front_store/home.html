@@ -28,7 +28,7 @@
 						<div class="thumbnail">
 							<a th:href="@{/category(id=${category.id})}">
 							
-								<img class="img-responsive" th:src="@{|/resources/upload/products/${category.name}.jpg|}" />
+								<img class="img-responsive" th:src="@{|/resources/upload/categories/${category.name}.jpg|}" />
 							</a>
 							<div class="caption">
 								<h4 th:text="${#strings.toUpperCase(category.name)}"></h4>
