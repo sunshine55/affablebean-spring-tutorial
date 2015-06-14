@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.hvn.velocity">
+	<logger name="com.hvn.tutorial">
 		<level value="info" />
 	</logger>
 	
