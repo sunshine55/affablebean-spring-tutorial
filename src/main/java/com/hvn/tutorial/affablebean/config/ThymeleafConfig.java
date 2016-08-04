@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.thymeleaf.dialect.IDialect;
 import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring4.SpringTemplateEngine;
+import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,8 +16,8 @@ import java.util.Set;
 public class ThymeleafConfig {
 
 	@Bean
-	public ServletContextTemplateResolver templateResolver() {
-		ServletContextTemplateResolver resolver = new ServletContextTemplateResolver();
+	public SpringResourceTemplateResolver templateResolver() {
+		SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".html");
 		resolver.setTemplateMode("HTML5");
@@ -41,5 +41,5 @@ public class ThymeleafConfig {
 		resolver.setTemplateEngine(templateEngine());
 		return resolver;
 	}
-	
+
 }

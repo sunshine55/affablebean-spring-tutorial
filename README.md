@@ -16,7 +16,7 @@ Rewrite [Netbeans e-commerce tutorial](https://netbeans.org/kb/docs/javaee/ecomm
 3. Preparing views and controllers (front-end).
 4. Designing data model:
    * Identify the entities and their relationships
-   * Follow bottom up or top down approach using Hibernate
+   * Follow bottom up (reverse mapping) or top down approach using Hibernate
 5. Developing business logic.
 6. Integrating with front-end.
 7. Others:
