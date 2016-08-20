@@ -2,7 +2,6 @@
 .classpath
 .project
 .springBeans
-/target
+affablebean-*/target/
 .idea/
 *.iml
-src/main/resources/persistence.properties
