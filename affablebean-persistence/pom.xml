@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.hvn.tutorial</groupId>
         <artifactId>affablebean</artifactId>
-        <version>2.1.2</version>
+        <version>2.2.0</version>
     </parent>
 
     <artifactId>affablebean-persistence</artifactId>
@@ -26,7 +26,11 @@
             <version>${org.springdatajpa-version}</version>
         </dependency>
 
-        <!-- Spring ORM and Transaction: make Spring compatible with Hibernate 5.2 -->
+        <!--
+        Spring ORM and Transaction:
+            spring-data-jpa has these dependencies but in version 4.2.6 which is only compatible with Hibernate <5.1;
+            Another way is to use Hibernate 5.1 with hibernate-entitymanager (deprecated)
+        -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
