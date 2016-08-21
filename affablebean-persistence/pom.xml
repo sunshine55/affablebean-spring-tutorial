@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.hvn.tutorial</groupId>
+        <artifactId>affablebean</artifactId>
+        <version>2.2.0</version>
+    </parent>
+
+    <artifactId>affablebean-persistence</artifactId>
+    <packaging>jar</packaging>
+
+    <properties>
+        <org.springdatajpa-version>1.10.2.RELEASE</org.springdatajpa-version>
+        <org.hibernate-version>5.2.2.Final</org.hibernate-version>
+    </properties>
+
+    <dependencies>
+        <!-- Spring Data JPA -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${org.springdatajpa-version}</version>
+        </dependency>
+
+        <!--
+        Spring ORM and Transaction:
+            spring-data-jpa has these dependencies but in version 4.2.6 which is only compatible with Hibernate <5.1;
+            Another way is to use Hibernate 5.1 with hibernate-entitymanager (deprecated)
+        -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
+
+        <!-- Hibernate -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+            <version>${org.hibernate-version}</version>
+        </dependency>
+
+        <!-- MySQL Connector -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>6.0.3</version>
+        </dependency>
+
+        <!-- Affablebean layer -->
+        <dependency>
+            <groupId>com.hvn.tutorial</groupId>
+            <artifactId>affablebean-domain</artifactId>
+            <version>${affablebean-version}</version>
+        </dependency>
+    </dependencies>
+</project>

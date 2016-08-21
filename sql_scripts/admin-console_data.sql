@@ -1,3 +1,5 @@
+USE affablebean;
+
 --
 -- Sample data for table `customer`
 --
@@ -15,7 +17,7 @@ INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VAL
 INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('John Locke', 'maninblack@mailinator.com', '844-647-1676', '777/11 De la Valeria', 'HS', '5509303732993327');
 INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Lucie Bacbara', 'lucie@mailinator.cz', '846-026-5206', 'Nav 33 Kov, St.Aufeint', 'HS', '5462453572139864');
 INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Sayid Jarrah', 'sayid@mailinator.com', '822-026-5206', '778 Kodakaown', 'HS', '5581415713843213');
-INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Hugo Reyes', 'hurley@mailinator.com', '844-026-5206', 'Andreina­nova 6455', 'HS', '5363537132894677');
+INSERT INTO customer (`name`, email, phone, address, city_region, cc_number) VALUES ('Hugo Reyes', 'hurley@mailinator.com', '844-026-5206', 'Andreinaï¿½nova 6455', 'HS', '5363537132894677');
 
 
 --

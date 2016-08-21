@@ -1,3 +1,5 @@
+USE affablebean;
+
 --
 -- Sample data for table `category`
 --
