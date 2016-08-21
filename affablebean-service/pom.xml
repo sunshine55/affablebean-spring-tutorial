@@ -4,19 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.hvn.tutorial</groupId>
-    <artifactId>affablebean-service</artifactId>
-    <version>2.1.2</version>
-    <packaging>jar</packaging>
-
     <parent>
         <groupId>com.hvn.tutorial</groupId>
         <artifactId>affablebean</artifactId>
         <version>2.1.2</version>
     </parent>
 
+    <artifactId>affablebean-service</artifactId>
+    <packaging>jar</packaging>
+
     <properties>
-        <org.springsecurity-version>4.1.1.RELEASE</org.springsecurity-version>
+        <org.springsecurity-version>4.1.2.RELEASE</org.springsecurity-version>
     </properties>
 
     <dependencies>
@@ -36,7 +34,7 @@
         <dependency>
             <groupId>com.hvn.tutorial</groupId>
             <artifactId>affablebean-persistence</artifactId>
-            <version>2.1.2</version>
+            <version>${affablebean-version}</version>
         </dependency>
     </dependencies>
 </project>

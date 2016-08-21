@@ -4,19 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>affablebean-persistence</artifactId>
-    <version>2.1.2</version>
-    <packaging>jar</packaging>
-
     <parent>
         <groupId>com.hvn.tutorial</groupId>
         <artifactId>affablebean</artifactId>
         <version>2.1.2</version>
     </parent>
 
+    <artifactId>affablebean-persistence</artifactId>
+    <packaging>jar</packaging>
+
     <properties>
         <org.springdatajpa-version>1.10.2.RELEASE</org.springdatajpa-version>
-        <org.hibernate-version>5.2.1.Final</org.hibernate-version>
+        <org.hibernate-version>5.2.2.Final</org.hibernate-version>
     </properties>
 
     <dependencies>
@@ -27,12 +26,19 @@
             <version>${org.springdatajpa-version}</version>
         </dependency>
 
-        <!-- Hibernate -->
+        <!-- Spring ORM and Transaction: make Spring compatible with Hibernate 5.2 -->
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>${org.hibernate-version}</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${org.springframework-version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
+
+        <!-- Hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-c3p0</artifactId>
@@ -50,7 +56,7 @@
         <dependency>
             <groupId>com.hvn.tutorial</groupId>
             <artifactId>affablebean-domain</artifactId>
-            <version>2.1.2</version>
+            <version>${affablebean-version}</version>
         </dependency>
     </dependencies>
 </project>

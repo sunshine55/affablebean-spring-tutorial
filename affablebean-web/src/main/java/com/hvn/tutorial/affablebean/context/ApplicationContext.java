@@ -7,7 +7,12 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
-@ComponentScan({ "com.hvn.tutorial.affablebean.session" })
+@ComponentScan({
+    "com.hvn.tutorial.affablebean.session",
+    "com.hvn.tutorial.affablebean.context",
+    "com.hvn.tutorial.affablebean.service",
+    "com.hvn.tutorial.affablebean.web"
+})
 @EnableWebMvc
 public class ApplicationContext extends WebMvcConfigurerAdapter {
 

@@ -16,6 +16,7 @@
     </modules>
 
     <properties>
+        <affablebean-version>2.1.2</affablebean-version>
         <org.springframework-version>4.3.2.RELEASE</org.springframework-version>
         <org.slf4j-version>1.7.21</org.slf4j-version>
     </properties>
@@ -32,11 +33,6 @@
                     <artifactId>commons-logging</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency> <!-- Define the integration of application context utilities: EhCache, JavaMail, Quartz, Freemarker... -->
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${org.springframework-version}</version>
         </dependency>
 
         <!-- Logging -->
@@ -72,6 +68,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
     <build>
         <testResources>
             <testResource>

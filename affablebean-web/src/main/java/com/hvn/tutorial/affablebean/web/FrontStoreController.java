@@ -81,8 +81,7 @@ public class FrontStoreController {
     }
 
     @RequestMapping(value = "/updateCart", method = RequestMethod.POST)
-    public String updateCart(@RequestParam("id") Integer id,
-                             @RequestParam("quantity") Integer quantity) {
+    public String updateCart(@RequestParam("id") Integer id, @RequestParam("quantity") Integer quantity) {
         cart.updateItem(id, quantity);
         return "redirect:/cart";
     }
@@ -91,7 +90,7 @@ public class FrontStoreController {
      * Checkout
      */
     @RequestMapping(value = "/checkout", method = RequestMethod.GET)
-    public String checkout(ModelMap mm) {
+    public String checkout(ModelMap mm, Customer customer) {
         double subTotal = cart.calculateSubTotal();
         if (subTotal == 0) {
             mm.put("subTotal", subTotal);
@@ -117,7 +116,7 @@ public class FrontStoreController {
         CustomerOrder order = orderService.save(customerId, total);
 
         // 3. Save order details (ordered_product)
-        Map<Product, Integer> itemMap = new HashMap<Product, Integer>(cart.getItems());
+        Map<Product, Integer> itemMap = new HashMap<>(cart.getItems());
         orderedProductService.save(order, itemMap);
 
         mm.put("subTotal", subTotal);
@@ -142,7 +141,7 @@ public class FrontStoreController {
         CustomerOrder order = orderService.save(customerId, total);
 
         // 3. Save order details (ordered_product)
-        Map<Product, Integer> itemMap = new HashMap<Product, Integer>(cart.getItems());
+        Map<Product, Integer> itemMap = new HashMap<>(cart.getItems());
         orderedProductService.save(order, itemMap);
 
         mm.put("subTotal", subTotal);

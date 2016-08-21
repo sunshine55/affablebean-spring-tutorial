@@ -1,18 +1,12 @@
 package com.hvn.tutorial.affablebean.persistence;
 
 import com.hvn.tutorial.affablebean.domain.Customer;
-import org.springframework.data.repository.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
-public interface CustomerDao extends Repository<Customer, Integer> {
-	
-	List<Customer> findAll();
-
-	Customer findOne(Integer id);
+@Repository
+public interface CustomerDao extends JpaRepository<Customer, Integer> {
 
 	Customer findByEmail(String email);
-	
-	Customer save(Customer customer);
 
 }

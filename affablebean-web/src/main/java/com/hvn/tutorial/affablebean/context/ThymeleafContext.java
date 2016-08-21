@@ -20,7 +20,7 @@ public class ThymeleafContext {
 		SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".html");
-		resolver.setTemplateMode("HTML5");
+		resolver.setTemplateMode("HTML");
 		return resolver;
 	}
 
