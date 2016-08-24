@@ -60,7 +60,7 @@
         <dependency>
             <groupId>com.hvn.tutorial</groupId>
             <artifactId>affablebean-domain</artifactId>
-            <version>${affablebean-version}</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

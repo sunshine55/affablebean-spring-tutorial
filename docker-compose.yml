@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  db:
+    image: mysql:5.7.14
+    container_name: mysql-container
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: affablebean
+    volumes:
+      - ./scripts/sql:/docker-entrypoint-initdb.d
+
+  web:
+    build: .
+    image: sunshine55/affablebean
+    container_name: affablebean
+    ports:
+      - "8080:8080"
+    links:
+      - db:mysql-container
