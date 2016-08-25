@@ -15,7 +15,7 @@ services:
   web:
     build: .
     image: sunshine55/affablebean
-    container_name: affablebean
+    container_name: affablebean-container
     ports:
       - "8080:8080"
     links:

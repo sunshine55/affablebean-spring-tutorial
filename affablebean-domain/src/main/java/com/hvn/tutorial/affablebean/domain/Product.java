@@ -38,8 +38,7 @@ public class Product implements java.io.Serializable {
 	public Product() {
 	}
 
-	public Product(Category category, String name, BigDecimal price,
-                   Date lastUpdate) {
+	public Product(Category category, String name, BigDecimal price, Date lastUpdate) {
 		this.category = category;
 		this.name = name;
 		this.price = price;

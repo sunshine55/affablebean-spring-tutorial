@@ -24,8 +24,10 @@ public class OrderedProduct implements java.io.Serializable {
 	private CustomerOrder customerOrder;
 	private short quantity;
 
-	public OrderedProduct(OrderedProductId id, Product product,
-                          CustomerOrder customerOrder, short quantity) {
+	public OrderedProduct() {
+    }
+
+	public OrderedProduct(OrderedProductId id, Product product, CustomerOrder customerOrder, short quantity) {
 		this.id = id;
 		this.product = product;
 		this.customerOrder = customerOrder;
