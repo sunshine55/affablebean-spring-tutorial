@@ -29,7 +29,7 @@ Affable Bean Tutorial
 
 ### Run application using Docker
 
-* Docker Compose
+* Docker Compose ([docker image](https://hub.docker.com/r/sunshine55/affablebean/) of this demo)
   - Install [Docker Compose](https://docs.docker.com/compose/install/)
   - `docker-compose up -d`
   - To start in the next use: `docker-compose start|stop [affablebean-container|mysql-container]`
