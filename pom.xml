@@ -16,7 +16,6 @@
     </modules>
 
     <properties>
-        <affablebean-version>2.1.2</affablebean-version>
         <org.springframework-version>4.3.2.RELEASE</org.springframework-version>
         <org.slf4j-version>1.7.21</org.slf4j-version>
     </properties>

@@ -34,7 +34,7 @@
         <dependency>
             <groupId>com.hvn.tutorial</groupId>
             <artifactId>affablebean-persistence</artifactId>
-            <version>${affablebean-version}</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

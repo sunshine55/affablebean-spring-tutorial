@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
+import java.text.MessageFormat;
 import java.util.Properties;
 
 @Configuration
@@ -45,7 +46,7 @@ class SpringDataContext {
     public DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(env.getProperty("hibernate.connection.driver_class"));
-        dataSource.setUrl(env.getProperty("hibernate.connection.url"));
+        dataSource.setUrl(extractConnUrl(env.getProperty("hibernate.connection.url")));
         dataSource.setUsername(env.getProperty("hibernate.connection.username"));
         dataSource.setPassword(env.getProperty("hibernate.connection.password"));
         return dataSource;
@@ -63,4 +64,8 @@ class SpringDataContext {
         return properties;
     }
 
+    private String extractConnUrl(String conn) {
+        String currentEnv = System.getProperty("db.env");
+        return MessageFormat.format(conn, currentEnv == null ? "localhost" : currentEnv);
+    }
 }
