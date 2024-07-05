@@ -3,7 +3,7 @@
   "dockerComposeFile": [
     "../compose.yml"
   ],
-  "service": "cdn",
+  "service": "afbb-cdn",
   "shutdownAction": "none",
   "customizations": {
     "vscode": {

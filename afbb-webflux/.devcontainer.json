@@ -3,7 +3,7 @@
   "dockerComposeFile": [
     "../compose.yml"
   ],
-  "service": "webflux",
+  "service": "afbb-webflux",
   "shutdownAction": "none",
   "customizations": {
     "vscode": {

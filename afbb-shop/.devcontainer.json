@@ -1,7 +1,7 @@
 {
   "name": "afbb-shop",
   "dockerComposeFile": ["../compose.yml"],
-  "service": "shop",
+  "service": "afbb-shop",
   "shutdownAction": "none",
   "customizations": {
     "vscode": {
