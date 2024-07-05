@@ -11,7 +11,8 @@
           "vscjava.vscode-gradle",
           "vscjava.vscode-java-pack",
           "vscjava.vscode-lombok",
-          "vmware.vscode-boot-dev-pack"
+          "vmware.vscode-boot-dev-pack",
+          "anweber.vscode-httpyac"
         ]
       }
     },
