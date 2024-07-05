@@ -1,14 +1,14 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.2.3'
-	id 'io.spring.dependency-management' version '1.1.4'
+	id 'org.springframework.boot' version '3.3.1'
+	id 'io.spring.dependency-management' version '1.1.5'
 }
 
 group = 'com.sunshine55.tutorial.afbb'
 version = '1.0.0'
 
 java {
-	sourceCompatibility = '21'
+	sourceCompatibility = '22'
 }
 
 configurations {
