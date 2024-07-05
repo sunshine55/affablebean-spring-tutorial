@@ -1,0 +1,46 @@
+{
+  "name": "afbb-shop",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Affable Bean microservice GUI tutorial",
+  "scripts": {
+    "format": "npx prettier . --write",
+    "update": "npx npm-check-updates -u",
+    "dev": "webpack-dev-server --config webpack.dev.mjs",
+    "prod": "webpack --config webpack.prod.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sunshine55/affablebean-microservice-tutorial.git"
+  },
+  "keywords": [
+    "spring-boot",
+    "microservice",
+    "sunshine55",
+    "tutorial",
+    "affablebean"
+  ],
+  "author": "sunshine55",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sunshine55/affablebean-microservice-tutorial/issues"
+  },
+  "homepage": "https://github.com/sunshine55/affablebean-microservice-tutorial#readme",
+  "devDependencies": {
+    "@babel/core": "7.24.0",
+    "@babel/preset-env": "7.24.0",
+    "babel-loader": "9.1.3",
+    "babel-preset-solid": "1.8.15",
+    "css-loader": "6.10.0",
+    "npm-check-updates": "16.14.17",
+    "prettier": "3.2.5",
+    "style-loader": "3.3.4",
+    "webpack": "5.90.3",
+    "webpack-cli": "5.1.4",
+    "webpack-dev-server": "5.0.3",
+    "webpack-merge": "5.10.0"
+  },
+  "dependencies": {
+    "solid-js": "1.8.15"
+  }
+}
