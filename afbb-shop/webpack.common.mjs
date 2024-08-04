@@ -5,17 +5,18 @@ const BUILD_DIR = path.resolve(__dirname, './build');
 const SOURCE_DIR = path.resolve(__dirname, './src');
 
 const rules = [{
-  test: /\.(js|jsx)$/,
+  test: /\.(js|jsx|ts|tsx)$/,
   loader: 'babel-loader',
   exclude: /node_modules/
 }, {
   test: /\.css$/i,
-  use: ['style-loader', 'css-loader']
+  use: ['style-loader', 'css-loader', 'postcss-loader']
 }];
 
 export default {
   entry: {
-    index: [`${SOURCE_DIR}/App.js`]
+    app: [`${SOURCE_DIR}/js/App.js`],
+    style: [`${SOURCE_DIR}/js/style.js`]
   },
   module: {
     rules
