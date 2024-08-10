@@ -1,8 +1,11 @@
 # nodejs
 node_modules/
-build/
 *.log
 package-lock.json
+
+# vite
+build/
+dist/
 
 # vscode
 .vscode/
