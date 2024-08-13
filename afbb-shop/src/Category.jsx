@@ -1,0 +1,9 @@
+export const Category = () => {
+  return (
+    <div class="flex items-center py-16">
+      <div class="mx-auto">
+        <h1 class="text-center text-red-900">Category List Here! WIP...</h1>
+      </div>
+    </div>
+  );
+};

@@ -2,8 +2,8 @@
 import 'solid-devtools';
 import {render} from 'solid-js/web';
 
-import './index.css';
-import App from './App';
+import './css/tw.css';
+import {App} from './App';
 
 const root = document.getElementById('root');
 
