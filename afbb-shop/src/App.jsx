@@ -2,24 +2,61 @@ import {Category} from './Category';
 
 export const App = () => {
   return (
-    <>
-      <div class="flex items-center">
-        <section class="mx-auto bg-white dark:bg-gray-900">
-          <div class="mx-auto max-w-screen-xl text-center lg:py-16">
-            <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-              Affable Spring Bean
-            </h1>
-            <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
+    <div class="grid grid-cols-6 min-h-screen">
+      {/* Left Blank */}
+      <div class="col-span-1 bg-gray-100"></div>
+
+      {/* Middle Container */}
+      <div class="col-span-4 flex flex-col">
+        {/* Header */}
+        <div class="flex items-center justify-center bg-white py-8">
+          <div class="text-center">
+            <h1 class="text-4xl font-bold text-gray-900">Affable Spring Bean</h1>
+            <p class="text-lg text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
-        </section>
-      </div>
+        </div>
 
-      <Category />
+        {/* Body */}
+        <div class="flex flex-grow">
+          {/* Sidebar Navigation */}
+          <aside class="w-1/4 bg-gray-100 p-4">
+            <nav>
+              <ul class="space-y-4">
+                <li>
+                  <a href="#" class="text-gray-700 hover:underline">
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="text-gray-700 hover:underline">
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="text-gray-700 hover:underline">
+                    Services
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="text-gray-700 hover:underline">
+                    Contact
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </aside>
 
-      <div class="flex items-center h-16 bg-gray-300">
-        <div class="mx-auto">
+          {/* Body Content */}
+          <main class="w-3/4 p-6">
+            <h2 class="text-2xl font-bold mb-4">Welcome to the Body Content</h2>
+            <p class="text-gray-600">
+              This is the main content area. You can add your content here.
+            </p>
+          </main>
+        </div>
+
+        {/* Footer */}
+        <div class="h-16 bg-gray-300 flex items-center justify-center">
           <p class="text-center text-amber-600">
             &copy; Developed by{' '}
             <a href="https://github.com/sunshine55?tab=repositories">
@@ -28,6 +65,9 @@ export const App = () => {
           </p>
         </div>
       </div>
-    </>
+      
+      {/* Right Blank */}
+      <div class="col-span-1 bg-gray-100"></div>
+    </div>
   );
 };
