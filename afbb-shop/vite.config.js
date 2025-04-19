@@ -1,6 +1,7 @@
 import {defineConfig} from 'vite';
 import solidPlugin from 'vite-plugin-solid';
 import devtools from 'solid-devtools/vite';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   plugins: [
@@ -13,7 +14,8 @@ export default defineConfig({
         componentLocation: true
       }
     }),
-    solidPlugin()
+    solidPlugin(),
+    tailwindcss()
   ],
   server: {
     port: 5147,
