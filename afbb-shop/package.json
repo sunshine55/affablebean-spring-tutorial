@@ -27,11 +27,12 @@
     "npm-check-updates": "17.1.18",
     "prettier": "3.5.3",
     "solid-devtools": "0.34.0",
-    "tailwindcss": "4.1.4",
     "vite": "6.3.2",
     "vite-plugin-solid": "2.11.6"
   },
   "dependencies": {
-    "solid-js": "1.9.5"
+    "daisyui": "5.0.27",
+    "solid-js": "1.9.5",
+    "tailwindcss": "4.1.4"
   }
 }

@@ -9,10 +9,10 @@ export const App = () => {
       {/* Middle Container */}
       <div class="col-span-4 flex flex-col">
         {/* Header */}
-        <div class="flex items-center justify-center bg-white py-8">
+        <div class="flex items-center justify-center bg-base-100 py-8">
           <div class="text-center">
-            <h1 class="text-4xl font-bold text-gray-900">Affable Spring Bean</h1>
-            <p class="text-lg text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h1 class="text-4xl font-bold text-green-500">Affable Spring Bean</h1>
+            <p class="text-lg text-base-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
         </div>
 
@@ -52,20 +52,21 @@ export const App = () => {
             <p class="text-gray-600">
               This is the main content area. You can add your content here.
             </p>
+            <button class="btn btn-primary mt-4">Click Me!</button>
           </main>
         </div>
 
         {/* Footer */}
-        <div class="h-16 bg-gray-300 flex items-center justify-center">
-          <p class="text-center text-amber-600">
+        <div class="h-16 bg-base-200 flex items-center justify-center">
+          <p class="text-center text-blue-900">
             &copy; Developed by{' '}
-            <a href="https://github.com/sunshine55?tab=repositories">
+            <a href="https://github.com/sunshine55?tab=repositories" class="link text-red-500">
               sunshine55
             </a>
           </p>
         </div>
       </div>
-      
+
       {/* Right Blank */}
       <div class="col-span-1 bg-gray-100"></div>
     </div>
