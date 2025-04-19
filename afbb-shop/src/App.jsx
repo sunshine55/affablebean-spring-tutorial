@@ -17,14 +17,17 @@ export const App = () => {
       </div>
 
       <Category />
-      
+
       <div class="flex items-center h-16 bg-gray-300">
         <div class="mx-auto">
           <p class="text-center text-amber-600">
-            &copy; Developed by <a href="https://github.com/sunshine55?tab=repositories">sunshine55</a>
+            &copy; Developed by{' '}
+            <a href="https://github.com/sunshine55?tab=repositories">
+              sunshine55
+            </a>
           </p>
         </div>
       </div>
     </>
   );
-}
+};

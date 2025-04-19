@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import {defineConfig} from 'vite';
 import solidPlugin from 'vite-plugin-solid';
 import devtools from 'solid-devtools/vite';
 
@@ -10,16 +10,16 @@ export default defineConfig({
         targetIDE: 'vscode',
         key: 'Ctrl',
         jsxLocation: true,
-        componentLocation: true,
-      },
+        componentLocation: true
+      }
     }),
-    solidPlugin(),
+    solidPlugin()
   ],
   server: {
-    host: true,
-    port: 3000,
+    port: 5147,
+    host: true
   },
   build: {
-    target: 'esnext',
-  },
+    target: 'esnext'
+  }
 });

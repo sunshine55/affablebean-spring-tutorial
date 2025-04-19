@@ -1,8 +1,6 @@
 {
   "name": "afbb-shop",
-  "dockerComposeFile": [
-    "../compose.yml"
-  ],
+  "dockerComposeFile": ["../compose.yml"],
   "service": "afbb-shop",
   "shutdownAction": "none",
   "customizations": {
@@ -11,7 +9,8 @@
         "VisualStudioExptTeam.vscodeintellicode",
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
-        "skyran.js-jsx-snippets"
+        "EditorConfig.EditorConfig",
+        "bradlc.vscode-tailwindcss"
       ]
     }
   },
