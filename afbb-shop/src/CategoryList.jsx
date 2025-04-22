@@ -1,9 +1,9 @@
-import {createSignal, For} from 'solid-js';
-import {mockCategoryItems} from './mock/category';
+import {For} from 'solid-js';
 import {CategoryCard} from './CategoryCard';
+import {mockCategoryItems} from './mock/category';
 
 export const CategoryList = () => {
-  const [categories, setCategories] = createSignal(mockCategoryItems);
+  const categories = () => mockCategoryItems;
 
   return (
     <div class="flex flex-wrap items-center justify-center">
