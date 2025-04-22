@@ -1,9 +1,0 @@
-{
-  "name": "afbb-db",
-  "dockerComposeFile": [
-    "../docker-compose.yml"
-  ],
-  "service": "db",
-  "shutdownAction": "none",
-  "workspaceFolder": "/workspace"
-}
