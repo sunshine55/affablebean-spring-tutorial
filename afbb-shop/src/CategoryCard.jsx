@@ -3,7 +3,7 @@ export const CategoryCard = ({name, description}) => {
     <div className="card bg-base-100 w-96 shadow-sm">
       <figure>
         <img
-          src={`https://raw.githubusercontent.com/sunshine55/affablebean-microservice-tutorial/refs/heads/feature/upgrade/afbb-db/cdn/categories/${name}.jpg`}
+          src={`https://raw.githubusercontent.com/sunshine55/affablebean-microservice-tutorial/refs/heads/master/afbb-db/cdn/categories/${name}.jpg`}
           alt={name.toUpperCase()}
         />
       </figure>
