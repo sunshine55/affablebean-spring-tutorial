@@ -10,9 +10,11 @@ export const ItemCard = ({id, name, description, price}) => {
       <div className="card-body">
         <h2 className="card-title">{name.toUpperCase()}</h2>
         <p>{description}</p>
-        <p>{price}</p>
+        <p>
+          <i>Price:</i> {price}
+        </p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Add to Cart</button>
+          <button className="btn btn-accent">Add to Cart</button>
         </div>
       </div>
     </div>

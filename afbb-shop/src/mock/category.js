@@ -40,7 +40,7 @@ export const mockCategoryItems = [
       {
         id: '201',
         name: 'patties',
-        description: 'Rolled in fresh herbs<br>2 patties (250g)',
+        description: 'Rolled in fresh herbs 2 patties (250g)',
         price: 2.29
       },
       {
@@ -58,7 +58,7 @@ export const mockCategoryItems = [
       {
         id: '204',
         name: 'sausages',
-        description: 'Reduced fat, pork, pack of three sausages (350g)',
+        description: 'Reduced fat pork 3 sausages (350g)',
         price: 4.55
       }
     ]

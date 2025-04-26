@@ -13,7 +13,7 @@ export const CategoryCard = ({id, name, description}) => {
         <h2 className="card-title">{name.toUpperCase()}</h2>
         <p>{description}</p>
         <div className="card-actions justify-end">
-          <A className="btn btn-primary" href={`/category/${id}`}>
+          <A className="btn btn-info" href={`/category/${id}`}>
             Browse
           </A>
         </div>
