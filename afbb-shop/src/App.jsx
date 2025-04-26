@@ -1,12 +1,11 @@
-import {CategoryList} from './CategoryList';
 import {Footer} from './Footer';
 import {Header} from './Header';
 
-export const App = () => {
+export const App = props => {
   return (
     <>
       <Header />
-      <CategoryList />
+      {props.children}
       <Footer />
     </>
   );

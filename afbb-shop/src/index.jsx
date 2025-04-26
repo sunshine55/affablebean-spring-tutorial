@@ -1,9 +1,12 @@
 /* @refresh reload */
 import 'solid-devtools';
 import {render} from 'solid-js/web';
+import {Router, Route} from '@solidjs/router';
 
 import './index.css';
 import {App} from './App';
+import {CategoryList} from './CategoryList';
+import {ItemList} from './ItemList';
 
 const root = document.getElementById('root');
 
@@ -13,4 +16,12 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
   );
 }
 
-render(() => <App />, root);
+render(
+  () => (
+    <Router root={App}>
+      <Route path="/" component={CategoryList} />
+      <Route path="/category/:id" component={ItemList} />
+    </Router>
+  ),
+  root
+);
