@@ -5,8 +5,8 @@ export const Footer = () => {
         <p>
           Copyright &copy; {new Date().getFullYear()} - Developed by{' '}
           <a
-            href="https://github.com/sunshine55?tab=repositories"
             class="link text-red-500"
+            href="https://github.com/sunshine55?tab=repositories"
           >
             sunshine55
           </a>
