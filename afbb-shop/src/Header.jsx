@@ -1,4 +1,4 @@
-import {Cart} from './Cart';
+import {CartBadge} from './CartBadge';
 
 export const Header = () => {
   return (
@@ -9,7 +9,7 @@ export const Header = () => {
         </a>
       </div>
       <div className="flex-none">
-        <Cart />
+        <CartBadge />
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import {Router, Route} from '@solidjs/router';
 
 import './index.css';
 import {App} from './App';
+import {CartView} from './CartView';
 import {CategoryList} from './CategoryList';
 import {ItemList} from './ItemList';
 
@@ -21,6 +22,7 @@ render(
     <Router root={App}>
       <Route path="/" component={CategoryList} />
       <Route path="/category/:id" component={ItemList} />
+      <Route path="/cart" component={CartView} />
     </Router>
   ),
   root
