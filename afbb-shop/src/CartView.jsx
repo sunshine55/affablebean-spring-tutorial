@@ -1,12 +1,24 @@
 import {For, useContext} from 'solid-js';
 import {AppContext} from './AppContext';
+import {CartCheckout} from './CartCheckout';
 
 export const CartView = () => {
   const {appStore} = useContext(AppContext);
+  const total = () => {
+    const result = appStore.cart.reduce((acc, item) => acc + item.subtotal, 0);
+    return result.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    });
+  };
 
   return (
-    <div className="grid grid-cols-4 gap-4 p-8">
-      <div className="col-start-2">
+    <div className="grid grid-cols-3 gap-4 p-8">
+      <div className="col-start-1">
+        <div className="card bg-base-300 rounded-box grid h-20 place-items-center">
+          <p>Total: {total()}</p>
+        </div>
+        <div className="divider"></div>
         <For each={appStore.cart}>
           {item => (
             <div className="collapse collapse-plus bg-base-100 border border-base-300">
@@ -28,10 +40,8 @@ export const CartView = () => {
           )}
         </For>
       </div>
-      <div className="col-start-3">
-        <div className="flex items-center justify-center h-32 bg-gray-200">
-          Item 2
-        </div>
+      <div className="col-start-2 col-span-2">
+        <CartCheckout />
       </div>
     </div>
   );
