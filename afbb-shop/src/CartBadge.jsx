@@ -6,7 +6,7 @@ export const CartBadge = () => {
   const {appStore} = useContext(AppContext);
   const count = () => appStore.cart.length;
   const total = () => {
-    const result = appStore.cart.reduce((acc, item) => acc + item.price, 0);
+    const result = appStore.cart.reduce((acc, item) => acc + item.subtotal, 0);
     return result.toLocaleString('en-US', {
       style: 'currency',
       currency: 'USD'
