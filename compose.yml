@@ -6,19 +6,20 @@ services:
       - 27017:27017
     volumes:
       - ./afbb-db/mongo:/docker-entrypoint-initdb.d
-  afbb-webflux:
+  afbb-gradle:
     image: gradle:8-jdk21
-    container_name: afbb-webflux
+    container_name: afbb-gradle
     ports:
       - 8080:8080
     volumes:
-      - ./afbb-webflux:/workspace:delegated
+      - ./afbb-gradle:/workspace:delegated
     command: tail -f /dev/null
-  afbb-shop:
+  afbb-gui:
     image: node:23-bookworm-slim
-    container_name: afbb-shop
+    container_name: afbb-gui
     ports:
-      - 5147:5147
+      - 3000:3000
+      - 3001:3001
     volumes:
-      - ./afbb-shop:/workspace:delegated
+      - ./afbb-gui:/workspace:delegated
     command: tail -f /dev/null

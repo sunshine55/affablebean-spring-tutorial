@@ -1,46 +1,38 @@
 # Affable Bean Microservice Tutorial
+- [Affable Bean Microservice Tutorial](#affable-bean-microservice-tutorial)
+	- [Overview](#overview)
+	- [Directories](#directories)
+	- [Reference](#reference)
+	- [Local Development](#local-development)
+		- [Create the Swarm](#create-the-swarm)
+		- [Bring up APIs](#bring-up-apis)
+		- [Bring up GUIs](#bring-up-guis)
+	- [FAQs](#faqs)
 
-<!-- vscode-markdown-toc -->
-* 1. [Overview](#Overview)
-* 2. [Services](#Services)
-* 3. [Reference](#Reference)
-* 4. [Local Development](#LocalDevelopment)
-	* 4.1. [Create the Swarm](#CreatetheSwarm)
-	* 4.2. [Bring up the APIs](#BringuptheAPIs)
-	* 4.3. [Bring up the GUIs](#BringuptheGUIs)
-	* 4.4. [Bring up CDN server](#BringupCDNserver)
-	* 4.5. [FAQs](#FAQs)
-
-<!-- vscode-markdown-toc-config
-	numbering=true
-	autoSave=true
-	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc -->
-
-##  1. <a name='Overview'></a>Overview
+## Overview
 
 Breakdown [affablebean-spring-tutorial](https://github.com/sunshine55/affablebean-spring-tutorial) app into microservices and containerize them.
 
 Each microservice has diffrent a tech stack.
 
-Docker compose in this tutorial only works for localhost development only. In order to demo on cloud:
-* afbb-db: media files should be served on CDN and database seeds
-* afbb-webflux: use build plugins to automate cloud deployment
-* afbb-gui: env changes to adapt cloud deployment
+Docker compose in this tutorial will create a swarm of containers at localhost to demonstrate the microservices:
+* `afbb-mongo`: container runs on MongoDB, serves database and contents
+* `afbb-gradle`: container runs on Gradle, serves web APIs
+* `afbb-gui`: container runs on NodeJS, serves frontent GUIs
 
-##  2. <a name='Services'></a>Services
+## Directories
 
-afbb-db: data and contents
-  - database scripts (MySQL and MongoDB)
-  - media contents fetching CDN
+`afbb-db`: data and contents
+* database seeds & schemas
+* media contents
 
-afbb-webflux: web services and APIs
+`afbb-gradle`: web services and APIs
 
-afbb-gui: user interfaces
-* admin: data management site
-* shop: data-driven front site
+`afbb-gui`: user interfaces
+* `admin`: data management site
+* `shop`: data-driven front site
 
-##  3. <a name='Reference'></a>Reference
+## Reference
 
 Develop microservices with VSCode and type-2 hypervisor:
 * Shared development environment with [VSCode devcontainer](https://code.visualstudio.com/docs/remote/create-dev-container)
@@ -48,11 +40,13 @@ Develop microservices with VSCode and type-2 hypervisor:
 * It's significantly slow if using Docker Desktop for Windows due to file processing between Windows host and Linux container guests, attempt to cache mounted volumes doesn't improve much (see [Stackoverflow topic](https://stackoverflow.com/questions/49060062/running-webpack-dev-server-in-docker-is-significantly-slower-than-on-local-machi)).
 * Workaround: set up workspace in [VirtualBox VM](https://www.virtualbox.org/) with Linux distro (i.e.: [Ubuntu MATE](https://ubuntu-mate.org/)); then install Docker, VSCode...
 
-##  4. <a name='LocalDevelopment'></a>Local Development
+## Local Development
 
 Prerequisites: Docker, VSCode and Git (either install on OS or another type-2 hypervisor)
 
-###  4.1. <a name='CreatetheSwarm'></a>Create the Swarm
+If using Linux OS, see `prerequisites` handy scripts for installation
+
+### Create the Swarm
 
 Bring up all containers:
 * First time startup: `docker compose up -d` (create/recreate containers, which will download/reinstall vscode extensions for each container; hence, take a while)
@@ -60,7 +54,7 @@ Bring up all containers:
 
 All containers __orderly created__ and share the *same network created by docker-compose*
 
-###  4.2. <a name='BringuptheAPIs'></a>Bring up the APIs
+### Bring up APIs
 
 1. `Ctrl+Shift+N` > `Ctrl+Shift+P` > "Dev Containers: Open Folder in Container..." > select path to an api folder
 2. Wait for container window loading completed, all extensions should be installed (the extension IDs are defined in `.devcontainer.json`)
@@ -69,23 +63,16 @@ All containers __orderly created__ and share the *same network created by docker
 
 Run with CLI command: `mvn spring-boot:run` or `./gradlew bootRun`
 
-###  4.3. <a name='BringuptheGUIs'></a>Bring up the GUIs
+### Bring up GUIs
 
 1. `Ctrl+Shift+N` > `Ctrl+Shift+P` > "Dev Containers: Open Folder in Container..." > select path to a gui folder
 2. Wait for container window loading completed, all extensions should be installed (the extension IDs are defined in `.devcontainer.json`)
 3. Go to terminal of the container window: `npm run dev`
-4. Open browser on the host, i.e.: `http://localhost:3001/index.html`
+4. Open browser (recommend Chrome) on the host, i.e.: `http://localhost:3000`
 
 Run in production mode: `npm run prod`
 
-###  4.4. <a name='BringupCDNserver'></a>Bring up CDN server
-
-1. `Ctrl+Shift+N` > `Ctrl+Shift+P` > "Dev Containers: Open Folder in Container..." > select path to nginx folder
-2. Wait for container window loading completed, all extensions should be installed (the extension IDs are defined in `.devcontainer.json`)
-3. `docker compose exec -it cdn nginx -s reload` or `nginx -s reload` (if inside container) to reload nginx when making changes
-4. Open browser on the host to check a sample static content, i.e.: `http://localhost:8000/media/categories/bakery.jpg`
-
-###  4.5. <a name='FAQs'></a>FAQs
+## FAQs
 
 1. Webpack dev server is significantly slow if using Docker Desktop for Windows
 
