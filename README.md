@@ -24,27 +24,21 @@ Breakdown [affablebean-spring-tutorial](https://github.com/sunshine55/affablebea
 Each microservice has diffrent a tech stack.
 
 Docker compose in this tutorial only works for localhost development only. In order to demo on cloud:
-* afbb-db: media files should be served on CDN, at localhost development it should be mounted as part of `afbb-cdn`
-* afbb-cdn: not recommended for cloud deployment, use at localhost development as static content service
-* afbb-shop: env changes to adapt cloud deployment
+* afbb-db: media files should be served on CDN and database seeds
 * afbb-webflux: use build plugins to automate cloud deployment
+* afbb-gui: env changes to adapt cloud deployment
 
 ##  2. <a name='Services'></a>Services
 
-Databases:
-* afbb-cdn: serve static contents for other GUIs
-* afbb-db:
+afbb-db: data and contents
   - database scripts (MySQL and MongoDB)
   - media contents fetching CDN
 
-APIs:
-* afbb-web: web service for cart & order GUI
-* afbb-webflux: web service for shopping GUI
+afbb-webflux: web services and APIs
 
-GUIs:
-* afbb-admin: metadata management
-* afbb-cart: cart rendering and checkout
-* afbb-shop: products rendering
+afbb-gui: user interfaces
+* admin: data management site
+* shop: data-driven front site
 
 ##  3. <a name='Reference'></a>Reference
 
