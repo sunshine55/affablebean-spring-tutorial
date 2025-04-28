@@ -1,40 +1,53 @@
-import {AppBodySidebar} from './AppBodySidebar';
-import {AppBodyContent} from './AppBodyContent';
-import {CategoryList} from './CategoryList';
+import {mergeProps} from 'solid-js';
+import {createStore, produce} from 'solid-js/store';
+import {AppContext, INITIAL_APP_STORE} from './AppContext';
+import {Footer} from './Footer';
+import {Header} from './Header';
 
-export const App = () => {
+export const App = props => {
+  const [appStore, setAppStore] = createStore(INITIAL_APP_STORE);
+
+  const appContext = {
+    appStore,
+    addToCart: item =>
+      setAppStore(
+        'cart',
+        produce(cart => {
+          let existing = cart.find(existingItem => existingItem.id === item.id);
+          if (existing) {
+            existing.quantity += 1;
+            existing.subtotal += item.price;
+          } else {
+            cart.push({
+              id: item.id,
+              name: item.name,
+              quantity: 1,
+              subtotal: item.price
+            });
+          }
+        })
+      ),
+    removeFromCart: item =>
+      setAppStore(
+        'cart',
+        produce(cart => {
+          let existing = cart.find(existingItem => existingItem.id === item.id);
+          if (existing) {
+            existing.quantity -= 1;
+            existing.subtotal -= item.price;
+            if (existing.quantity <= 0) {
+              cart.splice(cart.indexOf(existing), 1);
+            }
+          }
+        })
+      )
+  };
+
   return (
-    <div class="grid">
-      {/* Header */}
-      <div class="flex items-center justify-center bg-base-100 py-8">
-        <div class="text-center">
-          <h1 class="text-4xl font-bold text-green-500">Affable Spring Bean</h1>
-          <p class="text-lg text-base-content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </p>
-        </div>
-      </div>
-
-      {/* Body */}
-      <div class="flex flex-grow">
-        <AppBodySidebar />
-        <AppBodyContent>
-          <CategoryList />
-        </AppBodyContent>
-      </div>
-
-      {/* Footer */}
-      <div class="flex items-center justify-center bg-base-200 h-16">
-        <p class="text-center text-blue-900">
-          &copy; Developed by{' '}
-          <a
-            href="https://github.com/sunshine55?tab=repositories"
-            class="link text-red-500"
-          >
-            sunshine55
-          </a>
-        </p>
-      </div>
-    </div>
+    <AppContext.Provider value={appContext}>
+      <Header />
+      {props.children}
+      <Footer />
+    </AppContext.Provider>
   );
 };
