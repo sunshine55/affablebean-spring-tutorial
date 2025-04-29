@@ -1,6 +1,7 @@
 # Affable Bean Microservice Tutorial
 - [Affable Bean Microservice Tutorial](#affable-bean-microservice-tutorial)
 	- [Overview](#overview)
+	- [Demo](#demo)
 	- [Directories](#directories)
 	- [Reference](#reference)
 	- [Local Development](#local-development)
@@ -13,12 +14,14 @@
 
 Breakdown [affablebean-spring-tutorial](https://github.com/sunshine55/affablebean-spring-tutorial) app into microservices and containerize them.
 
-Each microservice has diffrent a tech stack.
-
 Docker compose in this tutorial will create a swarm of containers at localhost to demonstrate the microservices:
 * `afbb-mongo`: container runs on MongoDB, serves database and contents
 * `afbb-gradle`: container runs on Gradle, serves web APIs
 * `afbb-gui`: container runs on NodeJS, serves frontent GUIs
+
+## Demo
+
+https://chipper-rugelach-1ca688.netlify.app/
 
 ## Directories
 
