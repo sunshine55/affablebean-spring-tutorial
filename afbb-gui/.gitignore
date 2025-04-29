@@ -6,8 +6,7 @@ package-lock.json
 # vite
 build/
 dist/
-.local
-*.local
+*local
 
 # vscode
 .vscode/

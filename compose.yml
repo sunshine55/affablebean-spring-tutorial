@@ -6,46 +6,20 @@ services:
       - 27017:27017
     volumes:
       - ./afbb-db/mongo:/docker-entrypoint-initdb.d
-  afbb-webflux:
+  afbb-gradle:
     image: gradle:8-jdk21
-    container_name: afbb-webflux
+    container_name: afbb-gradle
     ports:
       - 8080:8080
     volumes:
-      - ./afbb-webflux:/workspace:delegated
+      - ./afbb-gradle:/workspace:delegated
     command: tail -f /dev/null
-  afbb-mysql:
-    image: mysql:9
-    container_name: afbb-mysql
-    ports:
-      - 3306:3306
-    environment:
-      - MYSQL_DATABASE=afbb
-      - MYSQL_ROOT_USERNAME=root
-      - MYSQL_ROOT_PASSWORD=password
-    volumes:
-      - ./afbb-db/mysql:/docker-entrypoint-initdb.d
-  afbb-web:
-    image: maven:3-eclipse-temurin-24
-    container_name: afbb-web
-    ports:
-      - 8081:8081
-    volumes:
-      - ./afbb-web:/workspace:delegated
-    command: tail -f /dev/null
-  afbb-cdn:
-    image: nginx:stable-bookworm
-    container_name: afbb-cdn
-    ports:
-      - 8000:8000
-    volumes:
-      - ./afbb-cdn/conf:/etc/nginx/conf.d
-      - ./afbb-db/cdn:/usr/share/nginx/html/media
-  afbb-shop:
+  afbb-gui:
     image: node:23-bookworm-slim
-    container_name: afbb-shop
+    container_name: afbb-gui
     ports:
-      - 5147:5147
+      - 3000:3000
+      - 3001:3001
     volumes:
-      - ./afbb-shop:/workspace:delegated
+      - ./afbb-gui:/workspace:delegated
     command: tail -f /dev/null

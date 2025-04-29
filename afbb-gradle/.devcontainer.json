@@ -1,9 +1,9 @@
 {
-    "name": "afbb-webflux",
+    "name": "afbb-gradle",
     "dockerComposeFile": [
       "../compose.yml"
     ],
-    "service": "afbb-webflux",
+    "service": "afbb-gradle",
     "shutdownAction": "none",
     "customizations": {
       "vscode": {
