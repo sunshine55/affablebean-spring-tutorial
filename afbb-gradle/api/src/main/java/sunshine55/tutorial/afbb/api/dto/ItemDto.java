@@ -1,9 +1,9 @@
-package com.sunshine55.tutorial.afbb.webflux.dto;
+package sunshine55.tutorial.afbb.api.dto;
 
 import lombok.Data;
 
 @Data
-public class ItemDTO {
+public class ItemDto {
     private String name, description;
     private Float price;
 }

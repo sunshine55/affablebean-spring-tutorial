@@ -1,6 +1,6 @@
 spring:
   application:
-    name: afbb-webflux
+    name: afbb-api
   data:
     mongodb:
       uri: mongodb://afbb-mongo:27017/afbb
