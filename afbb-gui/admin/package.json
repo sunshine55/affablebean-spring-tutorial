@@ -1,0 +1,31 @@
+{
+  "name": "admin",
+  "description": "Affable Bean ddmin site",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "format": "prettier --write ./src",
+    "upgrade": "ncu -u",
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "15.3.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.3",
+    "@types/react": "19.1.2",
+    "@types/react-dom": "19.1.2",
+    "eslint": "9.25.1",
+    "eslint-config-next": "15.3.1",
+    "npm-check-updates": "18.0.1",
+    "prettier": "3.5.3",
+    "tailwindcss": "4.1.4",
+    "typescript": "5.8.3"
+  }
+}

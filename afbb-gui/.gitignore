@@ -3,10 +3,21 @@ node_modules/
 *.log
 package-lock.json
 
-# vite
+# production
 build/
 dist/
 *local
+.env*
+
+# testing
+coverage/
 
 # vscode
 .vscode/
+
+# typescript
+*.tsbuildinfo
+
+# misc
+.vercel
+next-env.d.ts
