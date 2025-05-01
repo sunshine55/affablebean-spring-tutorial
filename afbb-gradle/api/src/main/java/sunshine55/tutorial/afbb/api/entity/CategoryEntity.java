@@ -1,0 +1,22 @@
+package sunshine55.tutorial.afbb.api.entity;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
+@Document(collection = "category")
+@Getter @Setter
+@EqualsAndHashCode
+public class CategoryEntity {
+    @Id private String id;
+
+    private String description, name;
+    
+    public void modifyBy(CategoryEntity category) {
+        this.description = category.getDescription();
+        this.name = category.getName();
+    }
+}
