@@ -1,2 +1,5 @@
-GET http://localhost:8080/category/getAll HTTP/1.1
+GET http://localhost:8080/category HTTP/1.1
+Content-Type: application/json
+
+DELETE http://localhost:8080/category HTTP/1.1
 Content-Type: application/json
