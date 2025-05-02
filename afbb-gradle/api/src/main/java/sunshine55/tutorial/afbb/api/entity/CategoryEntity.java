@@ -2,6 +2,7 @@ package sunshine55.tutorial.afbb.api.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.util.StringUtils;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -13,10 +14,17 @@ import lombok.Setter;
 public class CategoryEntity {
     @Id private String id;
 
-    private String description, name;
+    private String description, imageSrc, name;
     
     public void modifyBy(CategoryEntity category) {
-        this.description = category.getDescription();
-        this.name = category.getName();
+        if (StringUtils.hasText(category.description)) {
+            this.description = category.description;
+        }
+        if (StringUtils.hasText(category.imageSrc)) {
+            this.imageSrc = category.imageSrc;
+        }
+        if (StringUtils.hasText(category.name)) {
+            this.name = category.name;
+        }
     }
 }
