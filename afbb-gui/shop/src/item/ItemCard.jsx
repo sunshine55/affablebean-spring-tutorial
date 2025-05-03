@@ -1,17 +1,14 @@
 import {useContext} from 'solid-js';
-import {AppContext} from './AppContext';
+import {AppContext} from '../context';
 
-export const ItemCard = ({id, name, description, price}) => {
+export const ItemCard = ({id, name, description, imageSrc, price}) => {
   const {appStore, addToCart, removeFromCart} = useContext(AppContext);
   const quantity = () => appStore.cart.find(item => item.id === id)?.quantity;
 
   return (
     <div className="card bg-base-100 w-96 shadow-sm">
       <figure>
-        <img
-          src={`https://raw.githubusercontent.com/sunshine55/affablebean-microservice-tutorial/refs/heads/master/afbb-db/cdn/items/${name}.png`}
-          alt={name.toUpperCase()}
-        />
+        <img src={imageSrc} alt={name.toUpperCase()} />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{name.toUpperCase()}</h2>

@@ -5,9 +5,9 @@ import {Router, Route} from '@solidjs/router';
 
 import './index.css';
 import {App} from './App';
-import {CartView} from './CartView';
-import {CategoryList} from './CategoryList';
-import {ItemList} from './ItemList';
+import {CartView} from './cart';
+import {CategoryList} from './category';
+import {ItemList} from './item';
 
 const root = document.getElementById('root');
 

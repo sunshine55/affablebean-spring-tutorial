@@ -1,9 +1,16 @@
-import {For} from 'solid-js';
+import {createResource, For} from 'solid-js';
 import {CategoryCard} from './CategoryCard';
-import {mockCategoryItems} from './mock/category';
+
+const fetchCategories = async () => {
+  const response = await fetch(`${import.meta.env.VITE_AFBB_API}/categories`);
+  if (!response.ok) {
+    throw new Error('Failed to fetch categories');
+  }
+  return response.json();
+};
 
 export const CategoryList = () => {
-  const categories = () => mockCategoryItems;
+  const [categories] = createResource(fetchCategories);
 
   return (
     <div class="flex justify-center flex-wrap p-8">

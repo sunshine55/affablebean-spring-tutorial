@@ -1,106 +1,26 @@
 [
   {
+    "id": "68142ad4b3498d12af5275b1",
     "name": "dairy",
-    "description": "Eu volutpat odio facilisis mauris sit. Mattis molestie a iaculis at erat. At augue eget arcu dictum varius. Nunc mattis enim ut tellus elementum.",
-    "items": [
-      {
-        "name": "milk",
-        "description": "Semi skimmed milk (1L)",
-        "price": 1.7
-      },
-      {
-        "name": "cheese",
-        "description": "Mild cheddar cheese (330g)",
-        "price": 2.39
-      },
-      {
-        "name": "butter",
-        "description": "Unsalted butter (250g)",
-        "price": 1.09
-      },
-      {
-        "name": "eggs",
-        "description": "Medium sized package (6 eggs)",
-        "price": 1.76
-      }
-    ]
+    "description": "Aliquam faucibus purus in massa tempor nec feugiat nisl. Eget nunc scelerisque viverra mauris in aliquam sem fringilla ut. Nunc sed velit dignissim sodales ut eu sem integer vitae justo.",
+    "imageSrc": "https://picsum.photos/300/200"
   },
   {
+    "id": "68142ad4b3498d12af5275b2",
     "name": "meat",
-    "description": "Mus mauris ultricies leo. Quis viverra nibh cras pulvinar libero. Egestas integer eget praesent tristique magna. Semper eget duis at tellus at urna.",
-    "items": [
-      {
-        "name": "patties",
-        "description": "Rolled in fresh herbs<br>2 patties (250g)",
-        "price": 2.29
-      },
-      {
-        "name": "ham",
-        "description": "Matured and organic ham (70g)",
-        "price": 3.49
-      },
-      {
-        "name": "chicken",
-        "description": "Free range chicken whole meat (250g)",
-        "price": 5.59
-      },
-      {
-        "name": "sausages",
-        "description": "Reduced fat, pork, pack of three sausages (350g)",
-        "price": 4.55
-      }
-    ]
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "imageSrc": "https://picsum.photos/300/200"
   },
   {
+    "id": "68142ad4b3498d12af5275b3",
     "name": "bakery",
-    "description": "Elementum eu facilisis sed odio morbi quis commodo odio aenean. Vulputate ut pharetra sit amet aliquam. Eu tincidunt tortor aliquam nulla facilisi.",
-    "items": [
-      {
-        "name": "loaf",
-        "description": "Plain white bread (250g)",
-        "price": 1.89
-      },
-      {
-        "name": "bagel",
-        "description": "Whole grain bread (70g)",
-        "price": 7.5
-      },
-      {
-        "name": "bun",
-        "description": "Over baked bread (250g)",
-        "price": 8
-      },
-      {
-        "name": "cookies",
-        "description": "Mint chocolate cookies (12)",
-        "price": 10.11
-      }
-    ]
+    "description": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.",
+    "imageSrc": "https://picsum.photos/300/200"
   },
   {
-    "name": "veg",
-    "description": "Feugiat scelerisque varius morbi enim. Natoque penatibus magnis dis parturient montes nascetur. Tortor vitae purus faucibus ornare suspendisse sed nisi.",
-    "items": [
-      {
-        "name": "watermelon",
-        "description": "Seedless juicy watermelon (250g)",
-        "price": 1.2
-      },
-      {
-        "name": "currants",
-        "description": "Multi purposes black currants (70g)",
-        "price": 7.22
-      },
-      {
-        "name": "broccoli",
-        "description": "Organic green broccoli (250g)",
-        "price": 3.01
-      },
-      {
-        "name": "corn",
-        "description": "Mixed white and yellow whole kernel corns (12)",
-        "price": 6.77
-      }
-    ]
+    "id": "68142ad4b3498d12af5275b4",
+    "name": "vegetables",
+    "description": "Curabitur aliquet quam id dui posuere blandit. Nulla porttitor accumsan tincidunt. Proin eget tortor risus.",
+    "imageSrc": "https://picsum.photos/300/200"
   }
 ]

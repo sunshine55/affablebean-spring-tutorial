@@ -1,8 +1,6 @@
-import {mergeProps} from 'solid-js';
 import {createStore, produce} from 'solid-js/store';
-import {AppContext, INITIAL_APP_STORE} from './AppContext';
-import {Footer} from './Footer';
-import {Header} from './Header';
+import {AppContext, INITIAL_APP_STORE} from './context';
+import {Footer, Header} from './layout';
 
 export const App = props => {
   const [appStore, setAppStore] = createStore(INITIAL_APP_STORE);

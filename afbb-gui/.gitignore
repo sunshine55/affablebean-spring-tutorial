@@ -7,7 +7,6 @@ package-lock.json
 build/
 dist/
 *local
-.env*
 
 # testing
 coverage/
