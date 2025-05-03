@@ -9,7 +9,7 @@ import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 import lombok.RequiredArgsConstructor;
-import sunshine55.tutorial.afbb.api.config.properties.AfbbProperties;
+import sunshine55.tutorial.afbb.api.config.props.AfbbProperties;
 
 @Configuration
 @RequiredArgsConstructor

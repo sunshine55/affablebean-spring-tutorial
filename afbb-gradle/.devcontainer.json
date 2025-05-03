@@ -1,20 +1,20 @@
 {
-    "name": "afbb-gradle",
-    "dockerComposeFile": [
-      "../compose.yml"
-    ],
-    "service": "afbb-gradle",
-    "shutdownAction": "none",
-    "customizations": {
-      "vscode": {
-        "extensions": [
-          "vscjava.vscode-gradle",
-          "vscjava.vscode-java-pack",
-          "vscjava.vscode-lombok",
-          "vmware.vscode-boot-dev-pack",
-          "anweber.vscode-httpyac"
-        ]
-      }
-    },
-    "workspaceFolder": "/workspace"
-  }
+  "name": "afbb-gradle",
+  "dockerComposeFile": [
+    "../compose.yml"
+  ],
+  "service": "afbb-gradle",
+  "shutdownAction": "none",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-gradle",
+        "vscjava.vscode-java-pack",
+        "vscjava.vscode-lombok",
+        "vmware.vscode-boot-dev-pack",
+        "anweber.vscode-httpyac"
+      ]
+    }
+  },
+  "workspaceFolder": "/workspace"
+}

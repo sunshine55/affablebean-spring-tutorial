@@ -1,6 +1,9 @@
+afbb:
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS}
 spring:
   application:
     name: afbb-api
   data:
     mongodb:
-      uri: mongodb://afbb-mongo:27017/afbb
+      uri: ${MONGODB_URI}

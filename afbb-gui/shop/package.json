@@ -2,7 +2,7 @@
   "name": "afbb-shop",
   "version": "1.0.0",
   "type": "module",
-  "description": "Spring Affable Bean tutorial remake",
+  "description": "Remastered Affable Bean NetBeans tutorial",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sunshine55/affablebean-microservice-tutorial.git"

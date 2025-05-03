@@ -1,4 +1,4 @@
-package sunshine55.tutorial.afbb.api.config.properties;
+package sunshine55.tutorial.afbb.api.config.props;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
