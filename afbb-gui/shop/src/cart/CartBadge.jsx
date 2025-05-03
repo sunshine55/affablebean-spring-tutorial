@@ -1,6 +1,6 @@
 import {Show, useContext} from 'solid-js';
 import {A} from '@solidjs/router';
-import {AppContext} from './AppContext';
+import {AppContext} from '../context';
 
 export const CartBadge = () => {
   const {appStore} = useContext(AppContext);

@@ -1,4 +1,4 @@
-import {CartBadge} from './CartBadge';
+import {CartBadge} from '../cart';
 
 export const Header = () => {
   return (

@@ -1,5 +1,5 @@
 import {For, useContext} from 'solid-js';
-import {AppContext} from './AppContext';
+import {AppContext} from '../context';
 import {CartCheckout} from './CartCheckout';
 
 export const CartView = () => {

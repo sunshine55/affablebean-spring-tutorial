@@ -1,13 +1,10 @@
 import {A} from '@solidjs/router';
 
-export const CategoryCard = ({id, name, description}) => {
+export const CategoryCard = ({id, name, description, imageSrc}) => {
   return (
     <div className="card bg-base-100 w-96 shadow-sm">
       <figure>
-        <img
-          src={`https://raw.githubusercontent.com/sunshine55/affablebean-microservice-tutorial/refs/heads/master/afbb-db/cdn/categories/${name}.jpg`}
-          alt={name.toUpperCase()}
-        />
+        <img src={imageSrc} alt={name.toUpperCase()} />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{name.toUpperCase()}</h2>
