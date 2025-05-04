@@ -1,6 +1,6 @@
 # Affable Bean Microservice Tutorial
 - [Affable Bean Microservice Tutorial](#affable-bean-microservice-tutorial)
-	- [Demo](#demo)
+	- [Deployment](#deployment)
 	- [Overview](#overview)
 	- [Directories Structure](#directories-structure)
 	- [Prerequisites](#prerequisites)
@@ -9,9 +9,13 @@
 		- [Bring up GUIs](#bring-up-guis)
 	- [FAQs](#faqs)
 
-## Demo
+## Deployment
 
-https://chipper-rugelach-1ca688.netlify.app/
+Frontend: https://chipper-rugelach-1ca688.netlify.app
+
+Backend: https://afbb-api.onrender.com
+
+Database: [MongoDB Atlas](https://www.mongodb.com/products/platform/atlas-database)
 
 ## Overview
 
