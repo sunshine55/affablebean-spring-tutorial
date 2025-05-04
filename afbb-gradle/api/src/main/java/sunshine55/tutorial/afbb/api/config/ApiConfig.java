@@ -19,7 +19,7 @@ public class ApiConfig {
     @Bean
     public CorsWebFilter corsWebFilter() {
         CorsConfiguration corsConfig = new CorsConfiguration();
-        corsConfig.setAllowedOrigins(Arrays.asList(afbbProperties.getCors().getAllowedOrigins().split(",")));
+        corsConfig.setAllowedOriginPatterns(Arrays.asList(afbbProperties.getCors().getAllowedOrigins().split(",")));
         corsConfig.setMaxAge(8000L);
         corsConfig.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 
