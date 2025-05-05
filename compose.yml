@@ -32,4 +32,5 @@ services:
 
 networks:
   afbb-network:
-    driver: overlay
+    name: afbb-ms-nw
+    driver: bridge
