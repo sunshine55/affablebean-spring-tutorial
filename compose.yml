@@ -6,6 +6,8 @@ services:
       - 27017:27017
     volumes:
       - ./afbb-db/mongo:/docker-entrypoint-initdb.d
+    networks:
+      - afbb-network
   afbb-gradle:
     image: gradle:8-jdk21
     container_name: afbb-gradle
@@ -14,6 +16,8 @@ services:
     volumes:
       - ./afbb-gradle:/workspace:delegated
     command: tail -f /dev/null
+    networks:
+      - afbb-network
   afbb-gui:
     image: node:23-bookworm-slim
     container_name: afbb-gui
@@ -23,3 +27,9 @@ services:
     volumes:
       - ./afbb-gui:/workspace:delegated
     command: tail -f /dev/null
+    networks:
+      - afbb-network
+
+networks:
+  afbb-network:
+    driver: overlay

@@ -1,5 +1,5 @@
-# Affable Bean Microservice Tutorial
-- [Affable Bean Microservice Tutorial](#affable-bean-microservice-tutorial)
+# Affable Bean Tutorial
+- [Affable Bean Tutorial](#affable-bean-tutorial)
 	- [Deployment](#deployment)
 	- [Overview](#overview)
 	- [Directories Structure](#directories-structure)
@@ -19,7 +19,7 @@ Database: [MongoDB Atlas](https://www.mongodb.com/products/platform/atlas-databa
 
 ## Overview
 
-Breakdown [affablebean-spring-tutorial](https://github.com/sunshine55/affablebean-spring-tutorial) app into microservices and containerize them.
+Rewrite [Netbeans e-commerce tutorial](https://netbeans.apache.org/tutorial/main/kb/docs/javaee/ecommerce/intro/) into microservices
 
 Docker compose in this tutorial will create a **swarm of containers** at localhost to demonstrate the microservices:
 * `afbb-mongo`: container serves database and contents, created using MongoDB image
