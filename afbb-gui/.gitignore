@@ -17,6 +17,11 @@ coverage/
 # typescript
 *.tsbuildinfo
 
+# testing
+coverage/
+
 # misc
 .vercel
 next-env.d.ts
+.next/
+out/
