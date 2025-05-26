@@ -5,11 +5,11 @@
   "description": "Admin dashboard Affable Bean store",
   "private": true,
   "scripts": {
-    "format": "prettier --write ./src",
+    "format": "prettier --write ./**/*.{js,ts,jsx,tsx,json,css}",
     "upgrade": "ncu -u",
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p 3001"
   },
   "dependencies": {
     "next": "15.3.2",
