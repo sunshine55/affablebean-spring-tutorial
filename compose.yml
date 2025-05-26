@@ -1,0 +1,35 @@
+services:
+  afbb-mongo:
+    image: mongo:8
+    container_name: afbb-mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ./afbb-db/mongo:/docker-entrypoint-initdb.d
+    networks:
+      - afbb-network
+  afbb-gradle:
+    image: gradle:8-jdk21
+    container_name: afbb-gradle
+    ports:
+      - 8080:8080
+    volumes:
+      - ./afbb-gradle:/workspace:delegated
+    command: tail -f /dev/null
+    networks:
+      - afbb-network
+  afbb-gui:
+    image: node:22-bookworm
+    container_name: afbb-gui
+    ports:
+      - 3000:3000
+      - 3001:3001
+    volumes:
+      - ./afbb-gui:/workspace:delegated
+    command: tail -f /dev/null
+    networks:
+      - afbb-network
+
+networks:
+  afbb-network:
+    name: afbb-ms-nw

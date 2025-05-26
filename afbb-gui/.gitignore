@@ -1,0 +1,22 @@
+# nodejs
+node_modules/
+*.log
+package-lock.json
+
+# production
+build/
+dist/
+*local
+
+# testing
+coverage/
+
+# vscode
+.vscode/
+
+# typescript
+*.tsbuildinfo
+
+# misc
+.vercel
+next-env.d.ts

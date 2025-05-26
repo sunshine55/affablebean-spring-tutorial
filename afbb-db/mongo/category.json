@@ -1,0 +1,26 @@
+[
+  {
+    "id": "68142ad4b3498d12af5275b1",
+    "name": "dairy",
+    "description": "Aliquam faucibus purus in massa tempor nec feugiat nisl. Eget nunc scelerisque viverra mauris in aliquam sem fringilla ut. Nunc sed velit dignissim sodales ut eu sem integer vitae justo.",
+    "imageSrc": "https://picsum.photos/300/200"
+  },
+  {
+    "id": "68142ad4b3498d12af5275b2",
+    "name": "meat",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "imageSrc": "https://picsum.photos/300/200"
+  },
+  {
+    "id": "68142ad4b3498d12af5275b3",
+    "name": "bakery",
+    "description": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.",
+    "imageSrc": "https://picsum.photos/300/200"
+  },
+  {
+    "id": "68142ad4b3498d12af5275b4",
+    "name": "vegetables",
+    "description": "Curabitur aliquet quam id dui posuere blandit. Nulla porttitor accumsan tincidunt. Proin eget tortor risus.",
+    "imageSrc": "https://picsum.photos/300/200"
+  }
+]

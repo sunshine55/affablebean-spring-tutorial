@@ -1,0 +1,9 @@
+afbb:
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS}
+spring:
+  application:
+    name: afbb-api
+  data:
+    mongodb:
+      uri: ${MONGODB_URI}
