@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function Sidebar() {
+export function Sidebar() {
   return (
     <aside className="sidebar">
       <nav>
