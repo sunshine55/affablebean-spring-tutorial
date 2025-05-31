@@ -1,3 +1,8 @@
 export default function Home() {
-  return <h1>Hello NextJS Getting Started</h1>;
+  return (
+    <div>
+      <h2>Dashboard</h2>
+      <p>Welcome to the Affable Bean Admin Dashboard</p>
+    </div>
+  );
 }
