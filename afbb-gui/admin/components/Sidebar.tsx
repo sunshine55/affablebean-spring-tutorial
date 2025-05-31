@@ -1,22 +1,29 @@
 import Link from 'next/link';
 
+const LinkList = () => {
+  return [
+    { '/': 'Dashboard' },
+    { '/Products': 'Products' },
+    { '/orders': 'Orders' },
+    { '/customers': 'Customers' },
+  ].map((link, index) => {
+    const [href, label] = Object.entries(link)[0];
+    return (
+      <li key={`sidebar-link-${index}`} className="mb-2">
+        <Link href={href} className="no-underline text-inherit hover:underline">
+          {label}
+        </Link>
+      </li>
+    );
+  });
+};
+
 export function Sidebar() {
   return (
     <aside className="sidebar">
       <nav>
-        <ul>
-          <li>
-            <Link href="/">Dashboard</Link>
-          </li>
-          <li>
-            <Link href="/products">Products</Link>
-          </li>
-          <li>
-            <Link href="/orders">Orders</Link>
-          </li>
-          <li>
-            <Link href="/customers">Customers</Link>
-          </li>
+        <ul className="list-none p-0 m-0">
+          <LinkList />
         </ul>
       </nav>
     </aside>

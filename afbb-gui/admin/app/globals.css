@@ -1,6 +1,11 @@
 @import 'tailwindcss';
 
 :root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -56,23 +61,4 @@ body {
   padding: 1rem;
   text-align: center;
   border-top: 1px solid #ccc;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar li {
-  margin-bottom: 0.5rem;
-}
-
-.sidebar a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.sidebar a:hover {
-  text-decoration: underline;
 }
