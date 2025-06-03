@@ -1,0 +1,30 @@
+{
+  "name": "admin",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Admin dashboard Affable Bean store",
+  "private": true,
+  "scripts": {
+    "format": "prettier --write ./**/*.{js,ts,jsx,tsx,json,css}",
+    "upgrade": "ncu -u",
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start -p 3001"
+  },
+  "dependencies": {
+    "next": "15.3.3",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "zod": "3.25.49"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4",
+    "@types/node": "22",
+    "@types/react": "19",
+    "@types/react-dom": "19",
+    "npm-check-updates": "18.0.1",
+    "prettier": "3.5.3",
+    "tailwindcss": "4",
+    "typescript": "5"
+  }
+}

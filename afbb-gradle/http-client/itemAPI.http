@@ -1,0 +1,122 @@
+GET http://localhost:8080/items HTTP/1.1
+Content-Type: application/json
+
+POST http://localhost:8080/items HTTP/1.1
+Content-Type: application/json
+[
+  {
+    "name": "milk",
+    "description": "Semi skimmed milk (1L)",
+    "price": 1.7,
+    "categoryId": "68142ad4b3498d12af5275b1",
+    "imageSrc": "https://picsum.photos/300/200"
+  },
+  {
+    "name": "cheese",
+    "description": "Mild cheddar cheese (330g)",
+    "price": 2.39,
+    "categoryId": "68142ad4b3498d12af5275b1",
+    "imageSrc": "https://picsum.photos/300/200"
+  },
+  {
+    "name": "butter",
+    "description": "Unsalted butter (250g)",
+    "price": 1.09,
+    "categoryId": "68142ad4b3498d12af5275b1",
+    "imageSrc": "https://picsum.photos/300/200"
+  },
+  {
+    "name": "eggs",
+    "description": "Medium sized package (6 eggs)",
+    "price": 1.76,
+    "categoryId": "68142ad4b3498d12af5275b1",
+    "imageSrc": "https://picsum.photos/300/200"
+  },
+  {
+    "name": "patties",
+    "description": "Rolled in fresh herbs<br>2 patties (250g)",
+    "price": 2.29,
+    "categoryId": "68142ad4b3498d12af5275b2",
+    "imageSrc": "https://picsum.photos/300/200"
+  },
+  {
+    "name": "ham",
+    "description": "Matured and organic ham (70g)",
+    "price": 3.49,
+    "categoryId": "68142ad4b3498d12af5275b2",
+    "imageSrc": "https://picsum.photos/300/200"
+  },
+  {
+    "name": "chicken",
+    "description": "Free range chicken whole meat (250g)",
+    "price": 5.59,
+    "categoryId": "68142ad4b3498d12af5275b2",
+    "imageSrc": "https://picsum.photos/300/200"
+  },
+  {
+    "name": "sausages",
+    "description": "Reduced fat, pork, pack of three sausages (350g)",
+    "price": 4.55,
+    "categoryId": "68142ad4b3498d12af5275b2",
+    "imageSrc": "https://picsum.photos/300/200"
+  },
+  {
+    "name": "loaf",
+    "description": "Plain white bread (250g)",
+    "price": 1.89,
+    "categoryId": "68142ad4b3498d12af5275b3",
+    "imageSrc": "https://picsum.photos/300/200"
+  },
+  {
+    "name": "bagel",
+    "description": "Whole grain bread (70g)",
+    "price": 7.5,
+    "categoryId": "68142ad4b3498d12af5275b3",
+    "imageSrc": "https://picsum.photos/300/200"
+  },
+  {
+    "name": "bun",
+    "description": "Over baked bread (250g)",
+    "price": 8,
+    "categoryId": "68142ad4b3498d12af5275b3",
+    "imageSrc": "https://picsum.photos/300/200"
+  },
+  {
+    "name": "cookies",
+    "description": "Mint chocolate cookies (12)",
+    "price": 10.11,
+    "categoryId": "68142ad4b3498d12af5275b3",
+    "imageSrc": "https://picsum.photos/300/200"
+  },
+  {
+    "name": "watermelon",
+    "description": "Seedless juicy watermelon (250g)",
+    "price": 1.2,
+    "categoryId": "68142ad4b3498d12af5275b4",
+    "imageSrc": "https://picsum.photos/300/200"
+  },
+  {
+    "name": "currants",
+    "description": "Multi purposes black currants (70g)",
+    "price": 7.22,
+    "categoryId": "68142ad4b3498d12af5275b4",
+    "imageSrc": "https://picsum.photos/300/200"
+  },
+  {
+    "name": "broccoli",
+    "description": "Organic green broccoli (250g)",
+    "price": 3.01,
+    "categoryId": "68142ad4b3498d12af5275b4",
+    "imageSrc": "https://picsum.photos/300/200"
+  },
+  {
+    "name": "corn",
+    "description": "Mixed white and yellow whole kernel corns (12)",
+    "price": 6.77,
+    "categoryId": "68142ad4b3498d12af5275b4",
+    "imageSrc": "https://picsum.photos/300/200"
+  }
+]
+
+DELETE http://localhost:8080/items HTTP/1.1
+Content-Type: application/json

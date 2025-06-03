@@ -1,0 +1,16 @@
+{
+  "name": "afbb-gui",
+  "dockerComposeFile": ["../compose.yml"],
+  "service": "afbb-gui",
+  "shutdownAction": "none",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "GitHub.copilot-chat"
+      ]
+    }
+  },
+  "workspaceFolder": "/workspace"
+}
