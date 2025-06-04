@@ -1,32 +1,11 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
 import Link from 'next/link';
 
-import { categorySchema, CategoryType } from '@/schema/category';
+import { CategoryModel } from '@/schema/category';
 
-export default function CategoryEditPage() {
-  const { id } = useParams();
-  const [category, setCategory] = useState<CategoryType | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    if (!id) return;
-
-    const apiUrl = `${process.env.NEXT_PUBLIC_AFBB_API}/categories/${id}`;
-    fetch(apiUrl)
-      .then((res) => res.json())
-      .then((data) => setCategory(categorySchema.parse(data)))
-      .finally(() => setLoading(false));
-  }, [id]);
-
-  if (loading) {
-    return <div className="flex justify-center items-center h-64">Loading...</div>;
-  }
-
+export const CategoryForm = ({ id, name, description, imageSrc }: CategoryModel) => {
   return (
     <form className="max-w-md mx-auto p-6 bg-white rounded shadow">
+      <input type="hidden" name="id" value={id} />
       <div className="mb-4">
         <label className="block text-gray-700 font-bold mb-2" htmlFor="name">
           Name
@@ -35,7 +14,7 @@ export default function CategoryEditPage() {
           id="name"
           type="text"
           className="w-full px-3 py-2 border rounded focus:outline-none focus:ring"
-          value={category?.name || ''}
+          value={name || ''}
           readOnly
         />
       </div>
@@ -47,7 +26,7 @@ export default function CategoryEditPage() {
           id="description"
           rows={10}
           className="w-full px-3 py-2 border rounded focus:outline-none focus:ring"
-          value={category?.description || ''}
+          value={description || ''}
           readOnly
         />
       </div>
@@ -59,7 +38,7 @@ export default function CategoryEditPage() {
           id="imageSrc"
           type="text"
           className="w-full px-3 py-2 border rounded focus:outline-none focus:ring"
-          value={category?.imageSrc || ''}
+          value={imageSrc || ''}
           readOnly
         />
       </div>
@@ -80,4 +59,4 @@ export default function CategoryEditPage() {
       </div>
     </form>
   );
-}
+};

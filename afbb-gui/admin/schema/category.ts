@@ -6,7 +6,7 @@ export const categorySchema = z.object({
   description: z.string().optional(),
   imageSrc: z.string().url().optional(),
 });
-export type CategoryType = z.infer<typeof categorySchema>;
+export type CategoryModel = z.infer<typeof categorySchema>;
 
 export const categoriesSchema = z.array(categorySchema);
-export type CategoriesType = z.infer<typeof categoriesSchema>;
+export type CategoriesModel = z.infer<typeof categoriesSchema>;

@@ -3,23 +3,22 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
-import { categoriesSchema, CategoriesType } from '@/schema/category';
-
-const apiUrl = `${process.env.NEXT_PUBLIC_AFBB_API}/categories`;
+import { categoriesSchema, CategoriesModel } from '@/schema/category';
+import { Spinner } from '@/components';
 
 export default function CategoryListPage() {
-  const [categories, setCategories] = useState<CategoriesType>([]);
+  const [categories, setCategories] = useState<CategoriesModel>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    fetch(apiUrl)
+    fetch(`${process.env.NEXT_PUBLIC_AFBB_API}/categories`)
       .then((res) => res.json())
       .then((data) => setCategories(categoriesSchema.parse(data)))
       .finally(() => setLoading(false));
   }, []);
 
   if (loading) {
-    return <div className="flex justify-center items-center h-64">Loading...</div>;
+    return <Spinner />;
   }
 
   return (
