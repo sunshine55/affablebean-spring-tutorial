@@ -1,21 +1,67 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-import { CategoryModel } from '@/schema/category';
+import { categoriesSchema, CategoryModel } from '@/schema/category';
 
-export const CategoryForm = ({ id, name, description, imageSrc }: CategoryModel) => {
+export const CategoryForm = (props: CategoryModel) => {
+  const { id, name, description, imageSrc } = props;
+
+  const router = useRouter();
+
+  const [formState, setFormState] = useState<CategoryModel>({
+    name: name || '',
+    description: description || '',
+    imageSrc: imageSrc || '',
+  });
+
+  useEffect(() => setFormState(props), [props]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormState((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = () => {
+    fetch(`${process.env.NEXT_PUBLIC_AFBB_API}/categories`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify([formState]),
+    })
+      .then((response) => (response.ok ? response.json() : Promise.reject(response)))
+      .then((responseData) => {
+        const data = categoriesSchema.parse(responseData);
+        if (data.length === 0) {
+          alert('No categories were saved. Please check your input.');
+          return;
+        }
+        router.push('/categories');
+      })
+      .catch((error) => {
+        alert(`Error saving category: ${error}`);
+      });
+  };
+
   return (
-    <form className="max-w-md mx-auto p-6 bg-white rounded shadow">
-      <input type="hidden" name="id" value={id} />
+    <div className="max-w-md mx-auto p-6 bg-white rounded shadow">
+      <input type="hidden" name="id" value={id || ''} />
       <div className="mb-4">
         <label className="block text-gray-700 font-bold mb-2" htmlFor="name">
           Name
         </label>
         <input
-          id="name"
+          name="name"
           type="text"
           className="w-full px-3 py-2 border rounded focus:outline-none focus:ring"
-          value={name || ''}
-          readOnly
+          value={formState.name || ''}
+          onChange={handleChange}
         />
       </div>
       <div className="mb-4">
@@ -23,11 +69,11 @@ export const CategoryForm = ({ id, name, description, imageSrc }: CategoryModel)
           Description
         </label>
         <textarea
-          id="description"
+          name="description"
           rows={10}
           className="w-full px-3 py-2 border rounded focus:outline-none focus:ring"
-          value={description || ''}
-          readOnly
+          value={formState.description || ''}
+          onChange={handleChange}
         />
       </div>
       <div className="mb-4">
@@ -35,11 +81,11 @@ export const CategoryForm = ({ id, name, description, imageSrc }: CategoryModel)
           Image URL
         </label>
         <input
-          id="imageSrc"
+          name="imageSrc"
           type="text"
           className="w-full px-3 py-2 border rounded focus:outline-none focus:ring"
-          value={imageSrc || ''}
-          readOnly
+          value={formState.imageSrc || ''}
+          onChange={handleChange}
         />
       </div>
       <div className="flex justify-end">
@@ -52,11 +98,11 @@ export const CategoryForm = ({ id, name, description, imageSrc }: CategoryModel)
         <button
           type="button"
           className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-          onClick={() => alert('Edit functionality not implemented yet')}
+          onClick={handleSubmit}
         >
           Save
         </button>
       </div>
-    </form>
+    </div>
   );
 };

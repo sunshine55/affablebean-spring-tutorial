@@ -9,6 +9,7 @@ import { CategoryForm } from '@/ui';
 
 export default function CategoryEditPage() {
   const { categoryId } = useParams();
+
   const [category, setCategory] = useState<CategoryModel>({} as CategoryModel);
   const [loading, setLoading] = useState<boolean>(true);
 
