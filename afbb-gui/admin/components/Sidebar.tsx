@@ -3,8 +3,7 @@ import Link from 'next/link';
 const LinkList = () => {
   return [
     { '/': 'Dashboard' },
-    { '/categories': 'Categories' },
-    { '/items': 'Items' },
+    { '/categories': 'Products' },
     { '/orders': 'Orders' },
     { '/customers': 'Customers' },
   ].map((link, index) => {

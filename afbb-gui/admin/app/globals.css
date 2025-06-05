@@ -62,3 +62,7 @@ body {
   text-align: center;
   border-top: 1px solid #ccc;
 }
+
+.footer a {
+  color: var(--color-red-500);
+}

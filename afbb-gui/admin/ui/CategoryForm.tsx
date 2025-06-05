@@ -4,7 +4,20 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-import { categoriesSchema, CategoryModel } from '@/schema/category';
+import { categoriesSchema, CategoryModel } from '@/schema';
+import { TextField, TextFieldProps } from '@/components';
+
+const categoryFormFields: TextFieldProps[] = [
+  { label: 'Name', name: 'name', value: '' },
+  {
+    label: 'Description',
+    name: 'description',
+    type: 'textarea',
+    rows: 10,
+    value: '',
+  },
+  { label: 'Image URL', name: 'imageSrc', value: '' },
+];
 
 export const CategoryForm = (props: CategoryModel) => {
   const { id, name, description, imageSrc } = props;
@@ -52,42 +65,14 @@ export const CategoryForm = (props: CategoryModel) => {
   return (
     <div className="max-w-md mx-auto p-6 bg-white rounded shadow">
       <input type="hidden" name="id" value={id || ''} />
-      <div className="mb-4">
-        <label className="block text-gray-700 font-bold mb-2" htmlFor="name">
-          Name
-        </label>
-        <input
-          name="name"
-          type="text"
-          className="w-full px-3 py-2 border rounded focus:outline-none focus:ring"
-          value={formState.name || ''}
+      {categoryFormFields.map((field) => (
+        <TextField
+          key={field.name}
+          {...field}
+          value={formState[field.name as keyof CategoryModel] || ''}
           onChange={handleChange}
         />
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 font-bold mb-2" htmlFor="description">
-          Description
-        </label>
-        <textarea
-          name="description"
-          rows={10}
-          className="w-full px-3 py-2 border rounded focus:outline-none focus:ring"
-          value={formState.description || ''}
-          onChange={handleChange}
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 font-bold mb-2" htmlFor="imageSrc">
-          Image URL
-        </label>
-        <input
-          name="imageSrc"
-          type="text"
-          className="w-full px-3 py-2 border rounded focus:outline-none focus:ring"
-          value={formState.imageSrc || ''}
-          onChange={handleChange}
-        />
-      </div>
+      ))}
       <div className="flex justify-end">
         <Link
           href="/categories"

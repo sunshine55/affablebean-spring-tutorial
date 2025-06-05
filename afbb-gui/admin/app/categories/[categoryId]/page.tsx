@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 
-import { categorySchema, CategoryModel } from '@/schema/category';
+import { categorySchema, CategoryModel } from '@/schema';
 import { Spinner } from '@/components';
 import { CategoryForm } from '@/ui';
 

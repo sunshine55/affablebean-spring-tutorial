@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
-import { categoriesSchema, CategoriesModel } from '@/schema/category';
+import { categoriesSchema, CategoriesModel } from '@/schema';
 import { Spinner } from '@/components';
 
 export default function CategoryListPage() {
