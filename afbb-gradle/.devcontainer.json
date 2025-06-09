@@ -12,8 +12,7 @@
         "vscjava.vscode-java-pack",
         "vscjava.vscode-lombok",
         "vmware.vscode-boot-dev-pack",
-        "anweber.vscode-httpyac",
-        "GitHub.copilot-chat"
+        "anweber.vscode-httpyac"
       ]
     }
   },

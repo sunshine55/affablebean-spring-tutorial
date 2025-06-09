@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-import { categoriesSchema, CategoryModel } from '@/schema';
+import { categorySchema, categoriesSchema, CategoryModel } from '@/schema';
 import { TextField, TextFieldProps } from '@/components';
 
 const categoryFormFields: TextFieldProps[] = [
@@ -34,13 +34,17 @@ export const CategoryForm = (props: CategoryModel) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormState((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormState({ ...formState, [name]: value });
   };
 
-  const handleSubmit = () => {
+  const handleSave = () => {
+    const parseResult = categorySchema.safeParse(formState);
+    if (!parseResult.success) {
+      alert(
+        'Validation error:\n' + parseResult.error.errors.map((e) => `${e.path.join('.')}: ${e.message}`).join('\n'),
+      );
+      return;
+    }
     fetch(`${process.env.NEXT_PUBLIC_AFBB_API}/categories`, {
       method: 'POST',
       headers: {
@@ -62,6 +66,28 @@ export const CategoryForm = (props: CategoryModel) => {
       });
   };
 
+  const handleDelete = () => {
+    if (!id) {
+      alert('Cannot delete unidentified category.');
+      return;
+    }
+    if (!confirm('Are you sure you want to delete this category?')) {
+      return;
+    }
+    fetch(`${process.env.NEXT_PUBLIC_AFBB_API}/categories?id=${id}`, {
+      method: 'DELETE',
+    })
+      .then((response) => {
+        if (!response.ok) {
+          return Promise.reject(response.statusText);
+        }
+        router.push('/categories');
+      })
+      .catch((error) => {
+        alert(`Error deleting category: ${error}`);
+      });
+  };
+
   return (
     <div className="max-w-md mx-auto p-6 bg-white rounded shadow">
       <input type="hidden" name="id" value={id || ''} />
@@ -73,7 +99,15 @@ export const CategoryForm = (props: CategoryModel) => {
           onChange={handleChange}
         />
       ))}
-      <div className="flex justify-end">
+      <div className="flex justify-between">
+        <button
+          hidden={!id}
+          type="button"
+          className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
+          onClick={handleDelete}
+        >
+          Delete
+        </button>
         <Link
           href="/categories"
           className="px-4 py-2 mr-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400 transition"
@@ -83,7 +117,7 @@ export const CategoryForm = (props: CategoryModel) => {
         <button
           type="button"
           className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-          onClick={handleSubmit}
+          onClick={handleSave}
         >
           Save
         </button>

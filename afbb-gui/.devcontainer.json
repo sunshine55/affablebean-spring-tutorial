@@ -5,11 +5,7 @@
   "shutdownAction": "none",
   "customizations": {
     "vscode": {
-      "extensions": [
-        "esbenp.prettier-vscode",
-        "bradlc.vscode-tailwindcss",
-        "GitHub.copilot-chat"
-      ]
+      "extensions": ["esbenp.prettier-vscode", "bradlc.vscode-tailwindcss"]
     }
   },
   "workspaceFolder": "/workspace"
