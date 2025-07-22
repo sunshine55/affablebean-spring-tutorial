@@ -58,12 +58,12 @@ All containers __orderly created__ and share the *same network created by docker
 
 ### Bring up APIs
 
-1. `Ctrl+Shift+N` > `Ctrl+Shift+P` > "Dev Containers: Open Folder in Container..." > select path to an `afbb-gradle` folder
+1. `Ctrl+Shift+N` > `Ctrl+Shift+P` > "Dev Containers: Open Folder in Container..." > select path to an `afbb-ws` folder
 2. Wait for container window loading completed, all extensions should be installed (the extension IDs are defined in `.devcontainer.json`)
 3. Select "Spring Boot Dashboard" and Run/Debug service
 4. At local host, use browser or any HTTP client tool to test APIs, i.e.: `http://localhost:8080/categories`
 
-Run with CLI command: `SPRING_PROFILES_ACTIVE=local MONGODB_URI=mongodb://localhost:27017/afbb-db CORS_ALLOWED_ORIGINS=http://localhost:3000 ./gradlew bootRun`
+Run with CLI command: `MONGODB_URI=mongodb://afbb-db:27017/afbb ./mvnw mn:run`
 
 Run with VSCode:
 1. At root of workspace folder, find or create `.vscode/launch.json`
