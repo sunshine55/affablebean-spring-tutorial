@@ -1,20 +1,20 @@
 services:
-  afbb-mongo:
+  afbb-db:
     image: mongo:8
-    container_name: afbb-mongo
+    container_name: afbb-db
     ports:
       - 27017:27017
     volumes:
       - ./afbb-db/mongo:/docker-entrypoint-initdb.d
     networks:
       - afbb-network
-  afbb-gradle:
-    image: gradle:8-jdk21
-    container_name: afbb-gradle
+  afbb-ws:
+    image: ghcr.io/graalvm/graalvm-community:21
+    container_name: afbb-ws
     ports:
-      - 8080:8080
+      - "8080:8080"
     volumes:
-      - ./afbb-gradle:/workspace:delegated
+      - ./afbb-ws:/workspace:delegate
     command: tail -f /dev/null
     networks:
       - afbb-network

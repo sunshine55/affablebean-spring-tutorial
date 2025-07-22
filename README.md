@@ -22,8 +22,8 @@ Database: [MongoDB Atlas](https://www.mongodb.com/products/platform/atlas-databa
 Rewrite [Netbeans e-commerce tutorial](https://netbeans.apache.org/tutorial/main/kb/docs/javaee/ecommerce/intro/) into microservices
 
 Docker compose in this tutorial will create a **swarm of containers** at localhost to demonstrate the microservices:
-* `afbb-mongo`: container serves database and contents, created using MongoDB image
-* `afbb-gradle`: container serves web APIs, created using Gradle image
+* `afbb-db`: container serves database and contents, created using MongoDB image
+* `afbb-ws`: container serves web APIs, created using GraalVM image
 * `afbb-gui`: container serves frontent GUIs, created using NodeJS image
 
 ## Directories Structure
@@ -32,7 +32,7 @@ Docker compose in this tutorial will create a **swarm of containers** at localho
 * database seeds & schemas
 * media contents
 
-`afbb-gradle`: web services and APIs
+`afbb-ws`: web services and APIs
 
 `afbb-gui`: user interfaces
 * `admin`: data management site
