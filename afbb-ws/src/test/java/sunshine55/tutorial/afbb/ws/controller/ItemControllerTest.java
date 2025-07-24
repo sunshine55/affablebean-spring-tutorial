@@ -63,6 +63,19 @@ public class ItemControllerTest {
         }
     }
 
+    @Test
+    public void getByCategoryId() {
+        String categoryId = "cat123";
+        ItemEntity item1 = new ItemEntity();
+        ItemEntity item2 = new ItemEntity();
+        when(itemDao.findByCategoryId(categoryId)).thenReturn(List.of(item1, item2));
+
+        List<ItemEntity> items = itemController.getByCategoryId(categoryId);
+        assertEquals(2, items.size());
+        assertSame(item1, items.getFirst());
+        assertSame(item2, items.getLast());
+    }
+
     @Nested
     public class UpsertTest {
         @Test

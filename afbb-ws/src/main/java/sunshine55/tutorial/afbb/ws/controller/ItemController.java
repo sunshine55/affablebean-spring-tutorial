@@ -33,6 +33,11 @@ public class ItemController {
         return Collections.singletonList(found);
     }
 
+    @Get("/category")
+    public List<ItemEntity> getByCategoryId(@QueryValue String categoryId) {
+        return itemDao.findByCategoryId(categoryId);
+    }
+
     @Post
     public List<ItemEntity> upsert(@Body List<ItemEntity> items) {
         List<ItemEntity> nextItems = items.stream().map(item -> {
