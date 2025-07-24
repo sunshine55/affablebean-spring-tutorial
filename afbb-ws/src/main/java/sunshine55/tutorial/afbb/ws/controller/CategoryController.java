@@ -2,10 +2,13 @@ package sunshine55.tutorial.afbb.ws.controller;
 
 import java.util.Collections;
 import java.util.List;
+
+import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Delete;
 import io.micronaut.http.annotation.Post;
+import io.micronaut.http.annotation.QueryValue;
 import lombok.RequiredArgsConstructor;
 import sunshine55.tutorial.afbb.ws.dao.CategoryDao;
 import sunshine55.tutorial.afbb.ws.entity.CategoryEntity;
@@ -17,8 +20,8 @@ public class CategoryController {
     private final CategoryDao categoryDao;
     private final InstanceCreator instanceCreator;
 
-    @Get("/{id}")
-    public List<CategoryEntity> get(String id) {
+    @Get
+    public List<CategoryEntity> get(@QueryValue(value = "id", defaultValue = "") String id) {
         if (id == null || id.isEmpty()) {
             return categoryDao.findAll();
         }
@@ -28,7 +31,7 @@ public class CategoryController {
     }
 
     @Post
-    public List<CategoryEntity> upsert(List<CategoryEntity> categories) {
+    public List<CategoryEntity> upsert(@Body List<CategoryEntity> categories) {
         List<CategoryEntity> nextCategories = categories.stream().map(category -> {
             String id = category.getId();
             if (id == null || id.isEmpty()) {
@@ -46,8 +49,8 @@ public class CategoryController {
         return categoryDao.saveAll(nextCategories);
     }
 
-    @Delete("/{id}")
-    public void delete(String id) {
+    @Delete
+    public void delete(@QueryValue(value = "id", defaultValue = "") String id) {
         if (id == null || id.isEmpty()) {
             categoryDao.deleteAll();
             return;
