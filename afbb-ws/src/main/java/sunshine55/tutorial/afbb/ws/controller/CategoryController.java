@@ -3,6 +3,7 @@ package sunshine55.tutorial.afbb.ws.controller;
 import java.util.Collections;
 import java.util.List;
 
+import io.micronaut.core.util.StringUtils;
 import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
@@ -22,27 +23,28 @@ public class CategoryController {
 
     @Get
     public List<CategoryEntity> get(@QueryValue(value = "id", defaultValue = "") String id) {
-        if (id == null || id.isEmpty()) {
+        if (!StringUtils.hasText(id)) {
             return categoryDao.findAll();
         }
-        return Collections.singletonList(
-            categoryDao.findById(id).orElse(instanceCreator.initCategory())
-        );
+        CategoryEntity found = categoryDao.findById(id).orElse(null);
+        if (found == null) {
+            return Collections.emptyList();
+        }
+        return Collections.singletonList(found);
     }
 
     @Post
     public List<CategoryEntity> upsert(@Body List<CategoryEntity> categories) {
         List<CategoryEntity> nextCategories = categories.stream().map(category -> {
             String id = category.getId();
-            if (id == null || id.isEmpty()) {
+            if (!StringUtils.hasText(id)) {
                 CategoryEntity nextCategory = instanceCreator.initCategory();
                 nextCategory.modifyBy(category);
                 return nextCategory;
             }
-            CategoryEntity existingCategory = categoryDao.findById(id).orElse(null);
-            if (existingCategory == null) {
-                existingCategory = instanceCreator.initCategory();
-            }
+            CategoryEntity existingCategory = categoryDao
+                .findById(id)
+                .orElse(instanceCreator.initCategory());
             existingCategory.modifyBy(category);
             return existingCategory;
         }).toList();
@@ -51,7 +53,7 @@ public class CategoryController {
 
     @Delete
     public void delete(@QueryValue(value = "id", defaultValue = "") String id) {
-        if (id == null || id.isEmpty()) {
+        if (!StringUtils.hasText(id)) {
             categoryDao.deleteAll();
             return;
         }

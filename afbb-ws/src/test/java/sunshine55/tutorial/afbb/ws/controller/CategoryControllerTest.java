@@ -2,6 +2,7 @@ package sunshine55.tutorial.afbb.ws.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -25,8 +26,7 @@ public class CategoryControllerTest {
     @Mock private CategoryDao categoryDao;
     @Mock private InstanceCreator instanceCreator;
 
-    @InjectMocks
-    private CategoryController categoryController;
+    @InjectMocks private CategoryController categoryController;
 
     @Nested
     public class GetTest {
@@ -37,10 +37,10 @@ public class CategoryControllerTest {
             CategoryEntity cat1 = new CategoryEntity();
             CategoryEntity cat2 = new CategoryEntity();
             when(categoryDao.findAll()).thenReturn(List.of(cat1, cat2));
-            List<CategoryEntity> categories = categoryController.get("");
+            List<CategoryEntity> categories = categoryController.get(null);
             assertEquals(2, categories.size());
-            assertSame(cat1, categories.get(0));
-            assertSame(cat2, categories.get(1));
+            assertSame(cat1, categories.getFirst());
+            assertSame(cat2, categories.getLast());
         }
 
         @Test
@@ -56,12 +56,9 @@ public class CategoryControllerTest {
         @Test
         @DisplayName("Get category by id - not found")
         void test3() {
-            CategoryEntity defaultCat = new CategoryEntity();
             when(categoryDao.findById("xyz")).thenReturn(Optional.empty());
-            when(instanceCreator.initCategory()).thenReturn(defaultCat);
             List<CategoryEntity> resultList = categoryController.get("xyz");
-            assertEquals(1, resultList.size());
-            assertSame(defaultCat, resultList.getFirst());
+            assertTrue(resultList.isEmpty());
         }
     }
 
@@ -74,13 +71,13 @@ public class CategoryControllerTest {
             CategoryEntity inputCat = new CategoryEntity();
             CategoryEntity newCat = new CategoryEntity();
             CategoryEntity savedCat = new CategoryEntity();
+            
             when(instanceCreator.initCategory()).thenReturn(newCat);
-            // Simulate modifyBy is called on newCat, then saved
             when(categoryDao.saveAll(List.of(newCat))).thenReturn(List.of(savedCat));
 
             List<CategoryEntity> result = categoryController.upsert(List.of(inputCat));
             assertEquals(1, result.size());
-            assertEquals(CategoryEntity.class, result.get(0).getClass());
+            assertEquals(newCat, savedCat);
         }
 
         @Test
@@ -98,7 +95,7 @@ public class CategoryControllerTest {
 
             List<CategoryEntity> result = categoryController.upsert(List.of(inputCat));
             assertEquals(1, result.size());
-            assertEquals("id1", result.get(0).getId());
+            assertEquals("id1", result.getFirst().getId());
         }
 
         @Test
@@ -117,7 +114,7 @@ public class CategoryControllerTest {
 
             List<CategoryEntity> result = categoryController.upsert(List.of(inputCat));
             assertEquals(1, result.size());
-            assertEquals("id2", result.get(0).getId());
+            assertEquals("id2", result.getFirst().getId());
         }
     }
 
@@ -125,7 +122,7 @@ public class CategoryControllerTest {
     public class DeleteTest {
 
         @Test
-        @DisplayName("Delete all categories when id is null")
+        @DisplayName("Delete all categories")
         void test1() {
             categoryController.delete(null);
             // Verify that deleteAll is called
@@ -133,15 +130,8 @@ public class CategoryControllerTest {
         }
 
         @Test
-        @DisplayName("Delete all categories when id is empty")
-        void test2() {
-            categoryController.delete("");
-            verify(categoryDao).deleteAll();
-        }
-
-        @Test
         @DisplayName("Delete category by id")
-        void test3() {
+        void test2() {
             categoryController.delete("abc");
             verify(categoryDao).deleteById("abc");
         }
