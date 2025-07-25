@@ -40,9 +40,8 @@ export const CategoryForm = (props: CategoryModel) => {
   const handleSave = () => {
     const parseResult = categorySchema.safeParse(formState);
     if (!parseResult.success) {
-      alert(
-        'Validation error:\n' + parseResult.error.errors.map((e) => `${e.path.join('.')}: ${e.message}`).join('\n'),
-      );
+      const msg = parseResult.error.issues.map((e) => `${e.path.join('.')}: ${e.message}`).join('\n');
+      alert(`Validation error:\n${msg}`);
       return;
     }
     fetch(`${process.env.NEXT_PUBLIC_AFBB_API}/categories`, {

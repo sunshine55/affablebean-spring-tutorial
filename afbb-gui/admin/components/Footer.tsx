@@ -3,7 +3,8 @@ export function Footer() {
     <footer className="footer">
       <aside>
         <p>
-          Copyright &copy; {new Date().getFullYear()} - Developed by <a href="https://github.com/sunshine55?tab=repositories">sunshine55</a>
+          Copyright &copy; {new Date().getFullYear()} - Developed by{' '}
+          <a href="https://github.com/sunshine55?tab=repositories">sunshine55</a>
         </p>
       </aside>
     </footer>

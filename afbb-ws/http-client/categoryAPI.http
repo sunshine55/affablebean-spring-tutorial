@@ -13,26 +13,26 @@ Content-Type: application/json
 
 [
   {
-    "id": "68818968edf9b41dfcdeed82",
-    "description": "Aliquam faucibus purus in massa tempor nec feugiat nisl. Eget nunc scelerisque viverra mauris in aliquam sem fringilla ut. Nunc sed velit dignissim sodales ut eu sem integer vitae justo.",
+    "id": "6882fac9e10056069a9a619a",
+    "description": "Dairy encompasses foods derived from or containing milk produced by mammals like cows, goats, and sheep.",
     "imageSrc": "https://picsum.photos/300/200",
     "name": "dairy"
   },
   {
-    "id": "68818968edf9b41dfcdeed83",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "id": "6882fac9e10056069a9a619b",
+    "description": "Meat, in its primary definition, refers to the edible tissues of animals consumed as food.",
     "imageSrc": "https://picsum.photos/300/200",
     "name": "meat"
   },
   {
-    "id": "68818968edf9b41dfcdeed84",
-    "description": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.",
+    "id": "6882fac9e10056069a9a619c",
+    "description": "A bakery is a place where baked goods, primarily those made with flour, are produced and sold. These goods are typically prepared using an oven.",
     "imageSrc": "https://picsum.photos/300/200",
     "name": "bakery"
   },
   {
-    "id": "68818968edf9b41dfcdeed85",
-    "description": "Curabitur aliquet quam id dui posuere blandit. Nulla porttitor accumsan tincidunt. Proin eget tortor risus.",
+    "id": "6882fac9e10056069a9a619d",
+    "description": "Vegetables are an essential part of a healthy and balanced diet due to their high nutritional value.",
     "imageSrc": "https://picsum.photos/300/200",
     "name": "vegetables"
   }
@@ -45,5 +45,5 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:8080/categories?id=68818968edf9b41dfcdeed82 HTTP/1.1
+DELETE http://localhost:8080/categories?id=6882edfa894fd37173b8d7eb HTTP/1.1
 Content-Type: application/json

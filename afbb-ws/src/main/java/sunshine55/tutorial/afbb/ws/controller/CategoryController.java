@@ -1,8 +1,9 @@
 package sunshine55.tutorial.afbb.ws.controller;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+import java.util.Optional;
 import io.micronaut.core.util.StringUtils;
 import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
@@ -35,20 +36,32 @@ public class CategoryController {
 
     @Post
     public List<CategoryEntity> upsert(@Body List<CategoryEntity> categories) {
-        List<CategoryEntity> nextCategories = categories.stream().map(category -> {
-            String id = category.getId();
-            if (!StringUtils.hasText(id)) {
-                CategoryEntity nextCategory = instanceCreator.initCategory();
-                nextCategory.modifyBy(category);
-                return nextCategory;
+        List<CategoryEntity> toInsertList = new ArrayList<>(categories.size());
+        List<CategoryEntity> toUpdateList = new ArrayList<>(categories.size());
+        for (CategoryEntity category : categories) {
+            if (!StringUtils.hasText(category.getId())) {
+                toInsertList.add(category);
+            } else {
+                Optional<CategoryEntity> found = categoryDao.findById(category.getId());
+                if (found.isEmpty()) {
+                    CategoryEntity newCategory = instanceCreator.initCategory();
+                    newCategory.modifyBy(category);
+                    toInsertList.add(category);
+                } else {
+                    CategoryEntity existingCategory = found.get();
+                    existingCategory.modifyBy(category);
+                    toUpdateList.add(existingCategory);
+                }
             }
-            CategoryEntity existingCategory = categoryDao
-                .findById(id)
-                .orElse(instanceCreator.initCategory());
-            existingCategory.modifyBy(category);
-            return existingCategory;
-        }).toList();
-        return categoryDao.saveAll(nextCategories);
+        }
+        List<CategoryEntity> result = new ArrayList<>(categories.size());
+        if (!toInsertList.isEmpty()) {
+            result.addAll(categoryDao.saveAll(toInsertList));
+        }
+        if (!toUpdateList.isEmpty()) {
+            result.addAll(categoryDao.updateAll(toUpdateList));
+        }
+        return result;
     }
 
     @Delete

@@ -1,7 +1,9 @@
 package sunshine55.tutorial.afbb.ws.controller;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import io.micronaut.core.util.StringUtils;
 import io.micronaut.http.annotation.Body;
@@ -40,20 +42,32 @@ public class ItemController {
 
     @Post
     public List<ItemEntity> upsert(@Body List<ItemEntity> items) {
-        List<ItemEntity> nextItems = items.stream().map(item -> {
-            String id = item.getId();
-            if (!StringUtils.hasText(id)) {
-                ItemEntity nextItem = instanceCreator.initItem();
-                nextItem.modifyBy(item);
-                return nextItem;
+        List<ItemEntity> toInsertList = new ArrayList<>(items.size());
+        List<ItemEntity> toUpdateList = new ArrayList<>(items.size());
+        for (ItemEntity item : items) {
+            if (!StringUtils.hasText(item.getId())) {
+                toInsertList.add(item);
+            } else {
+                Optional<ItemEntity> found = itemDao.findById(item.getId());
+                if (found.isEmpty()) {
+                    ItemEntity newCategory = instanceCreator.initItem();
+                    newCategory.modifyBy(item);
+                    toInsertList.add(item);
+                } else {
+                    ItemEntity existingCategory = found.get();
+                    existingCategory.modifyBy(item);
+                    toUpdateList.add(existingCategory);
+                }
             }
-            ItemEntity existingItem = itemDao
-                .findById(id)
-                .orElse(instanceCreator.initItem());
-            existingItem.modifyBy(item);
-            return existingItem;
-        }).toList();
-        return itemDao.saveAll(nextItems);
+        }
+        List<ItemEntity> result = new ArrayList<>(items.size());
+        if (!toInsertList.isEmpty()) {
+            result.addAll(itemDao.saveAll(toInsertList));
+        }
+        if (!toUpdateList.isEmpty()) {
+            result.addAll(itemDao.updateAll(toUpdateList));
+        }
+        return result;
     }
 
     @Delete

@@ -12,18 +12,18 @@
     "start": "next start -p 3001"
   },
   "dependencies": {
-    "next": "15.3.3",
+    "next": "15.4.4",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "zod": "3.25.49"
+    "zod": "4.0.9"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "4",
-    "@types/node": "22",
+    "@types/node": "24",
     "@types/react": "19",
     "@types/react-dom": "19",
-    "npm-check-updates": "18.0.1",
-    "prettier": "3.5.3",
+    "npm-check-updates": "18.0.2",
+    "prettier": "3.6.2",
     "tailwindcss": "4",
     "typescript": "5"
   }
