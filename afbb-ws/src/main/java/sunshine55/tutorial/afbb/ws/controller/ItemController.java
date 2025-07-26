@@ -20,8 +20,8 @@ import sunshine55.tutorial.afbb.ws.service.InstanceCreator;
 @Controller("/items")
 @RequiredArgsConstructor
 public class ItemController {
-    private final InstanceCreator instanceCreator;
     private final ItemDao itemDao;
+    private final InstanceCreator instanceCreator;
 
     @Get
     public List<ItemEntity> get(@QueryValue(value = "id", defaultValue = "") String id) {
