@@ -63,18 +63,17 @@ All containers __orderly created__ and share the *same network created by docker
 3. Select "Spring Boot Dashboard" and Run/Debug service
 4. At local host, use browser or any HTTP client tool to test APIs, i.e.: `http://localhost:8080/categories`
 
-Run with CLI command: `MONGODB_URI=mongodb://afbb-db:27017/afbb ./mvnw mn:run`
+Run with CLI commands: `./mvnw mn:run -Dmicronaut.environments=local`
 
-Run with VSCode:
-1. At root of workspace folder, find or create `.vscode/launch.json`
-2. See VSCode how to add environment variables to `launch.json` instructions [here](https://code.visualstudio.com/docs/debugtest/debugging-configuration#_launchjson-attributes)
+Debug with VSCode: run/debug via Micronaut Toolkit for VSCode extension
 
 ### Bring up GUIs
 
 1. `Ctrl+Shift+N` > `Ctrl+Shift+P` > "Dev Containers: Open Folder in Container..." > select path to a `afbb-gui` folder
 2. Wait for container window loading completed, all extensions should be installed (the extension IDs are defined in `.devcontainer.json`)
-3. Go to terminal of the container window: `npm run dev`
-4. Open browser (recommend Chrome) on the host, i.e.: `http://localhost:3000`
+3. Go to terminal of the container window, change dir to the front app: admin - `cd admin` or shop - `cd shop`
+4. Start the app in dev mode: `npm run dev`
+5. Open browser (recommend Chrome) on the host: shop - `http://localhost:3000`; admin - `http://localhost:3001`
 
 Run in production mode: `npm run build && npm run preview`
 

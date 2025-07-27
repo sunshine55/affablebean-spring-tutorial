@@ -1,0 +1,10 @@
+micronaut:
+  application:
+    name: afbb-ws
+  server:
+    cors:
+      enabled: true
+      origins: ${CORS_ALLOWED_ORIGINS}
+      methods: GET,POST,PUT,DELETE,OPTIONS
+mongodb:
+  uri: ${DB_URI}
