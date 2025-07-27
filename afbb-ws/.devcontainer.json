@@ -1,0 +1,17 @@
+{
+  "name": "afbb-ws",
+  "dockerComposeFile": ["../compose.yml"],
+  "service": "afbb-ws",
+  "shutdownAction": "none",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "vscjava.vscode-lombok",
+        "humao.rest-client",
+        "oracle-labs-graalvm.micronaut-tools"
+      ]
+    }
+  },
+  "workspaceFolder": "/workspace"
+}

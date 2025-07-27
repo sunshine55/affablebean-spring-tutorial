@@ -1,0 +1,5 @@
+server:
+  cors:
+    origins: http://localhost:3000,http://localhost:3001
+mongodb:
+  uri: mongodb://afbb-db:27017/afbb

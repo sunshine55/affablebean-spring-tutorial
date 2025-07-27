@@ -15,9 +15,9 @@ export default function CategoryEditPage() {
 
   useEffect(() => {
     if (!categoryId) return;
-    fetch(`${process.env.NEXT_PUBLIC_AFBB_API}/categories/${categoryId}`)
+    fetch(`${process.env.NEXT_PUBLIC_AFBB_API}/categories?id=${categoryId}`)
       .then((res) => res.json())
-      .then((data) => setCategory(categorySchema.parse(data || {})))
+      .then((data) => setCategory(categorySchema.parse(data[0] || {})))
       .finally(() => setLoading(false));
   }, [categoryId]);
 

@@ -1,0 +1,158 @@
+GET http://localhost:8080/items HTTP/1.1
+Content-Type: application/json
+
+###
+
+GET http://localhost:8080/items?id=6881958f709fd0194b367f10 HTTP/1.1
+Content-Type: application/json
+
+###
+
+GET http://localhost:8080/items/category?categoryId=68818968edf9b41dfcdeed85 HTTP/1.1
+Content-Type: application/json
+
+###
+
+POST http://localhost:8080/items HTTP/1.1
+Content-Type: application/json
+
+[
+  {
+    "categoryId": "6882fac9e10056069a9a619a",
+    "description": "Semi skimmed milk (1L)",
+    "id": "6882fceeeac4821a42a85eb3",
+    "imageSrc": "https://picsum.photos/300/200",
+    "name": "milk",
+    "price": 1.7
+  },
+  {
+    "categoryId": "6882fac9e10056069a9a619a",
+    "description": "Mild cheddar cheese (330g)",
+    "id": "6882fceeeac4821a42a85eb4",
+    "imageSrc": "https://picsum.photos/300/200",
+    "name": "cheese",
+    "price": 2.39
+  },
+  {
+    "categoryId": "6882fac9e10056069a9a619a",
+    "description": "Unsalted butter (250g)",
+    "id": "6882fceeeac4821a42a85eb5",
+    "imageSrc": "https://picsum.photos/300/200",
+    "name": "butter",
+    "price": 1.09
+  },
+  {
+    "categoryId": "6882fac9e10056069a9a619a",
+    "description": "Medium sized package (6 eggs)",
+    "id": "6882fceeeac4821a42a85eb6",
+    "imageSrc": "https://picsum.photos/300/200",
+    "name": "eggs",
+    "price": 1.76
+  },
+  {
+    "categoryId": "6882fac9e10056069a9a619b",
+    "description": "Rolled in fresh herbs<br>2 patties (250g)",
+    "id": "6882fceeeac4821a42a85eb7",
+    "imageSrc": "https://picsum.photos/300/200",
+    "name": "patties",
+    "price": 2.29
+  },
+  {
+    "categoryId": "6882fac9e10056069a9a619b",
+    "description": "Matured and organic ham (70g)",
+    "id": "6882fceeeac4821a42a85eb8",
+    "imageSrc": "https://picsum.photos/300/200",
+    "name": "ham",
+    "price": 3.49
+  },
+  {
+    "categoryId": "6882fac9e10056069a9a619b",
+    "description": "Free range chicken whole meat (250g)",
+    "id": "6882fceeeac4821a42a85eb9",
+    "imageSrc": "https://picsum.photos/300/200",
+    "name": "chicken",
+    "price": 5.59
+  },
+  {
+    "categoryId": "6882fac9e10056069a9a619b",
+    "description": "Reduced fat, pork, pack of three sausages (350g)",
+    "id": "6882fceeeac4821a42a85eba",
+    "imageSrc": "https://picsum.photos/300/200",
+    "name": "sausages",
+    "price": 4.55
+  },
+  {
+    "categoryId": "6882fac9e10056069a9a619c",
+    "description": "Plain white bread (250g)",
+    "id": "6882fceeeac4821a42a85ebb",
+    "imageSrc": "https://picsum.photos/300/200",
+    "name": "loaf",
+    "price": 1.89
+  },
+  {
+    "categoryId": "6882fac9e10056069a9a619c",
+    "description": "Whole grain bread (70g)",
+    "id": "6882fceeeac4821a42a85ebc",
+    "imageSrc": "https://picsum.photos/300/200",
+    "name": "bagel",
+    "price": 7.5
+  },
+  {
+    "categoryId": "6882fac9e10056069a9a619c",
+    "description": "Over baked bread (250g)",
+    "id": "6882fceeeac4821a42a85ebd",
+    "imageSrc": "https://picsum.photos/300/200",
+    "name": "bun",
+    "price": 8.0
+  },
+  {
+    "categoryId": "6882fac9e10056069a9a619c",
+    "description": "Mint chocolate cookies (12)",
+    "id": "6882fceeeac4821a42a85ebe",
+    "imageSrc": "https://picsum.photos/300/200",
+    "name": "cookies",
+    "price": 10.11
+  },
+  {
+    "categoryId": "6882fac9e10056069a9a619d",
+    "description": "Seedless juicy watermelon (250g)",
+    "id": "6882fceeeac4821a42a85ebf",
+    "imageSrc": "https://picsum.photos/300/200",
+    "name": "watermelon",
+    "price": 1.2
+  },
+  {
+    "categoryId": "6882fac9e10056069a9a619d",
+    "description": "Multi purposes black currants (70g)",
+    "id": "6882fceeeac4821a42a85ec0",
+    "imageSrc": "https://picsum.photos/300/200",
+    "name": "currants",
+    "price": 7.22
+  },
+  {
+    "categoryId": "6882fac9e10056069a9a619d",
+    "description": "Organic green broccoli (250g)",
+    "id": "6882fceeeac4821a42a85ec1",
+    "imageSrc": "https://picsum.photos/300/200",
+    "name": "broccoli",
+    "price": 3.01
+  },
+  {
+    "categoryId": "6882fac9e10056069a9a619d",
+    "description": "Mixed white and yellow whole kernel corns (12)",
+    "id": "6882fceeeac4821a42a85ec2",
+    "imageSrc": "https://picsum.photos/300/200",
+    "name": "corn",
+    "price": 6.77
+  }
+]
+
+###
+
+DELETE http://localhost:8080/items HTTP/1.1
+Content-Type: application/json
+
+###
+
+DELETE http://localhost:8080/items?id=687f0861454805d13ff6badb HTTP/1.1
+Content-Type: application/json
