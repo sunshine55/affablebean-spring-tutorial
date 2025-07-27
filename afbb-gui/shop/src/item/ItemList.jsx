@@ -4,7 +4,7 @@ import {ItemCard} from './ItemCard';
 
 const fetchCategoryItems = async categoryId => {
   const response = await fetch(
-    `${import.meta.env.VITE_AFBB_API}/items?categoryId=${categoryId}`
+    `${import.meta.env.VITE_AFBB_API}/items/category?categoryId=${categoryId}`
   );
   if (!response.ok) {
     throw new Error('Failed to fetch items');
