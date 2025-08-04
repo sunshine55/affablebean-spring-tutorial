@@ -4,7 +4,7 @@ export const categorySchema = z.object({
   id: z.string().optional(),
   name: z.string().min(1, 'Name is required').max(100, 'Name must be less than 100 characters'),
   description: z.string().optional(),
-  imageSrc: z.string().url(),
+  imageSrc: z.url(),
 });
 export type CategoryModel = z.infer<typeof categorySchema>;
 
