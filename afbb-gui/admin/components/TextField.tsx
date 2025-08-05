@@ -1,13 +1,13 @@
 import { ChangeEvent } from 'react';
 
-export interface TextFieldProps {
+export type TextFieldProps = {
   label: string;
   name: string;
-  value: string;
-  type?: 'text' | 'textarea';
+  value?: string | number;
+  type?: 'text' | 'textarea' | 'number';
   rows?: number;
   onChange?: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-}
+};
 
 export const TextField = ({ label, name, value, type = 'text', rows, onChange }: TextFieldProps) => (
   <div className="mb-4">
