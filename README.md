@@ -10,14 +10,17 @@ Database: [MongoDB Atlas](https://www.mongodb.com/products/platform/atlas-databa
 
 ## Local Setup
 
-Host:
+Containerized development path:
 - VSCode
 - Git
-- Incus (type-1 hypervisor)
-
-Guest:
-- Mise(-en-place)
 - Docker
+
+SDD AI-driven development path:
+- VSCode
+- Git
+- Incus
+  - Mise(-en-place)
+  - Docker
 
 ## Overview
 
@@ -43,8 +46,8 @@ Docker compose in this tutorial will create a **swarm of containers** at localho
 
 ### Create the Swarm
 
-Bring up all containers:
-* First time startup: `docker compose up -d` (create/recreate containers, which will download/reinstall vscode extensions for each container; hence, take a while)
+Bring up containers:
+* First time startup: `docker compose [-f compose-incus.yml] up -d` (create/recreate containers, which will download/reinstall vscode extensions for each container; hence, take a while)
 * Next times: `docker compose start`
 
 All containers __orderly created__ and share the *same network created by docker-compose*
