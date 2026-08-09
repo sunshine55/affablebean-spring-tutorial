@@ -1,12 +1,23 @@
 # Affable Bean Tutorial
 
-## Deployment
+## Demo
 
 Frontend: https://chipper-rugelach-1ca688.netlify.app
 
 Backend: https://afbb-api.onrender.com
 
 Database: [MongoDB Atlas](https://www.mongodb.com/products/platform/atlas-database)
+
+## Local Setup
+
+Host:
+- VSCode
+- Git
+- Incus (type-1 hypervisor)
+
+Guest:
+- Mise(-en-place)
+- Docker
 
 ## Overview
 
@@ -29,13 +40,6 @@ Docker compose in this tutorial will create a **swarm of containers** at localho
 * `admin`: data management site
 * `shop`: data-driven front site
 
-## Prerequisites
-
-Prerequisites:
-- VSCode, Git, Incus installed on host OS
-- Docker installed either on host OS or within Incus (or another type-1 hypervisor)
-
-`prerequisites` contains handy scripts for Debian/Ubuntu installation
 
 ### Create the Swarm
 
