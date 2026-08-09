@@ -1,13 +1,4 @@
 # Affable Bean Tutorial
-- [Affable Bean Tutorial](#affable-bean-tutorial)
-	- [Deployment](#deployment)
-	- [Overview](#overview)
-	- [Directories Structure](#directories-structure)
-	- [Prerequisites](#prerequisites)
-		- [Create the Swarm](#create-the-swarm)
-		- [Bring up APIs](#bring-up-apis)
-		- [Bring up GUIs](#bring-up-guis)
-	- [FAQs](#faqs)
 
 ## Deployment
 
@@ -40,13 +31,11 @@ Docker compose in this tutorial will create a **swarm of containers** at localho
 
 ## Prerequisites
 
-Prerequisites: Docker, VSCode and Git (either install on OS or another type-2 hypervisor)
+Prerequisites:
+- VSCode, Git, Incus installed on host OS
+- Docker installed either on host OS or within Incus (or another type-1 hypervisor)
 
-If using Linux OS, see `prerequisites` handy scripts for installation
-
-Develop microservices with VSCode and type-2 hypervisor:
-* Shared development environment with [VSCode devcontainer](https://code.visualstudio.com/docs/remote/create-dev-container)
-* Connect multiple [VSCode devcontainers with Docker Compose](https://code.visualstudio.com/remote/advancedcontainers/connect-multiple-containers)
+`prerequisites` contains handy scripts for Debian/Ubuntu installation
 
 ### Create the Swarm
 
@@ -76,29 +65,3 @@ Debug with VSCode: run/debug via Micronaut Toolkit for VSCode extension
 5. Open browser (recommend Chrome) on the host: shop - `http://localhost:3000`; admin - `http://localhost:3001`
 
 Run in production mode: `npm run build && npm run preview`
-
-## FAQs
-
-1. Webpack dev server is significantly slow if using Docker Desktop for Windows
-
-    - Because delay in file processing between Windows host and Linux container guest
-	- Workaround:
-	    
-		* Attempt to cache mounted volumes doesn't improve much (see [Stackoverflow topic](https://stackoverflow.com/questions/49060062/running-webpack-dev-server-in-docker-is-significantly-slower-than-on-local-machi))
-		* Set up workspace in [VirtualBox VM](https://www.virtualbox.org/) with Linux distro (i.e.: [Ubuntu MATE](https://ubuntu-mate.org/)); then install Prerequisites
-
-2. Unable to start `mongo:latest` container in VirtualBox VM
-
-    - MongoDB 5 requires a Sandy Bridge or newer CPU [Stackoverflow topic](https://stackoverflow.com/questions/68392064/error-when-running-mongo-image-docker-entrypoint-sh-line-381)
-	- Workaround: Avoid MongoDB 5
-
-3. Whenever start containers, internet connection lost
-
-	- Caused by [ConnMan](https://wiki.archlinux.org/title/ConnMan) as explained in [Docker forum topic](https://forums.docker.com/t/solved-no-network-when-running-a-container-in-arch-linux/5494/5)
-	- Workaround: solution discussed in [Stackoverflow topic](https://stackoverflow.com/questions/75003625/when-starting-docker-containers-host-machine-loses-internet-connection)
-
-4. VSCode create auto forwarded ports every Spring Boot startup
-
-	- Open the Settings (Ctrl+, or Cmd+, on macOS).
-	- Search for `remote.autoForwardPorts`.
-	- Uncheck the option `Remote › Ports: Auto Forward Ports.`
