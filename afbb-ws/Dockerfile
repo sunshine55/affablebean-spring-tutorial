@@ -1,4 +1,4 @@
-FROM ghcr.io/graalvm/graalvm-community:21
+FROM ghcr.io/graalvm/graalvm-community:25
 WORKDIR /app
 COPY . .
 RUN ./mvnw clean package -DskipTests=true -Dpackaging=native-image
