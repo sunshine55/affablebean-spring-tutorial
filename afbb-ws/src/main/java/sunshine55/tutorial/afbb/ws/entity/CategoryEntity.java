@@ -23,3 +23,4 @@ public class CategoryEntity {
         this.imageSrc = nextCategory.getImageSrc();
     }
 }
+

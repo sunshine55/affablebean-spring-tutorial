@@ -11,3 +11,4 @@ public interface ItemDao extends CrudRepository<ItemEntity, String> {
 
     List<ItemEntity> findByCategoryId(String categoryId);
 }
+

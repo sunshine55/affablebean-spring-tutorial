@@ -7,3 +7,4 @@ import sunshine55.tutorial.afbb.ws.entity.CategoryEntity;
 @MongoRepository
 public interface CategoryDao extends CrudRepository<CategoryEntity, String> {
 }
+
