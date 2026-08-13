@@ -1,6 +1,4 @@
 [tools]
 node = "latest"
-tmux = "latest"
-neovim = "latest"
 java = "temurin-25"
 maven = "3"
