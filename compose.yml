@@ -1,0 +1,13 @@
+# Enable mongo docker to run inside incus container, set these config:
+#   incus config set <container_name> security.nesting=true
+#   incus config set <container_name> security.syscalls.intercept.mknod=true
+#   incus config set <container_name> security.syscalls.intercept.setxattr=true
+services:
+  afbb-db:
+    image: mongo:latest
+    container_name: afbb-db
+    user: "0:0"
+    ports:
+      - 27017:27017
+    volumes:
+      - ./afbb-db/mongo:/docker-entrypoint-initdb.d
