@@ -1,0 +1,9 @@
+services:
+  afbb-db:
+    image: mongo:latest
+    container_name: afbb-db
+    user: "0:0"
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo:/docker-entrypoint-initdb.d
