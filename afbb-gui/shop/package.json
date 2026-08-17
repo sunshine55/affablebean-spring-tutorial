@@ -23,17 +23,20 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@tailwindcss/vite": "4.1.11",
-    "npm-check-updates": "18.0.2",
-    "prettier": "3.6.2",
-    "solid-devtools": "0.34.3",
-    "vite": "6.3.5",
-    "vite-plugin-solid": "2.11.7"
+    "@tailwindcss/vite": "4.3.3",
+    "npm-check-updates": "23.0.2",
+    "prettier": "3.9.6",
+    "solid-devtools": "0.34.5",
+    "vite": "7.3.6",
+    "vite-plugin-solid": "2.11.14"
   },
   "dependencies": {
-    "@solidjs/router": "0.15.3",
-    "daisyui": "5.0.46",
-    "solid-js": "1.9.7",
-    "tailwindcss": "4.1.11"
+    "@solidjs/router": "1.0.0",
+    "daisyui": "5.7.17",
+    "solid-js": "1.9.15",
+    "tailwindcss": "4.3.3"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
   }
 }

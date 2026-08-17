@@ -68,7 +68,7 @@ Change directory to `afbb-db` folder and bring up Docker Mongo inside Incus cont
 Change directory to `afbb-ws` folder and run:
 ```sh
 mise install
-./mvnw mn:run -Dmicronaut.environments=local`
+./mvnw mn:run -Dmicronaut.environments=local
 ```
 
 At host machine, use browser or any HTTP client tool to test APIs, i.e.: `http://localhost:8080/categories`
