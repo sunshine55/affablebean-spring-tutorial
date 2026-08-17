@@ -1,4 +1,4 @@
-package sunshine55.tutorial.afbb.ws.controller;
+package sunshine55.tutorial.afbb.ws.domain.item.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
@@ -20,32 +20,24 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import io.micronaut.core.io.ResourceLoader;
-import io.micronaut.core.type.Argument;
-import io.micronaut.serde.ObjectMapper;
-import io.micronaut.test.annotation.MockBean;
-import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
-import jakarta.inject.Inject;
-import sunshine55.tutorial.afbb.ws.dao.ItemDao;
-import sunshine55.tutorial.afbb.ws.entity.ItemEntity;
-import sunshine55.tutorial.afbb.ws.service.InstanceCreator;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.ObjectMapper;
 
-@MicronautTest
+import sunshine55.tutorial.afbb.ws.core.service.InstanceCreator;
+import sunshine55.tutorial.afbb.ws.domain.item.dao.ItemDao;
+import sunshine55.tutorial.afbb.ws.domain.item.entity.ItemEntity;
+
 public class ItemControllerTest {
-    // Dependencies
-    @Inject ItemDao itemDao;
-    @Inject InstanceCreator instanceCreator;
-    // Mocking dependencies
-    @MockBean(ItemDao.class)
-    ItemDao itemDao() {
-        return mock(ItemDao.class);
+    private ItemDao itemDao;
+    private InstanceCreator instanceCreator;
+    private ItemController itemController;
+
+    @BeforeEach
+    public void setUp() {
+        itemDao = mock(ItemDao.class);
+        instanceCreator = mock(InstanceCreator.class);
+        itemController = new ItemController(itemDao, instanceCreator);
     }
-    @MockBean(InstanceCreator.class)
-    InstanceCreator instanceCreator() {
-        return mock(InstanceCreator.class);
-    }
-    // Class under test
-    @Inject ItemController itemController;
 
     @Nested
     public class GetTest {
@@ -81,18 +73,15 @@ public class ItemControllerTest {
 
     @Nested
     public class UpsertTest {
-        @Inject ResourceLoader resourceLoader;
-        @Inject ObjectMapper objectMapper;
-
         private List<ItemEntity> existingItems;
 
         @BeforeEach
         public void setUp() throws IOException {
-            InputStream inputStream = resourceLoader
-                .getResourceAsStream("existingItems.json")
-                .orElse(null);
+            InputStream inputStream = getClass()
+                .getResourceAsStream("/json/existingItems.json");
+            ObjectMapper objectMapper = new ObjectMapper();
             existingItems = objectMapper
-                .readValue(inputStream, Argument.listOf(ItemEntity.class));
+                .readValue(inputStream, new TypeReference<List<ItemEntity>>(){});
         }
 
         @Test
@@ -144,4 +133,3 @@ public class ItemControllerTest {
         }
     }
 }
-

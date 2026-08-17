@@ -1,4 +1,4 @@
-# AI Agent Instructions
+# Agent Instructions
 
 ## Purpose
 

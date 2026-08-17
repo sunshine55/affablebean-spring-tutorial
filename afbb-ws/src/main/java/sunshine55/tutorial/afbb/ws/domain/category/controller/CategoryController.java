@@ -1,4 +1,4 @@
-package sunshine55.tutorial.afbb.ws.controller;
+package sunshine55.tutorial.afbb.ws.domain.category.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,9 +12,9 @@ import io.micronaut.http.annotation.Delete;
 import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.QueryValue;
 import lombok.RequiredArgsConstructor;
-import sunshine55.tutorial.afbb.ws.dao.CategoryDao;
-import sunshine55.tutorial.afbb.ws.entity.CategoryEntity;
-import sunshine55.tutorial.afbb.ws.service.InstanceCreator;
+import sunshine55.tutorial.afbb.ws.core.service.InstanceCreator;
+import sunshine55.tutorial.afbb.ws.domain.category.dao.CategoryDao;
+import sunshine55.tutorial.afbb.ws.domain.category.entity.CategoryEntity;
 
 @Controller("/categories")
 @RequiredArgsConstructor
@@ -73,4 +73,3 @@ public class CategoryController {
         categoryDao.deleteById(id);
     }   
 }
-

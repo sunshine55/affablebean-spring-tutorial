@@ -1,4 +1,4 @@
-package sunshine55.tutorial.afbb.ws.controller;
+package sunshine55.tutorial.afbb.ws.domain.category.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
@@ -20,32 +20,24 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import io.micronaut.core.io.ResourceLoader;
-import io.micronaut.core.type.Argument;
-import io.micronaut.serde.ObjectMapper;
-import io.micronaut.test.annotation.MockBean;
-import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
-import jakarta.inject.Inject;
-import sunshine55.tutorial.afbb.ws.dao.CategoryDao;
-import sunshine55.tutorial.afbb.ws.entity.CategoryEntity;
-import sunshine55.tutorial.afbb.ws.service.InstanceCreator;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.ObjectMapper;
 
-@MicronautTest
+import sunshine55.tutorial.afbb.ws.core.service.InstanceCreator;
+import sunshine55.tutorial.afbb.ws.domain.category.dao.CategoryDao;
+import sunshine55.tutorial.afbb.ws.domain.category.entity.CategoryEntity;
+
 public class CategoryControllerTest {
-    // Dependencies
-    @Inject CategoryDao categoryDao;
-    @Inject InstanceCreator instanceCreator;
-    // Mocking dependencies
-    @MockBean(CategoryDao.class)
-    CategoryDao categoryDao() {
-        return mock(CategoryDao.class);
+    private CategoryDao categoryDao;
+    private InstanceCreator instanceCreator;
+    private CategoryController categoryController;
+
+    @BeforeEach
+    public void setUp() {
+        categoryDao = mock(CategoryDao.class);
+        instanceCreator = mock(InstanceCreator.class);
+        categoryController = new CategoryController(categoryDao, instanceCreator);
     }
-    @MockBean(InstanceCreator.class)
-    InstanceCreator instanceCreator() {
-        return mock(InstanceCreator.class);
-    }
-    // Class under test
-    @Inject CategoryController categoryController;
 
     @Nested
     public class GetTest {
@@ -81,18 +73,15 @@ public class CategoryControllerTest {
 
     @Nested
     public class UpsertTest {
-        @Inject ResourceLoader resourceLoader;
-        @Inject ObjectMapper objectMapper;
-
         private List<CategoryEntity> existingCategories;
 
         @BeforeEach
         public void setUp() throws IOException {
-            InputStream inputStream = resourceLoader
-                .getResourceAsStream("existingCategories.json")
-                .orElse(null);
+            InputStream inputStream = getClass()
+                .getResourceAsStream("/json/existingCategories.json");
+            ObjectMapper objectMapper = new ObjectMapper();
             existingCategories = objectMapper
-                .readValue(inputStream, Argument.listOf(CategoryEntity.class));
+                .readValue(inputStream, new TypeReference<List<CategoryEntity>>(){});
         }
 
         @Test
@@ -144,4 +133,3 @@ public class CategoryControllerTest {
         }
     }
 }
-

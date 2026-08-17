@@ -1,8 +1,8 @@
-package sunshine55.tutorial.afbb.ws.service;
+package sunshine55.tutorial.afbb.ws.core.service;
 
 import jakarta.inject.Singleton;
-import sunshine55.tutorial.afbb.ws.entity.CategoryEntity;
-import sunshine55.tutorial.afbb.ws.entity.ItemEntity;
+import sunshine55.tutorial.afbb.ws.domain.category.entity.CategoryEntity;
+import sunshine55.tutorial.afbb.ws.domain.item.entity.ItemEntity;
 
 @Singleton
 public class InstanceCreator {
@@ -15,4 +15,3 @@ public class InstanceCreator {
         return new ItemEntity();
     }
 }
-

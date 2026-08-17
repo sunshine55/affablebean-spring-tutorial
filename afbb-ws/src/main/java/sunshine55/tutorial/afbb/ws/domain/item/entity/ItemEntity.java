@@ -1,4 +1,4 @@
-package sunshine55.tutorial.afbb.ws.entity;
+package sunshine55.tutorial.afbb.ws.domain.item.entity;
 
 import io.micronaut.data.annotation.GeneratedValue;
 import io.micronaut.data.annotation.Id;
@@ -35,4 +35,3 @@ public class ItemEntity {
         }
     }
 }
-
