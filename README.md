@@ -53,8 +53,8 @@ incus config set <container_name> security.syscalls.intercept.setxattr=true
 Expose ports for services running inside Incus container (excute these commands at host machine):
 ```sh
 incus config device add <container_name> port8080 proxy listen=tcp:0.0.0.0:8080 connect=tcp:127.0.0.1:8080
-incus config device add <container_name> port3000 proxy listen=tcp:0.0.0.0:8080 connect=tcp:127.0.0.1:3000
-incus config device add <container_name> port3001 proxy listen=tcp:0.0.0.0:8080 connect=tcp:127.0.0.1:3001
+incus config device add <container_name> port3000 proxy listen=tcp:0.0.0.0:3000 connect=tcp:127.0.0.1:3000
+incus config device add <container_name> port3001 proxy listen=tcp:0.0.0.0:3001 connect=tcp:127.0.0.1:3001
 ```
 
 ### Bring up DB
@@ -65,7 +65,11 @@ Change directory to `afbb-db` folder and bring up Docker Mongo inside Incus cont
 
 ### Bring up APIs
 
-Change directory to `afbb-ws` folder and run: `./mvnw mn:run -Dmicronaut.environments=local`
+Change directory to `afbb-ws` folder and run:
+```sh
+mise install
+./mvnw mn:run -Dmicronaut.environments=local`
+```
 
 At host machine, use browser or any HTTP client tool to test APIs, i.e.: `http://localhost:8080/categories`
 
@@ -73,6 +77,7 @@ At host machine, use browser or any HTTP client tool to test APIs, i.e.: `http:/
 
 Change directory to `shop` or `admin` under `afbb-gui` and start the app in dev mode:
 ```sh
+mise install
 npm install
 npm run dev
 ```
