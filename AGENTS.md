@@ -7,6 +7,6 @@
 
 ## Default Behaviors
 
-- Use `agile-guidelines` skill to prepare plans
-- Use `clean-code` skill to judge the plan
-- Use `code-styles` skill to write code
+- Use `iterate-code` skill to prepare implementations
+- Use `clean-code` skill to judge the implementations
+- Use `format-code` skill to write and format code

@@ -1,9 +1,9 @@
 ---
-name: agile-guidelines
+name: iterate-code
 description: guidelines to prevent common AI coding mistakes when implementing requests
 ---
 
-# Agile Guidelines
+# Iterate Code
 
 - Caution over speed
 - Prefer small, simple changes that achieve the goal

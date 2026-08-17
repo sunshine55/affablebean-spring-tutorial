@@ -3,7 +3,7 @@ name: clean-code
 description: Practical guidelines to transform code that works into code that is clean
 ---
 
-# Clean Code Skill
+# Clean Code
 
 ## When to Use
 

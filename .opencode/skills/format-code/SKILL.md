@@ -1,9 +1,9 @@
 ---
-name: code-styles
-description: Specific code style apply to current repo when writing code
+name: format-code
+description: Specific code styles apply to current repo when writing code
 ---
 
-# Code Styles Skill
+# Format Code
 
 ## When to Use
 
