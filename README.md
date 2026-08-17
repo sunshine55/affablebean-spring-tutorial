@@ -59,19 +59,23 @@ incus config device add <container_name> port3001 proxy listen=tcp:0.0.0.0:8080 
 
 ### Bring up DB
 
-Bring up Docker Mongo inside Incus container:
+Change directory to `afbb-db` folder and bring up Docker Mongo inside Incus container:
 - First time: `docker compose up -d`
 - Next times: `docker compose start`
 
 ### Bring up APIs
 
-Run with CLI commands: `./mvnw mn:run -Dmicronaut.environments=local`
+Change directory to `afbb-ws` folder and run: `./mvnw mn:run -Dmicronaut.environments=local`
 
-At local host, use browser or any HTTP client tool to test APIs, i.e.: `http://localhost:8080/categories`
+At host machine, use browser or any HTTP client tool to test APIs, i.e.: `http://localhost:8080/categories`
 
 ### Bring up GUIs
 
-Change directory to `shop` or `admin` under `afbb-gui` and start the app in dev mode: `npm run dev`
+Change directory to `shop` or `admin` under `afbb-gui` and start the app in dev mode:
+```sh
+npm install
+npm run dev
+```
 
 Open browser (recommend Chrome) on the host: shop - `http://localhost:3000`; admin - `http://localhost:3001`
 
