@@ -1,0 +1,39 @@
+# os
+Thumbs.db
+.DS_Store
+
+# ide
+.idea
+.vscode/
+*.iml
+*.ipr
+*.iws
+.project
+.settings
+.classpath
+.factorypath
+
+# java
+.gradle
+.micronaut/
+target/
+
+# nodejs
+node_modules/
+package-lock.json
+*.tsbuildinfo
+.next/
+
+# build
+build/
+out/
+dist/
+
+# testing
+coverage/
+
+# misc
+*.log
+*local
+.vercel
+next-env.d.ts

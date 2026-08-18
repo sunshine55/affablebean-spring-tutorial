@@ -1,3 +1,4 @@
 [tools]
 java = "temurin-25"
 maven = "3"
+node = "latest"
