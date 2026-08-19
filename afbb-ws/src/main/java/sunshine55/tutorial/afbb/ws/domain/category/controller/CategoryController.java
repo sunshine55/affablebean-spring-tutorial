@@ -11,6 +11,8 @@ import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Delete;
 import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.QueryValue;
+import io.micronaut.security.annotation.Secured;
+import io.micronaut.security.rules.SecurityRule;
 import lombok.RequiredArgsConstructor;
 import sunshine55.tutorial.afbb.ws.core.service.InstanceCreator;
 import sunshine55.tutorial.afbb.ws.domain.category.dao.CategoryDao;
@@ -23,6 +25,7 @@ public class CategoryController {
     private final InstanceCreator instanceCreator;
 
     @Get
+    @Secured(SecurityRule.IS_ANONYMOUS)
     public List<CategoryEntity> get(@QueryValue(value = "id", defaultValue = "") String id) {
         if (!StringUtils.hasText(id)) {
             return categoryDao.findAll();
@@ -35,6 +38,7 @@ public class CategoryController {
     }
 
     @Post
+    @Secured(SecurityRule.IS_AUTHENTICATED)
     public List<CategoryEntity> upsert(@Body List<CategoryEntity> categories) {
         List<CategoryEntity> toInsertList = new ArrayList<>(categories.size());
         List<CategoryEntity> toUpdateList = new ArrayList<>(categories.size());
@@ -65,6 +69,7 @@ public class CategoryController {
     }
 
     @Delete
+    @Secured(SecurityRule.IS_AUTHENTICATED)
     public void delete(@QueryValue(value = "id", defaultValue = "") String id) {
         if (!StringUtils.hasText(id)) {
             categoryDao.deleteAll();

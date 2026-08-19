@@ -12,6 +12,8 @@ import io.micronaut.http.annotation.Delete;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.QueryValue;
+import io.micronaut.security.annotation.Secured;
+import io.micronaut.security.rules.SecurityRule;
 import lombok.RequiredArgsConstructor;
 import sunshine55.tutorial.afbb.ws.core.service.InstanceCreator;
 import sunshine55.tutorial.afbb.ws.domain.item.dao.ItemDao;
@@ -24,6 +26,7 @@ public class ItemController {
     private final InstanceCreator instanceCreator;
 
     @Get
+    @Secured(SecurityRule.IS_ANONYMOUS)
     public List<ItemEntity> get(@QueryValue(value = "id", defaultValue = "") String id) {
         if (!StringUtils.hasText(id)) {
             return itemDao.findAll();
@@ -36,11 +39,13 @@ public class ItemController {
     }
 
     @Get("/category")
+    @Secured(SecurityRule.IS_ANONYMOUS)
     public List<ItemEntity> getByCategoryId(@QueryValue String categoryId) {
         return itemDao.findByCategoryId(categoryId);
     }
 
     @Post
+    @Secured(SecurityRule.IS_AUTHENTICATED)
     public List<ItemEntity> upsert(@Body List<ItemEntity> items) {
         List<ItemEntity> toInsertList = new ArrayList<>(items.size());
         List<ItemEntity> toUpdateList = new ArrayList<>(items.size());
@@ -71,6 +76,7 @@ public class ItemController {
     }
 
     @Delete
+    @Secured(SecurityRule.IS_AUTHENTICATED)
     public void delete(@QueryValue(value = "id", defaultValue = "") String id) {
         if (!StringUtils.hasText(id)) {
             itemDao.deleteAll();

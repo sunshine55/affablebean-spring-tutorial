@@ -2,6 +2,8 @@ db = db.getSiblingDB('afbb');
 
 db.category.drop();
 db.item.drop();
+db.system_user.drop();
+db.refresh_token.drop();
 
 db.category.insertMany([
   {
@@ -142,5 +144,32 @@ db.item.insertMany([
     price: 6.77,
     categoryId: "68142ad4b3498d12af5275b4",
     imageSrc: "https://picsum.photos/300/200"
+  }
+]);
+
+db.system_user.insertMany([
+  {
+    _id: ObjectId("68142ad4b3498d12af5275c1"),
+    name: "Root User",
+    email: "root@afbb.com",
+    username: "root",
+    password: "$2b$12$afs3q4JXdJsloiMZz5jltusSGueThI27BJaG1H.x2CXNrb6yXQaY2",
+    active: true,
+    roles: ["admin"],
+    createdAt: ISODate("2026-08-19T00:00:00Z"),
+    updatedAt: ISODate("2026-08-19T00:00:00Z"),
+    lastLoginAt: null
+  },
+  {
+    _id: ObjectId("68142ad4b3498d12af5275c2"),
+    name: "Admin User",
+    email: "admin@afbb.com",
+    username: "admin",
+    password: "$2b$12$/ZIkLQ.GZayN17Hy3fH68.sXzYmmhnBBNES1z1.Mmc2A3PCCrULa2",
+    active: true,
+    roles: ["user"],
+    createdAt: ISODate("2026-08-19T00:00:00Z"),
+    updatedAt: ISODate("2026-08-19T00:00:00Z"),
+    lastLoginAt: null
   }
 ]);

@@ -33,6 +33,11 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>io.micronaut.reactor</groupId>
+            <artifactId>micronaut-reactor</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>io.micronaut.data</groupId>
             <artifactId>micronaut-data-mongodb</artifactId>
             <scope>compile</scope>
@@ -40,6 +45,17 @@
         <dependency>
             <groupId>io.micronaut.serde</groupId>
             <artifactId>micronaut-serde-jackson</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut.security</groupId>
+            <artifactId>micronaut-security-jwt</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-crypto</artifactId>
+            <version>6.4.3</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -171,6 +187,10 @@
                                     <artifactId>micronaut-inject</artifactId>
                                 </exclusion>
                             </exclusions>
+                        </path>
+                        <path>
+                            <groupId>io.micronaut.security</groupId>
+                            <artifactId>micronaut-security-processor</artifactId>
                         </path>
                     </annotationProcessorPaths>
                     <compilerArgs>

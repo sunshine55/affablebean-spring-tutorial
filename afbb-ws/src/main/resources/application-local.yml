@@ -3,3 +3,14 @@ server:
     origins: http://localhost:3000,http://localhost:3001
 mongodb:
   uri: mongodb://localhost:27017/afbb
+micronaut:
+  security:
+    token:
+      jwt:
+        signatures:
+          secret:
+            generator:
+              secret: '"dev-jwt-secret-key-not-for-production"'
+        generator:
+          refresh-token:
+            secret: '"dev-refresh-secret-key-not-for-production"'
