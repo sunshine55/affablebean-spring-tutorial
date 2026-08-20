@@ -63,6 +63,8 @@ Change directory to `afbb-db` folder and bring up Docker Mongo inside Incus cont
 - First time: `docker compose up -d`
 - Next times: `docker compose start`
 
+Clean up: `docker compose down -v`
+
 ### Bring up APIs
 
 Change directory to `afbb-ws` folder and run:

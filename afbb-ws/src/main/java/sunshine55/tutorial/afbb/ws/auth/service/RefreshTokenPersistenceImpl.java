@@ -8,6 +8,7 @@ import io.micronaut.security.errors.OauthErrorResponseException;
 import io.micronaut.security.token.event.RefreshTokenGeneratedEvent;
 import io.micronaut.security.token.refresh.RefreshTokenPersistence;
 import jakarta.inject.Singleton;
+import lombok.RequiredArgsConstructor;
 import org.reactivestreams.Publisher;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.FluxSink;
@@ -17,12 +18,9 @@ import sunshine55.tutorial.afbb.ws.auth.entity.RefreshTokenEntity;
 import static io.micronaut.security.errors.IssuingAnAccessTokenErrorCode.INVALID_GRANT;
 
 @Singleton
+@RequiredArgsConstructor
 public class RefreshTokenPersistenceImpl implements RefreshTokenPersistence {
     private final RefreshTokenDao refreshTokenDao;
-
-    public RefreshTokenPersistenceImpl(RefreshTokenDao refreshTokenDao) {
-        this.refreshTokenDao = refreshTokenDao;
-    }
 
     @Override
     public void persistToken(RefreshTokenGeneratedEvent event) {

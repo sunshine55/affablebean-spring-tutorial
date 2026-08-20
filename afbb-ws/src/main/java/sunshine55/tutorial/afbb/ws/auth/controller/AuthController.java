@@ -17,6 +17,7 @@ import io.micronaut.security.rules.SecurityRule;
 import io.micronaut.security.token.generator.AccessRefreshTokenGenerator;
 import io.micronaut.security.token.render.AccessRefreshToken;
 import io.micronaut.validation.Validated;
+import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
 import sunshine55.tutorial.afbb.ws.auth.dto.LoginRequest;
 import sunshine55.tutorial.afbb.ws.auth.dto.RefreshRequest;
@@ -28,20 +29,12 @@ import sunshine55.tutorial.afbb.ws.auth.entity.SystemUserEntity;
 @Controller("/auth")
 @Secured(SecurityRule.IS_ANONYMOUS)
 @Validated
+@RequiredArgsConstructor
 public class AuthController {
     private final SystemUserDao systemUserDao;
     private final RefreshTokenDao refreshTokenDao;
     private final Authenticator<Object> authenticator;
     private final AccessRefreshTokenGenerator accessRefreshTokenGenerator;
-
-    public AuthController(SystemUserDao systemUserDao, RefreshTokenDao refreshTokenDao,
-                          Authenticator<Object> authenticator,
-                          AccessRefreshTokenGenerator accessRefreshTokenGenerator) {
-        this.systemUserDao = systemUserDao;
-        this.refreshTokenDao = refreshTokenDao;
-        this.authenticator = authenticator;
-        this.accessRefreshTokenGenerator = accessRefreshTokenGenerator;
-    }
 
     @Post("/login")
     public HttpResponse<?> login(@Body LoginRequest request) {

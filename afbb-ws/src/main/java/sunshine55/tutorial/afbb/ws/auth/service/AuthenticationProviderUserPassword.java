@@ -11,18 +11,15 @@ import io.micronaut.security.authentication.AuthenticationRequest;
 import io.micronaut.security.authentication.AuthenticationResponse;
 import io.micronaut.security.authentication.provider.HttpRequestAuthenticationProvider;
 import jakarta.inject.Singleton;
+import lombok.RequiredArgsConstructor;
 import sunshine55.tutorial.afbb.ws.auth.dao.SystemUserDao;
 import sunshine55.tutorial.afbb.ws.auth.entity.SystemUserEntity;
 
 @Singleton
-class AuthenticationProviderUserPassword implements HttpRequestAuthenticationProvider<Object> {
+@RequiredArgsConstructor
+public class AuthenticationProviderUserPassword implements HttpRequestAuthenticationProvider<Object> {
     private final SystemUserDao systemUserDao;
     private final UserPasswordEncoder userPasswordEncoder;
-
-    AuthenticationProviderUserPassword(SystemUserDao systemUserDao, UserPasswordEncoder userPasswordEncoder) {
-        this.systemUserDao = systemUserDao;
-        this.userPasswordEncoder = userPasswordEncoder;
-    }
 
     @Override
     public AuthenticationResponse authenticate(
