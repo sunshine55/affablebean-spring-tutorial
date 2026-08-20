@@ -15,7 +15,7 @@ import sunshine55.tutorial.afbb.ws.auth.dao.SystemUserDao;
 import sunshine55.tutorial.afbb.ws.auth.entity.SystemUserEntity;
 
 @Singleton
-class AuthenticationProviderUserPassword<B> implements HttpRequestAuthenticationProvider<B> {
+class AuthenticationProviderUserPassword implements HttpRequestAuthenticationProvider<Object> {
     private final SystemUserDao systemUserDao;
     private final UserPasswordEncoder userPasswordEncoder;
 
@@ -26,7 +26,7 @@ class AuthenticationProviderUserPassword<B> implements HttpRequestAuthentication
 
     @Override
     public AuthenticationResponse authenticate(
-            @Nullable HttpRequest<B> httpRequest,
+            @Nullable HttpRequest<Object> httpRequest,
             @NonNull AuthenticationRequest<String, String> authenticationRequest) {
 
         String username = authenticationRequest.getIdentity();
