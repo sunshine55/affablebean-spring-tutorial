@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 import { categorySchema, categoriesSchema, CategoryModel } from '@/schema';
 import { TextField, TextFieldProps } from '@/components';
+import { authenticatedFetch } from '@/lib/auth';
 
 const categoryFormFields: TextFieldProps[] = [
   { label: 'Name', name: 'name', value: '' },
@@ -44,7 +45,7 @@ export const CategoryForm = (props: CategoryModel) => {
       alert(`Validation error:\n${msg}`);
       return;
     }
-    fetch(`${process.env.NEXT_PUBLIC_AFBB_API}/categories`, {
+    authenticatedFetch(`${process.env.NEXT_PUBLIC_AFBB_API}/categories`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -73,7 +74,7 @@ export const CategoryForm = (props: CategoryModel) => {
     if (!confirm('Are you sure you want to delete this category?')) {
       return;
     }
-    fetch(`${process.env.NEXT_PUBLIC_AFBB_API}/categories?id=${id}`, {
+    authenticatedFetch(`${process.env.NEXT_PUBLIC_AFBB_API}/categories?id=${id}`, {
       method: 'DELETE',
     })
       .then((response) => {

@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 import { itemSchema, itemsSchema, ItemModel } from '@/schema';
 import { TextField, TextFieldProps } from '@/components';
+import { authenticatedFetch } from '@/lib/auth';
 
 const itemFormFields: TextFieldProps[] = [
   { label: 'Name', name: 'name', value: '' },
@@ -47,7 +48,7 @@ export const ItemForm = (props: ItemModel) => {
       alert(`Validation error:\n${msg}`);
       return;
     }
-    fetch(`${process.env.NEXT_PUBLIC_AFBB_API}/items`, {
+    authenticatedFetch(`${process.env.NEXT_PUBLIC_AFBB_API}/items`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -76,7 +77,7 @@ export const ItemForm = (props: ItemModel) => {
     if (!confirm('Are you sure you want to delete this item?')) {
       return;
     }
-    fetch(`${process.env.NEXT_PUBLIC_AFBB_API}/items?id=${id}`, {
+    authenticatedFetch(`${process.env.NEXT_PUBLIC_AFBB_API}/items?id=${id}`, {
       method: 'DELETE',
     })
       .then((response) => {

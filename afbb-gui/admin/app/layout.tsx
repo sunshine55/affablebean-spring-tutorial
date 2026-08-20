@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist } from 'next/font/google';
-import { Footer, Header, Sidebar } from '@/components';
+
+import { Layout } from '@/components/Layout';
 
 import '@/app/globals.css';
 
@@ -22,12 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={geist.variable}>
-        <div className="layout">
-          <Header />
-          <Sidebar />
-          <main className="main">{children}</main>
-          <Footer />
-        </div>
+        <Layout>{children}</Layout>
       </body>
     </html>
   );
