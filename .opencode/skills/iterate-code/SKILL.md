@@ -1,6 +1,6 @@
 ---
 name: iterate-code
-description: guidelines to prevent common AI coding mistakes when implementing requests
+description: guidelines to prevent overthinking when analyzing complex requests
 ---
 
 # Iterate Code
@@ -11,22 +11,20 @@ description: guidelines to prevent common AI coding mistakes when implementing r
 
 ## Think First
 
-- Do NOT assume; state assumptions. If unclear, stop and ask
-- If multiple interpretations exist, list them; do NOT pick silently
+- DO NOT assume; state assumptions. If unclear, stop and ask
+- If multiple interpretations exist, list them; DO NOT pick silently
 - Call out simpler options or tradeoffs; push back if warranted
 
 ## Simplicity
 
-- Write the minimum code that satisfies the request
+- Design minimum code that satisfies the request
 - No extra features, abstractions, flexibility or speculative handling
-- If it's 200 lines but could be 50, rewrite smaller
 
 ## Surgical Edits
 
+- DO NOT refactor/delete unrelated code, comments or format
+- DO NOT delete "dead code" without user confirmation
 - Touch only what's required; match existing style
-- Do NOT refactor/delete unrelated code, comments or formatting
-- Remove only unused pieces your change created
-- Do NOT delete "dead code" without asking
 - Every changes must map to the request
 
 ## Goal Driven
@@ -35,4 +33,4 @@ description: guidelines to prevent common AI coding mistakes when implementing r
 - Bug: add reproduced test -> fix -> pass
 - Validation: add failing tests -> implement -> pass
 - Refactor: tests pass before + after
-- For multi-step work, give a brief plan
+- Give a brief checklist for multistep work

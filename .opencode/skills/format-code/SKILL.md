@@ -1,6 +1,6 @@
 ---
 name: format-code
-description: Specific code styles apply to current repo when writing code
+description: specific code styles apply to current repo when writing code
 ---
 
 # Format Code
@@ -12,7 +12,7 @@ description: Specific code styles apply to current repo when writing code
 
 ## Java
 
-- Do NOT use wildcard imports
+- DO NOT use wildcard imports
 - Always declare access modifier (public/protected/private) explicitly for classes, methods and fields
 - 4 spaces indentation
 

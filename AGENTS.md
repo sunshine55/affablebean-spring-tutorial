@@ -7,6 +7,6 @@
 
 ## Default Behaviors
 
-- Use `iterate-code` skill to prepare implementations
-- Use `clean-code` skill to judge the implementations
-- Use `format-code` skill to write and format code
+- Use `iterate-code` skill to propose design
+- Use `clean-code` skill to judge the design
+- Follow `format-code` guidelines to write and format code
