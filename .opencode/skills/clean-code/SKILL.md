@@ -1,14 +1,13 @@
 ---
 name: clean-code 
-description: Practical guidelines to transform code that works into code that is clean
+description: practical guidelines to transform code that works into code that is clean
 ---
 
 # Clean Code
 
 ## When to Use
 
-- Review detailed design before implementation
-- Refactor legacy code
+Review detailed design, implemenation plan and legacy code
 
 ## Guidelines
 

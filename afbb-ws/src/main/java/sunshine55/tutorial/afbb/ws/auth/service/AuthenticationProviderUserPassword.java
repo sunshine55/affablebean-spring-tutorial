@@ -23,9 +23,9 @@ public class AuthenticationProviderUserPassword implements HttpRequestAuthentica
 
     @Override
     public AuthenticationResponse authenticate(
-            @Nullable HttpRequest<Object> httpRequest,
-            @NonNull AuthenticationRequest<String, String> authenticationRequest) {
-
+        @Nullable HttpRequest<Object> httpRequest,
+        @NonNull AuthenticationRequest<String, String> authenticationRequest
+    ) {
         String username = authenticationRequest.getIdentity();
         Optional<SystemUserEntity> userOpt = systemUserDao.findByUsername(username);
 
@@ -49,3 +49,4 @@ public class AuthenticationProviderUserPassword implements HttpRequestAuthentica
         return AuthenticationResponse.success(username);
     }
 }
+

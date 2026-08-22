@@ -9,7 +9,7 @@ During reviewing/refactoring, pay attention to the low maintainability code clas
 
 ## Object Oriented Abusers
 
-- These smells are incomplete or incorrect application of object-oriented progamming principles
+- These smells are incomplete or incorrect application of object-oriented programming principles
 - Examples: alternative classes with difference interfaces, refused bequest, switch statements, temporary field
 
 ## Change Preventers

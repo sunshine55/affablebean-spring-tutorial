@@ -11,11 +11,14 @@ import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
 import io.micronaut.security.annotation.Secured;
 import io.micronaut.security.authentication.Authentication;
+import io.micronaut.security.authentication.AuthenticationResponse;
 import io.micronaut.security.authentication.Authenticator;
 import io.micronaut.security.authentication.UsernamePasswordCredentials;
 import io.micronaut.security.rules.SecurityRule;
 import io.micronaut.security.token.generator.AccessRefreshTokenGenerator;
 import io.micronaut.security.token.render.AccessRefreshToken;
+import io.micronaut.scheduling.TaskExecutors;
+import io.micronaut.scheduling.annotation.ExecuteOn;
 import io.micronaut.validation.Validated;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
@@ -29,6 +32,7 @@ import sunshine55.tutorial.afbb.ws.auth.entity.SystemUserEntity;
 @Controller("/auth")
 @Secured(SecurityRule.IS_ANONYMOUS)
 @Validated
+@ExecuteOn(TaskExecutors.BLOCKING)
 @RequiredArgsConstructor
 public class AuthController {
     private final SystemUserDao systemUserDao;
@@ -38,11 +42,8 @@ public class AuthController {
 
     @Post("/login")
     public HttpResponse<?> login(@Body LoginRequest request) {
-        UsernamePasswordCredentials credentials = new UsernamePasswordCredentials(
-                request.getUsername(), request.getPassword());
-        io.micronaut.security.authentication.AuthenticationResponse response =
-                Flux.from(authenticator.authenticate(null, credentials))
-                        .blockFirst();
+        UsernamePasswordCredentials credentials = new UsernamePasswordCredentials(request.getUsername(), request.getPassword());
+        AuthenticationResponse response = Flux.from(authenticator.authenticate(null, credentials)).blockFirst();
         if (!response.isAuthenticated()) {
             return HttpResponse.status(HttpStatus.UNAUTHORIZED);
         }
@@ -78,3 +79,4 @@ public class AuthController {
         return HttpResponse.ok();
     }
 }
+
