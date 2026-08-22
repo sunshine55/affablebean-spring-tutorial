@@ -1,9 +1,9 @@
 'use client';
 
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
-import { clearTokens, getAccessToken, getRefreshToken, setTokens } from '@/lib/auth';
+import { clearTokens, getAccessToken, getRefreshToken, isLocalPath, setTokens } from '@/lib/auth';
 
 export type User = {
   id: string;
@@ -17,7 +17,7 @@ type AuthContextType = {
   user: User | null;
   isAuthenticated: boolean;
   loading: boolean;
-  login: (username: string, password: string) => Promise<void>;
+  login: (username: string, password: string, returnTo?: string | null) => Promise<void>;
   logout: () => Promise<void>;
 };
 
@@ -51,7 +51,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     });
   }, [fetchUser]);
 
-  const login = async (username: string, password: string) => {
+  const login = async (username: string, password: string, returnTo?: string | null) => {
     const res = await fetch(`${API}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -64,7 +64,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setTokens(data.access_token, data.refresh_token);
     const me = await fetchUser();
     setUser(me);
-    router.push('/');
+    router.push(isLocalPath(returnTo) ? returnTo : '/');
   };
 
   const logout = async () => {
@@ -92,4 +92,18 @@ export function useAuth(): AuthContextType {
   const ctx = useContext(AuthContext);
   if (!ctx) throw new Error('useAuth must be used within AuthProvider');
   return ctx;
+}
+
+export function useRequireAuth() {
+  const { isAuthenticated, loading } = useAuth();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!loading && !isAuthenticated && pathname !== '/login') {
+      router.replace(`/login?returnTo=${encodeURIComponent(pathname)}`);
+    }
+  }, [isAuthenticated, loading, pathname, router]);
+
+  return { isAuthenticated, loading };
 }

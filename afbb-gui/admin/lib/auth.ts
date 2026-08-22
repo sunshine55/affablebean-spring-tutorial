@@ -21,6 +21,10 @@ export function clearTokens(): void {
   localStorage.removeItem(REFRESH_TOKEN_KEY);
 }
 
+export function isLocalPath(path?: string | null): path is string {
+  return !!path && path.startsWith('/') && !path.startsWith('//');
+}
+
 export async function authenticatedFetch(url: string, options: RequestInit = {}): Promise<Response> {
   const token = getAccessToken();
   const headers = new Headers(options.headers);

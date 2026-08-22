@@ -1,17 +1,27 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
+import { FormEvent, Suspense, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 import { useAuth } from '@/context/AuthContext';
-import { TextField, TextFieldProps } from '@/components';
+import { Spinner, TextField, TextFieldProps } from '@/components';
 
 const loginFields: TextFieldProps[] = [
   { label: 'Username', name: 'username', value: '' },
-  { label: 'Password', name: 'password', value: '' },
+  { label: 'Password', name: 'password', value: '', type: 'password' },
 ];
 
 export default function LoginPage() {
+  return (
+    <Suspense fallback={<Spinner />}>
+      <LoginForm />
+    </Suspense>
+  );
+}
+
+function LoginForm() {
   const { login } = useAuth();
+  const searchParams = useSearchParams();
   const [formState, setFormState] = useState<Record<string, string>>({ username: '', password: '' });
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -26,7 +36,7 @@ export default function LoginPage() {
     setError('');
     setSubmitting(true);
     try {
-      await login(formState.username, formState.password);
+      await login(formState.username, formState.password, searchParams.get('returnTo'));
     } catch {
       setError('Invalid username or password');
     } finally {
